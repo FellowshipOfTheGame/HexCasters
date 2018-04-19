@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
 	public HexGrid grid;
 	public RawImage turnIndicator;
 	public RawImage winnerIndicator;
+	public Text gameStateIndicator;
+	
 	public static GameManager GM;
 
 	private int _turn;
@@ -73,6 +75,11 @@ public class GameManager : MonoBehaviour {
 		// ATK_ANIM, // (probably, but later)
 		RESULTS
 	}
+
+	private const string STATE_NAME_OVERVIEW = "Overview";
+	private const string STATE_NAME_MOVE_SELECT_DEST = "Move";
+	private const string STATE_NAME_SPELL_CHOICE = "Select Spell";
+	private const string STATE_NAME_SPELL_SELECT_TARGETS = "Cast Spell";
 
 	[SerializeField]
 	private GameState _state;
@@ -296,6 +303,7 @@ public class GameManager : MonoBehaviour {
 				}
 				selectedCell = null;
 				UpdateActionableUnitsHighlight();
+				gameStateIndicator.text = STATE_NAME_OVERVIEW;
 				break;
 			case GameState.MOVE_SELECT_DEST:
 				int r = selectedUnit.movespeed;
@@ -303,9 +311,11 @@ public class GameManager : MonoBehaviour {
 				foreach (HexCell c in validTargets) {
 					c.highlightLevel = HighlightLevel.IN_RANGE;
 				}
+				gameStateIndicator.text = STATE_NAME_MOVE_SELECT_DEST;
 				break;
 			case GameState.SPELL_CHOICE:
 				selectedCell.highlightLevel = HighlightLevel.SELECTED;
+				gameStateIndicator.text = STATE_NAME_SPELL_CHOICE;
 				break;
 			case GameState.SPELL_SELECT_TARGETS:
 				spellTargets = new List<HexCell>();
@@ -315,6 +325,7 @@ public class GameManager : MonoBehaviour {
 					// TODO this could break
 					state = GameState.OVERVIEW;
 				}
+				gameStateIndicator.text = STATE_NAME_SPELL_SELECT_TARGETS;
 				selectedCell.highlightLevel = HighlightLevel.SELECTED;
 				break;
 			case GameState.RESULTS:
