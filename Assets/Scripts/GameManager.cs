@@ -137,7 +137,8 @@ public class GameManager : MonoBehaviour {
 				}
 				break;
 			case GameState.MOVE_SELECT_DEST:
-				if (Input.GetKeyDown(KeyCode.Backspace)) {
+				// if (Input.GetKeyDown(KeyCode.Backspace)) {
+				if (InputCancel()) {
 					selectedCell = null;
 					state = GameState.OVERVIEW;
 				}
@@ -168,7 +169,8 @@ public class GameManager : MonoBehaviour {
 				}
 				break;
 			case GameState.SPELL_SELECT_TARGETS:
-				if (Input.GetKeyDown(KeyCode.Backspace)) {
+				// if (Input.GetKeyDown(KeyCode.Backspace)) {
+				if (InputCancel()) {
 					state = GameState.SPELL_CHOICE;
 				}
 				break;
@@ -261,7 +263,9 @@ public class GameManager : MonoBehaviour {
 					cell.highlightLevel = HighlightLevel.NONE;
 				}
 				pairedUnitCell = null;
-				selectedCell.highlightLevel = HighlightLevel.SELECTED;
+				if (selectedCell != null) {
+					selectedCell.highlightLevel = HighlightLevel.SELECTED;
+				}
 				break;
 			case GameState.SPELL_CHOICE:
 				cell.highlightLevel = HighlightLevel.NONE;
@@ -287,6 +291,9 @@ public class GameManager : MonoBehaviour {
 	private void EnterState() {
 		switch (state) {
 			case GameState.OVERVIEW:
+				if (selectedCell != null) {
+					selectedCell.highlightLevel = HighlightLevel.NONE;
+				}
 				selectedCell = null;
 				UpdateActionableUnitsHighlight();
 				break;
@@ -296,6 +303,9 @@ public class GameManager : MonoBehaviour {
 				foreach (HexCell c in validTargets) {
 					c.highlightLevel = HighlightLevel.IN_RANGE;
 				}
+				break;
+			case GameState.SPELL_CHOICE:
+				selectedCell.highlightLevel = HighlightLevel.SELECTED;
 				break;
 			case GameState.SPELL_SELECT_TARGETS:
 				spellTargets = new List<HexCell>();
@@ -464,6 +474,11 @@ public class GameManager : MonoBehaviour {
 
 	void ShowWinner() {
 		winnerIndicator.color = Team.COLORS[winner];
+	}
+
+	bool InputCancel() {
+		return Input.GetKeyDown(KeyCode.Backspace)
+				|| Input.GetMouseButtonDown(1);
 	}
 
 	/*
