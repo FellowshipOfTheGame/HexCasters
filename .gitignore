@@ -5,8 +5,9 @@
 [Bb]uilds/
 Assets/AssetStoreTools*
 
-# Screenshot
+# Dev & Build temp files
 screen.png
+*.zip
 
 # Visual Studio cache directory
 .vs/
