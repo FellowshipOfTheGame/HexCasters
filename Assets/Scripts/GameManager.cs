@@ -344,12 +344,14 @@ public class GameManager : MonoBehaviour {
 			hoveredCell = cell;
 		}
 		switch (state) {
+			case GameState.OVERVIEW:
+				foreach (HexUnit u in teams[turn]) {
+					u.cell.highlightLevel = HighlightLevel.NONE;
+				}
+				break;
 			case GameState.MOVE_SELECT_DEST:
 				foreach (HexCell c in validTargets) {
 					c.highlightLevel = HighlightLevel.NONE;
-				}
-				foreach (HexUnit u in teams[turn]) {
-					u.cell.highlightLevel = HighlightLevel.NONE;
 				}
 				pairedUnitCell = null;
 				break;
