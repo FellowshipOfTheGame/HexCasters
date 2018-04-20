@@ -326,7 +326,9 @@ public class GameManager : MonoBehaviour {
 					state = GameState.OVERVIEW;
 				}
 				gameStateIndicator.text = STATE_NAME_SPELL_SELECT_TARGETS;
-				selectedCell.highlightLevel = HighlightLevel.SELECTED;
+				if (selectedCell != null) {
+					selectedCell.highlightLevel = HighlightLevel.SELECTED;
+				}
 				break;
 			case GameState.RESULTS:
 				ShowWinner();
