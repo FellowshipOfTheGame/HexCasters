@@ -23,14 +23,20 @@ public class TestCellContent : MonoBehaviour {
 			gm.AddUnit(prefabChar, 2, 4, Team.RIGHT);
 			gm.AddUnit(prefabOrb, 3, 3, Team.RIGHT);
 
-			List<HexUnit> mountains = new List<HexUnit>();
-			mountains.Add(gm.AddUnit(prefabMountain, 0, 0).GetComponent<HexUnit>());
-			mountains.Add(gm.AddUnit(prefabMountain, 3, -3).GetComponent<HexUnit>());
-			mountains.Add(gm.AddUnit(prefabMountain, -3, 3).GetComponent<HexUnit>());
+			gm.AddUnit(prefabMountain, 0, 0).GetComponent<HexUnit>();
+			gm.AddUnit(prefabMountain, 3, -3).GetComponent<HexUnit>();
+			gm.AddUnit(prefabMountain, -3, 3).GetComponent<HexUnit>();
 
-			foreach (HexUnit m in mountains) {
-				foreach (var cell in m.cell.Radius(1)) {
+			// foreach (HexUnit m in mountains) {
+			// 	foreach (var cell in m.cell.Radius(1)) {
+			// 		cell.ApplyEffect(Effect.STORM);
+			// 	}
+			// }
+			foreach (HexCell cell in gm.grid[-4, 4].Line(2, 8, true, false)) {
+				if (cell.unit == null) {
 					cell.ApplyEffect(Effect.STORM);
+				} else {
+					cell.ApplyEffect(Effect.SNOW);
 				}
 			}
 
