@@ -251,7 +251,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.32352942, g: 0.32352942, b: 0.32352942, a: 1}
+  m_BackGroundColor: {r: 0.25735295, g: 0.25735295, b: 0.25735295, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -635,6 +635,12 @@ Prefab:
       propertyPath: gameStateIndicator
       value: 
       objectReference: {fileID: 1460655616}
+    - target: {fileID: 114499138081604676, guid: cbbe09460954fdf469944a9e0b6fe927,
+        type: 2}
+      propertyPath: terrainPlains
+      value: 
+      objectReference: {fileID: 11400000, guid: 28a7ee73829ea474c8056d2822107d38,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cbbe09460954fdf469944a9e0b6fe927, type: 2}
   m_IsPrefabParent: 0

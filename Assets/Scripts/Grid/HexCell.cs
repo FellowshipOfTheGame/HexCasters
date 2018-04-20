@@ -95,7 +95,7 @@ public class HexCell : MonoBehaviour {
 
 	public const float OUTER_RADIUS = 0.5f;
 	// public const float INNER_RADIUS = OUTER_RADIUS * 0.86602540378f;// root(3)/2
-	public const float INNER_RADIUS = OUTER_RADIUS * 61.0f / 64.0f;// root(3)/2 for 32x32 pixel art
+	public const float INNER_RADIUS = OUTER_RADIUS * 60.0f / 62.0f;
 
 	private SpriteRenderer highlightRend;
 	private SpriteRenderer rend;
