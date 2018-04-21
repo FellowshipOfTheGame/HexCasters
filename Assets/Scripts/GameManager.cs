@@ -290,7 +290,6 @@ public class GameManager : MonoBehaviour {
 						c.highlightLevel = HighlightLevel.NONE;
 					}
 				}
-				selectedCell.highlightLevel = HighlightLevel.SELECTED;
 				break;
 		}
 	}
@@ -318,6 +317,9 @@ public class GameManager : MonoBehaviour {
 				gameStateIndicator.text = STATE_NAME_SPELL_CHOICE;
 				break;
 			case GameState.SPELL_SELECT_TARGETS:
+				if (selectedCell != null) {
+					selectedCell.highlightLevel = HighlightLevel.NONE;
+				}
 				spellTargets = new List<HexCell>();
 				spellAOE = new Area();
 				UpdateSpellValidTargets();
@@ -326,9 +328,6 @@ public class GameManager : MonoBehaviour {
 					state = GameState.OVERVIEW;
 				}
 				gameStateIndicator.text = STATE_NAME_SPELL_SELECT_TARGETS;
-				if (selectedCell != null) {
-					selectedCell.highlightLevel = HighlightLevel.SELECTED;
-				}
 				break;
 			case GameState.RESULTS:
 				ShowWinner();
