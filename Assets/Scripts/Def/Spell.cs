@@ -116,12 +116,8 @@ public class Spell {
 			}
 		},
 		delegate (HexUnit caster, List<HexCell> curTargets) {
-			Area targets = new Area();
-			for (int dir = 0; dir < HexCell.directions.Length; dir++) {
-				targets.UnionWith(
-					caster.cell.Line(dir, ROCK_STRIKE_RANGE));
-			}
-			return targets;
+			return Enumerable.Range(0, HexCell.directions.Length)
+				.SelectMany(dir => caster.cell.Line(dir, ROCK_STRIKE_RANGE));
 		},
 		delegate (HexUnit caster, HexCell hovered, List<HexCell> targets) {
 			int dir = caster.cell.DirectionTo(hovered);
@@ -144,16 +140,11 @@ public class Spell {
 			}
 		},
 		delegate (HexUnit caster, List<HexCell> curTargets) {
-			Area targets = new Area();
-			targets.UnionWith(caster.cell
-				.Radius(IMBUE_LIFE_HEAL_RANGE)
-				.Where(cell => cell.unit != null && !cell.unit.isObstacle));
-			if (caster.asMage.ownedGolem == null) {
-				targets.UnionWith(caster.cell
-					.Radius(IMBUE_LIFE_GOLEM_RANGE)
-					.Where(cell => cell.unit == null));
-			}
-			return targets;
+			return caster.cell.Radius(IMBUE_LIFE_HEAL_RANGE)
+				.Where(cell => cell.unit != null && !cell.unit.isObstacle)
+				.Union(
+					caster.cell.Radius(IMBUE_LIFE_GOLEM_RANGE)
+						.Where(cell => cell.content == null));
 		},
 		delegate (HexUnit caster, HexCell hovered, List<HexCell> targets) {
 			return hovered.AsArea();
@@ -173,30 +164,24 @@ public class Spell {
 		},
 		delegate (HexUnit caster, List<HexCell> curTargets) {
 			if (curTargets.Count == 1) {
-				Area targets = new Area();
-				for (int dir = 0; dir < HexCell.directions.Length; dir++) {
-					targets.UnionWith(
-						curTargets[0]
-							.Line(dir, CALL_WINDS_LENGTH, false, false));
-				}
-				return targets;
+				return Enumerable.Range(0, HexCell.directions.Length)
+					.SelectMany(
+						dir => curTargets[0].Line(dir, CALL_WINDS_LENGTH));
 			}
 			return caster.cell.Radius(CALL_WINDS_RANGE)
-					.Where(cell => cell.effect != Effect.NONE);
+				.Where(cell => cell.effect != Effect.NONE);
 		},
 		delegate (HexUnit caster, HexCell hovered, List<HexCell> targets) {
 			if (targets.Count == 1) {
-				Area aoe = new Area();
 				int dir = targets[0].DirectionTo(hovered);
-				Area line = targets[0].Line(dir, CALL_WINDS_LENGTH, false, false);
+				Area line = targets[0].Line(
+					dir, CALL_WINDS_LENGTH, false, false);
 				if (targets[0].effect == Effect.SNOW) {
-					foreach (HexCell c in line) {
-						aoe.UnionWith(c.StormConnectedComponent());
-					}
+					return line
+						.SelectMany(cell => cell.StormConnectedComponent());
 				} else {
-					aoe.UnionWith(line);
+					return line;
 				}
-				return aoe;
 			}
 			return hovered.AsArea();
 		});
@@ -214,11 +199,10 @@ public class Spell {
 		delegate (HexUnit caster, List<HexCell> curTargets) {
 			if (curTargets.Count == 0) {
 				return caster.cell.Radius(FLIGHT_RANGE)
-						.Where(
-							cell => cell.unit != null && !cell.unit.isImmobile);
+					.Where(cell => cell.unit != null && !cell.unit.isImmobile);
 			} else {
 				return curTargets[0].Radius(FLIGHT_DEST_DIST)
-						.Where(neigh => neigh.content == null);
+					.Where(cell => cell.content == null);
 			}
 		},
 		delegate (HexUnit caster, HexCell hovered, List<HexCell> targets) {
