@@ -8,6 +8,13 @@ public class Spell {
 	// All delegates receive a list of cells which the
 	// player has *already clicked on* previously as the targets
 	// for the spell
+	
+	public delegate IEnumerable<HexCell> GetAOEDelegate(
+		HexUnit caster, HexCell hovered, List<HexCell> targets);
+	public delegate IEnumerable<HexCell> GetValidNextTargetsDelegate(
+		HexUnit caster, List<HexCell> curTargets);
+	public delegate void CastDelegate(
+		HexUnit caster, List<HexCell> targets, Area aoe);
 
 
 	// FIREBALL
@@ -76,8 +83,6 @@ public class Spell {
 		},
 		delegate (HexUnit caster, List<HexCell> curTargets) {
 			return caster.cell.Radius(BLIZZARD_RANGE);
-					// TODO test
-					// .Where(cell => cell.effect != Effect.FLAMES);
 		},
 		delegate (HexUnit caster, HexCell hovered, List<HexCell> targets) {
 			return hovered.StormConnectedComponent();
@@ -178,32 +183,22 @@ public class Spell {
 			}
 			return caster.cell.Radius(CALL_WINDS_RANGE)
 					.Where(cell => cell.effect != Effect.NONE);
-			// if (curTargets.Count == 0) { // First target
-			// 	return caster.cell.Radius(CALL_WINDS_RANGE)
-			// 			.Where(cell => { return cell.effect != Effect.NONE; });
-			// } else { // Second target
-			// 	return curTargets[0].EnumerateNeighbors();
-			// }
 		},
 		delegate (HexUnit caster, HexCell hovered, List<HexCell> targets) {
 			if (targets.Count == 1) {
 				Area aoe = new Area();
 				int dir = targets[0].DirectionTo(hovered);
 				Area line = targets[0].Line(dir, CALL_WINDS_LENGTH, false, false);
-				foreach (HexCell cell in line) {
-					if (targets[0].effect == Effect.SNOW) {
-						aoe.UnionWith(cell.StormConnectedComponent());
-					} else {
-						aoe.Add(cell);
+				if (targets[0].effect == Effect.SNOW) {
+					foreach (HexCell c in line) {
+						aoe.UnionWith(c.StormConnectedComponent());
 					}
+				} else {
+					aoe.UnionWith(line);
 				}
 				return aoe;
 			}
 			return hovered.AsArea();
-			// if (targets.Count == 1 && targets[0].effect == Effect.SNOW) {
-			// 	return hovered.StormConnectedComponent();
-			// }
-			// return hovered.AsArea();
 		});
 
 
@@ -232,15 +227,15 @@ public class Spell {
 
 
 	public int numOfTargets;
-	public Action<HexUnit, List<HexCell>, Area> Cast;
-	public Func<HexUnit, List<HexCell>, IEnumerable<HexCell>> GetValidNextTargets;
-	public Func<HexUnit, HexCell, List<HexCell>, Area> GetAOE;
+	public CastDelegate Cast;
+	public GetValidNextTargetsDelegate GetValidNextTargets;
+	public GetAOEDelegate GetAOE;
 
 	public Spell(
 			int numOfTargets,
-			Action<HexUnit, List<HexCell>, Area> cast,
-			Func<HexUnit, List<HexCell>, IEnumerable<HexCell>> getValidNextTargets,
-			Func<HexUnit, HexCell, List<HexCell>, Area> getAOE) {
+			CastDelegate cast,
+			GetValidNextTargetsDelegate getValidNextTargets,
+			GetAOEDelegate getAOE) {
 		this.numOfTargets = numOfTargets;
 		this.Cast = cast;
 		this.GetValidNextTargets = getValidNextTargets;

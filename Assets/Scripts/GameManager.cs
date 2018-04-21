@@ -455,8 +455,8 @@ public class GameManager : MonoBehaviour {
 
 	void UpdateSpellAOE() {
 		if (validTargets.Contains(hoveredCell)) {
-			spellAOE = selectedSpell.GetAOE(
-				selectedUnit, hoveredCell, spellTargets);
+			spellAOE = new Area(selectedSpell.GetAOE(
+				selectedUnit, hoveredCell, spellTargets));
 			foreach (HexCell c in spellAOE) {
 				c.highlightLevel = HighlightLevel.IN_AOE;
 			}
