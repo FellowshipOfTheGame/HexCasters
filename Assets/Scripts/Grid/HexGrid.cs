@@ -15,6 +15,8 @@ public class HexGrid : MonoBehaviour {
 	public HexTerrain terrainPlains;
 	public HexTerrain terrainHills;
 
+	public const int ROW_Y_SPACING = 14;
+
 	public HexCell this[int x, int y] {
 		get {
 			return cells[y + nrows/2, x + ncols/2];
@@ -41,10 +43,17 @@ public class HexGrid : MonoBehaviour {
 	void SpawnCell(int row, int col, HexTerrain terrain) {
 		HexCell cell = Instantiate(prefabCell, transform);
 		cell.terrain = terrain;
+		float ppu = terrain.sprite.pixelsPerUnit;
+		float width = terrain.sprite.bounds.max.x - terrain.sprite.bounds.min.x;
+		float height = terrain.sprite.bounds.max.y - terrain.sprite.bounds.min.y;
 
 		Vector2 position = new Vector2();
-		position.x = (col * 2.0f + row) * HexCell.INNER_RADIUS;
-		position.y = row * 1.5f * HexCell.OUTER_RADIUS;
+
+		// I don't know, this works (kinda)
+		// This is what we get for trying to use pixel art with hexagons
+		position.x = (col + row/2.0f) * width - 2*col/ppu - row/ppu;
+		position.y = row * (height - (ROW_Y_SPACING / ppu));
+
 		cell.transform.position = position;
 		cell.X = col - ncols / 2;
 		cell.Y = row - nrows / 2;
