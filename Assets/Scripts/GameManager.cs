@@ -297,26 +297,27 @@ public class GameManager : MonoBehaviour {
 	private void EnterState() {
 		switch (state) {
 			case GameState.OVERVIEW:
+				gameStateIndicator.text = STATE_NAME_OVERVIEW;
 				if (selectedCell != null) {
 					selectedCell.highlightLevel = HighlightLevel.NONE;
 				}
 				selectedCell = null;
 				UpdateActionableUnitsHighlight();
-				gameStateIndicator.text = STATE_NAME_OVERVIEW;
 				break;
 			case GameState.MOVE_SELECT_DEST:
+				gameStateIndicator.text = STATE_NAME_MOVE_SELECT_DEST;
 				int r = selectedUnit.movespeed;
 				validTargets = selectedCell.Radius(r, true, true);
 				foreach (HexCell c in validTargets) {
 					c.highlightLevel = HighlightLevel.IN_RANGE;
 				}
-				gameStateIndicator.text = STATE_NAME_MOVE_SELECT_DEST;
 				break;
 			case GameState.SPELL_CHOICE:
-				selectedCell.highlightLevel = HighlightLevel.SELECTED;
 				gameStateIndicator.text = STATE_NAME_SPELL_CHOICE;
+				selectedCell.highlightLevel = HighlightLevel.SELECTED;
 				break;
 			case GameState.SPELL_SELECT_TARGETS:
+				gameStateIndicator.text = STATE_NAME_SPELL_SELECT_TARGETS;
 				if (selectedCell != null) {
 					selectedCell.highlightLevel = HighlightLevel.NONE;
 				}
@@ -327,7 +328,6 @@ public class GameManager : MonoBehaviour {
 					// TODO this could break
 					state = GameState.OVERVIEW;
 				}
-				gameStateIndicator.text = STATE_NAME_SPELL_SELECT_TARGETS;
 				break;
 			case GameState.RESULTS:
 				ShowWinner();
@@ -336,8 +336,8 @@ public class GameManager : MonoBehaviour {
 		if (hoveredCell != null) {
 			HoverEnter(hoveredCell);
 		}
-	}
-
+	
+}
 	private void ExitState() {
 		if (hoveredCell != null) {
 			HexCell cell = hoveredCell;
