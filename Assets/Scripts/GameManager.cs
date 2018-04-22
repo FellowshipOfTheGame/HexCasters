@@ -326,7 +326,7 @@ public class GameManager : MonoBehaviour {
 				UpdateSpellValidTargets();
 				if (validTargets.Count == 0) {
 					// TODO this could break
-					state = GameState.OVERVIEW;
+					state = GameState.SPELL_CHOICE;
 				}
 				break;
 			case GameState.RESULTS:
