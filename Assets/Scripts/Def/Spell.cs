@@ -75,7 +75,7 @@ public class Spell {
 
 
 	// BLIZZARD
-	public const int BLIZZARD_RANGE = 3;
+	public const int BLIZZARD_RANGE = 2;
 	public static readonly Spell BLIZZARD = new Spell(
 		1,
 		delegate (HexUnit caster, List<HexCell> targets, Area aoe) {
