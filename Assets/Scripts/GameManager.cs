@@ -134,7 +134,9 @@ public class GameManager : MonoBehaviour {
 
 	// TODO remove, this is debug
 	public void Update() {
-		if (Input.GetKeyDown(KeyCode.Escape)) {
+		if (Input.GetKey(KeyCode.Alpha1)
+				&& Input.GetKey(KeyCode.Alpha2)
+				&& Input.GetKey(KeyCode.Alpha3)) {
 			SceneManager.LoadScene("Test");
 		}
 		switch (state) {
@@ -492,6 +494,7 @@ public class GameManager : MonoBehaviour {
 
 	bool InputCancel() {
 		return Input.GetKeyDown(KeyCode.Backspace)
+				|| Input.GetKeyDown(KeyCode.Escape)
 				|| Input.GetMouseButtonDown(1);
 	}
 
