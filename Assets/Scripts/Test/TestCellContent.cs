@@ -14,13 +14,14 @@ public class TestCellContent : MonoBehaviour {
 			GameManager gm = GameManager.GM;
 			// HexGrid grid = gm.grid;
 
-			gm.AddUnit(prefabChar, -4, -2, Team.LEFT);
-			gm.AddUnit(prefabChar, -2, -4, Team.LEFT);
+			gm.AddUnit(prefabChar, -4, -1, Team.LEFT);
+			gm.AddUnit(prefabChar, -1, -4, Team.LEFT);
 			gm.AddUnit(prefabChar, -2, -2, Team.LEFT);
 			gm.AddUnit(prefabOrb, -3, -3, Team.LEFT);
-			gm.AddUnit(prefabChar, 4, 2, Team.RIGHT);
+			
+			gm.AddUnit(prefabChar, 4, 1, Team.RIGHT);
 			gm.AddUnit(prefabChar, 2, 2, Team.RIGHT);
-			gm.AddUnit(prefabChar, 2, 4, Team.RIGHT);
+			gm.AddUnit(prefabChar, 1, 4, Team.RIGHT);
 			gm.AddUnit(prefabOrb, 3, 3, Team.RIGHT);
 
 			gm.AddUnit(prefabMountain, 0, 0).GetComponent<HexUnit>();
