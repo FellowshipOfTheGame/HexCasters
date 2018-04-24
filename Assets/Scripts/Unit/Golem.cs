@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(HexUnit))]
 public class Golem : MonoBehaviour {
 	public Mage owner;
-	public string storedEffect;
+	// public string storedEffect;
 
 	public int GOLEM_DMG = 2;
 	public int GOLEM_SELF_DMG = 1;
@@ -17,9 +17,9 @@ public class Golem : MonoBehaviour {
 	}
 
 	void Start() {
-		if (storedEffect != Effect.NONE) {
-			transform.Find(storedEffect).gameObject.SetActive(true);
-		}
+		// if (storedEffect != Effect.NONE) {
+		// 	transform.Find(storedEffect).gameObject.SetActive(true);
+		// }
 		unit.asGolem = this;
 		unit.DeathEvent += GolemDeath;
 		unit.MoveEvent += GolemMove;
@@ -27,7 +27,7 @@ public class Golem : MonoBehaviour {
 	}
 
 	void GolemDeath() {
-		unit.cell.ApplyEffect(storedEffect);
+		// unit.cell.ApplyEffect(storedEffect);
 		if (owner != null) {
 			// owner wasn't destroyed
 			owner.ownedGolem = null;

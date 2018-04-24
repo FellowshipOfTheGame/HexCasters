@@ -25,8 +25,8 @@ public class Mage : MonoBehaviour {
 			unit.team);
 		ownedGolem = golemObj.GetComponent<Golem>();
 		ownedGolem.owner = this;
-		ownedGolem.storedEffect = targetCell.effect;
-		targetCell.SetEffect(Effect.NONE);
+		// ownedGolem.storedEffect = targetCell.effect;
+		// targetCell.SetEffect(Effect.NONE);
 	}
 
 	void MageDeath() {

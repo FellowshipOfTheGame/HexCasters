@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class HexCell : MonoBehaviour {
 
@@ -113,8 +114,11 @@ public class HexCell : MonoBehaviour {
 		rend.sprite = terrain.sprite;
 	}
 
-	public void Select() {
-		GameManager.GM.Click(this);
+	public void Select(BaseEventData data) {
+		PointerEventData pdata = data as PointerEventData;
+		if (pdata.button == 0) {
+			GameManager.GM.Click(this);
+		}
 	}
 
 	public void StartHover() {

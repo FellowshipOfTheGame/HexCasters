@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
 	public HexGrid grid;
 	public RawImage turnIndicator;
 	public RawImage winnerIndicator;
+	public Text gameStateIndicator;
+	
 	public static GameManager GM;
 
 	private int _turn;
@@ -74,6 +76,11 @@ public class GameManager : MonoBehaviour {
 		RESULTS
 	}
 
+	private const string STATE_NAME_OVERVIEW = "Overview";
+	private const string STATE_NAME_MOVE_SELECT_DEST = "Move";
+	private const string STATE_NAME_SPELL_CHOICE = "Select Spell";
+	private const string STATE_NAME_SPELL_SELECT_TARGETS = "Cast Spell";
+
 	[SerializeField]
 	private GameState _state;
 	public GameState state {
@@ -127,7 +134,9 @@ public class GameManager : MonoBehaviour {
 
 	// TODO remove, this is debug
 	public void Update() {
-		if (Input.GetKeyDown(KeyCode.Escape)) {
+		if (Input.GetKey(KeyCode.Alpha1)
+				&& Input.GetKey(KeyCode.Alpha2)
+				&& Input.GetKey(KeyCode.Alpha3)) {
 			SceneManager.LoadScene("Test");
 		}
 		switch (state) {
@@ -137,7 +146,8 @@ public class GameManager : MonoBehaviour {
 				}
 				break;
 			case GameState.MOVE_SELECT_DEST:
-				if (Input.GetKeyDown(KeyCode.Backspace)) {
+				// if (Input.GetKeyDown(KeyCode.Backspace)) {
+				if (InputCancel()) {
 					selectedCell = null;
 					state = GameState.OVERVIEW;
 				}
@@ -168,7 +178,8 @@ public class GameManager : MonoBehaviour {
 				}
 				break;
 			case GameState.SPELL_SELECT_TARGETS:
-				if (Input.GetKeyDown(KeyCode.Backspace)) {
+				// if (Input.GetKeyDown(KeyCode.Backspace)) {
+				if (InputCancel()) {
 					state = GameState.SPELL_CHOICE;
 				}
 				break;
@@ -261,7 +272,9 @@ public class GameManager : MonoBehaviour {
 					cell.highlightLevel = HighlightLevel.NONE;
 				}
 				pairedUnitCell = null;
-				selectedCell.highlightLevel = HighlightLevel.SELECTED;
+				if (selectedCell != null) {
+					selectedCell.highlightLevel = HighlightLevel.SELECTED;
+				}
 				break;
 			case GameState.SPELL_CHOICE:
 				cell.highlightLevel = HighlightLevel.NONE;
@@ -279,7 +292,6 @@ public class GameManager : MonoBehaviour {
 						c.highlightLevel = HighlightLevel.NONE;
 					}
 				}
-				selectedCell.highlightLevel = HighlightLevel.SELECTED;
 				break;
 		}
 	}
@@ -287,25 +299,37 @@ public class GameManager : MonoBehaviour {
 	private void EnterState() {
 		switch (state) {
 			case GameState.OVERVIEW:
+				gameStateIndicator.text = STATE_NAME_OVERVIEW;
+				if (selectedCell != null) {
+					selectedCell.highlightLevel = HighlightLevel.NONE;
+				}
 				selectedCell = null;
 				UpdateActionableUnitsHighlight();
 				break;
 			case GameState.MOVE_SELECT_DEST:
+				gameStateIndicator.text = STATE_NAME_MOVE_SELECT_DEST;
 				int r = selectedUnit.movespeed;
 				validTargets = selectedCell.Radius(r, true, true);
 				foreach (HexCell c in validTargets) {
 					c.highlightLevel = HighlightLevel.IN_RANGE;
 				}
 				break;
+			case GameState.SPELL_CHOICE:
+				gameStateIndicator.text = STATE_NAME_SPELL_CHOICE;
+				selectedCell.highlightLevel = HighlightLevel.SELECTED;
+				break;
 			case GameState.SPELL_SELECT_TARGETS:
+				gameStateIndicator.text = STATE_NAME_SPELL_SELECT_TARGETS;
+				if (selectedCell != null) {
+					selectedCell.highlightLevel = HighlightLevel.NONE;
+				}
 				spellTargets = new List<HexCell>();
 				spellAOE = new Area();
 				UpdateSpellValidTargets();
 				if (validTargets.Count == 0) {
 					// TODO this could break
-					state = GameState.OVERVIEW;
+					state = GameState.SPELL_CHOICE;
 				}
-				selectedCell.highlightLevel = HighlightLevel.SELECTED;
 				break;
 			case GameState.RESULTS:
 				ShowWinner();
@@ -314,8 +338,8 @@ public class GameManager : MonoBehaviour {
 		if (hoveredCell != null) {
 			HoverEnter(hoveredCell);
 		}
-	}
-
+	
+}
 	private void ExitState() {
 		if (hoveredCell != null) {
 			HexCell cell = hoveredCell;
@@ -323,12 +347,14 @@ public class GameManager : MonoBehaviour {
 			hoveredCell = cell;
 		}
 		switch (state) {
+			case GameState.OVERVIEW:
+				foreach (HexUnit u in teams[turn]) {
+					u.cell.highlightLevel = HighlightLevel.NONE;
+				}
+				break;
 			case GameState.MOVE_SELECT_DEST:
 				foreach (HexCell c in validTargets) {
 					c.highlightLevel = HighlightLevel.NONE;
-				}
-				foreach (HexUnit u in teams[turn]) {
-					u.cell.highlightLevel = HighlightLevel.NONE;
 				}
 				pairedUnitCell = null;
 				break;
@@ -431,8 +457,8 @@ public class GameManager : MonoBehaviour {
 
 	void UpdateSpellAOE() {
 		if (validTargets.Contains(hoveredCell)) {
-			spellAOE = selectedSpell.GetAOE(
-				selectedUnit, hoveredCell, spellTargets);
+			spellAOE = new Area(selectedSpell.GetAOE(
+				selectedUnit, hoveredCell, spellTargets));
 			foreach (HexCell c in spellAOE) {
 				c.highlightLevel = HighlightLevel.IN_AOE;
 			}
@@ -464,6 +490,12 @@ public class GameManager : MonoBehaviour {
 
 	void ShowWinner() {
 		winnerIndicator.color = Team.COLORS[winner];
+	}
+
+	bool InputCancel() {
+		return Input.GetKeyDown(KeyCode.Backspace)
+				|| Input.GetKeyDown(KeyCode.Escape)
+				|| Input.GetMouseButtonDown(1);
 	}
 
 	/*
