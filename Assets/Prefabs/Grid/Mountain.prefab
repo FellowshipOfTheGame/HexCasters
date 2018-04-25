@@ -56,8 +56,9 @@ MonoBehaviour:
   maxHP: 0
   team: -1
   cell: {fileID: 0}
+  asOrb: {fileID: 0}
+  asMage: {fileID: 0}
   asGolem: {fileID: 0}
-  ownedGolem: {fileID: 0}
   isImmobile: 1
   isInvincible: 1
   isObstacle: 1
@@ -96,7 +97,7 @@ SpriteRenderer:
   m_SortingLayerID: -2030465937
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 08b7cdcb33951034a9e1674d35ceb170, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e86d377666a47a24587d98c556696d4d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -140,8 +140,14 @@ public class Spell {
 			}
 		},
 		delegate (HexUnit caster, List<HexCell> curTargets) {
-			return caster.cell.Radius(IMBUE_LIFE_HEAL_RANGE)
-				.Where(cell => cell.unit != null && !cell.unit.isObstacle)
+			IEnumerable<HexCell> heal =
+				caster.cell.Radius(IMBUE_LIFE_HEAL_RANGE)
+					.Where(cell => cell.unit != null && !cell.unit.isObstacle);
+			if (caster.asMage.ownedGolem != null) {
+				// can't spawn another golem
+				return heal;
+			}
+			return heal
 				.Union(
 					caster.cell.Radius(IMBUE_LIFE_GOLEM_RANGE)
 						.Where(cell => cell.content == null));
