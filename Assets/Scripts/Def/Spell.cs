@@ -166,7 +166,8 @@ public class Spell {
 			if (curTargets.Count == 1) {
 				return Enumerable.Range(0, HexCell.directions.Length)
 					.SelectMany(
-						dir => curTargets[0].Line(dir, CALL_WINDS_LENGTH));
+						dir => curTargets[0].Line(
+							dir, CALL_WINDS_LENGTH, false, false));
 			}
 			return caster.cell.Radius(CALL_WINDS_RANGE)
 				.Where(cell => cell.effect != Effect.NONE);
