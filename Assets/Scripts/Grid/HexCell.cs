@@ -64,14 +64,12 @@ public class HexCell : MonoBehaviour {
 	}
 
 
-	private int _highlightLevel;
-	public int highlightLevel {
+	public Color highlight {
 		get {
-			return _highlightLevel;
+			return highlightRend.color;
 		}
 		set {
-			_highlightLevel = value;
-			highlightRend.color = highlightColors[_highlightLevel];
+			highlightRend.color = value;
 		}
 	}
 
@@ -82,15 +80,6 @@ public class HexCell : MonoBehaviour {
 		new int[] {0, -1},
 		new int[] {-1, 0},
 		new int[] {-1, 1}
-	};
-
-	private static Color[] highlightColors = new Color[] {
-		new Color(0.0f, 0.0f, 0.0f, 0.0f),
-		new Color(1.0f, 1.0f, 1.0f, 0.50f),
-		new Color(0.6f, 0.6f, 1.0f, 0.75f),
-		new Color(0.9f, 0.7f, 0.3f, 0.6f),
-		new Color(0.5f, 0.5f, 0.5f, 0.75f),
-		new Color(1.0f, 1.0f, 1.0f, 0.15f),
 	};
 
 	public const float OUTER_RADIUS = 0.5f;
@@ -105,7 +94,7 @@ public class HexCell : MonoBehaviour {
 		highlightRend = transform.Find("Highlight")
 			.GetComponent<SpriteRenderer>();
 		rend = GetComponent<SpriteRenderer>();
-		highlightLevel = 0;
+		highlight = Highlight.NONE;
 		effect = Effect.NONE;
 		GameManager.AfterInit(delegate { grid = GameManager.GM.grid; });
 	}

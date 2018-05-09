@@ -40,11 +40,11 @@ public class GameManager : MonoBehaviour {
 		}
 		set {
 			if (pairedUnitCell != null) {
-				pairedUnitCell.highlightLevel = HighlightLevel.NONE;
+				pairedUnitCell.highlight = Highlight.NONE;
 			}
 			_pairedUnitCell = value;
 			if (pairedUnitCell != null) {
-				pairedUnitCell.highlightLevel = HighlightLevel.RELEVANT;
+				pairedUnitCell.highlight = Highlight.RELEVANT;
 			}
 		}
 	}
@@ -237,18 +237,18 @@ public class GameManager : MonoBehaviour {
 		switch (state) {
 			case GameState.OVERVIEW:
 				UpdateActionableUnitsHighlight();
-				cell.highlightLevel = HighlightLevel.IN_RANGE;
+				cell.highlight = Highlight.IN_RANGE;
 				// TODO spaghetti
 				HighlightPairedUnit(cell.unit);
 				break;
 			case GameState.MOVE_SELECT_DEST:
 				if (validTargets.Contains(cell)) {
-					cell.highlightLevel = HighlightLevel.RELEVANT;
+					cell.highlight = Highlight.RELEVANT;
 				}
 				HighlightPairedUnit(cell.unit);
 				break;
 			case GameState.SPELL_CHOICE:
-				cell.highlightLevel = HighlightLevel.IN_RANGE;
+				cell.highlight = Highlight.IN_RANGE;
 				HighlightPairedUnit(cell.unit);
 				break;
 			case GameState.SPELL_SELECT_TARGETS:
@@ -261,35 +261,35 @@ public class GameManager : MonoBehaviour {
 		hoveredCell = null;
 		switch (state) {
 			case GameState.OVERVIEW:
-				cell.highlightLevel = HighlightLevel.NONE;
+				cell.highlight = Highlight.NONE;
 				pairedUnitCell = null;
 				UpdateActionableUnitsHighlight();
 				break;
 			case GameState.MOVE_SELECT_DEST:
 				if (validTargets.Contains(cell)) {
-					cell.highlightLevel = HighlightLevel.IN_RANGE;
+					cell.highlight = Highlight.IN_RANGE;
 				} else {
-					cell.highlightLevel = HighlightLevel.NONE;
+					cell.highlight = Highlight.NONE;
 				}
 				pairedUnitCell = null;
 				if (selectedCell != null) {
-					selectedCell.highlightLevel = HighlightLevel.SELECTED;
+					selectedCell.highlight = Highlight.SELECTED;
 				}
 				break;
 			case GameState.SPELL_CHOICE:
-				cell.highlightLevel = HighlightLevel.NONE;
-				selectedCell.highlightLevel = HighlightLevel.SELECTED;
+				cell.highlight = Highlight.NONE;
+				selectedCell.highlight = Highlight.SELECTED;
 				pairedUnitCell = null;
 				break;
 			case GameState.SPELL_SELECT_TARGETS:
 				foreach (HexCell c in validTargets) {
-					c.highlightLevel = HighlightLevel.IN_RANGE;
+					c.highlight = Highlight.IN_RANGE;
 				}
 				foreach (HexCell c in spellAOE) {
 					if (validTargets.Contains(c)) {
-						c.highlightLevel = HighlightLevel.IN_RANGE;
+						c.highlight = Highlight.IN_RANGE;
 					} else if (!spellTargets.Contains(c)) {
-						c.highlightLevel = HighlightLevel.NONE;
+						c.highlight = Highlight.NONE;
 					}
 				}
 				break;
@@ -301,7 +301,7 @@ public class GameManager : MonoBehaviour {
 			case GameState.OVERVIEW:
 				gameStateIndicator.text = STATE_NAME_OVERVIEW;
 				if (selectedCell != null) {
-					selectedCell.highlightLevel = HighlightLevel.NONE;
+					selectedCell.highlight = Highlight.NONE;
 				}
 				selectedCell = null;
 				UpdateActionableUnitsHighlight();
@@ -311,17 +311,17 @@ public class GameManager : MonoBehaviour {
 				int r = selectedUnit.movespeed;
 				validTargets = selectedCell.Radius(r, true, true);
 				foreach (HexCell c in validTargets) {
-					c.highlightLevel = HighlightLevel.IN_RANGE;
+					c.highlight = Highlight.IN_RANGE;
 				}
 				break;
 			case GameState.SPELL_CHOICE:
 				gameStateIndicator.text = STATE_NAME_SPELL_CHOICE;
-				selectedCell.highlightLevel = HighlightLevel.SELECTED;
+				selectedCell.highlight = Highlight.SELECTED;
 				break;
 			case GameState.SPELL_SELECT_TARGETS:
 				gameStateIndicator.text = STATE_NAME_SPELL_SELECT_TARGETS;
 				if (selectedCell != null) {
-					selectedCell.highlightLevel = HighlightLevel.NONE;
+					selectedCell.highlight = Highlight.NONE;
 				}
 				spellTargets = new List<HexCell>();
 				spellAOE = new Area();
@@ -349,12 +349,12 @@ public class GameManager : MonoBehaviour {
 		switch (state) {
 			case GameState.OVERVIEW:
 				foreach (HexUnit u in teams[turn]) {
-					u.cell.highlightLevel = HighlightLevel.NONE;
+					u.cell.highlight = Highlight.NONE;
 				}
 				break;
 			case GameState.MOVE_SELECT_DEST:
 				foreach (HexCell c in validTargets) {
-					c.highlightLevel = HighlightLevel.NONE;
+					c.highlight = Highlight.NONE;
 				}
 				pairedUnitCell = null;
 				break;
@@ -399,7 +399,7 @@ public class GameManager : MonoBehaviour {
 	public void EndTurn() {
 		foreach (HexCell c in teams[turn]
 					.Select(unit => unit.cell)) {
-			c.highlightLevel = HighlightLevel.NONE;
+			c.highlight = Highlight.NONE;
 		}
 		turnTransition = true;
 		foreach (HexUnit unit in teams[turn]) {
@@ -438,7 +438,7 @@ public class GameManager : MonoBehaviour {
 					validTargets
 						.Union(spellAOE)
 						.Union(spellTargets)) {
-			cell.highlightLevel = HighlightLevel.NONE;
+			cell.highlight = Highlight.NONE;
 		}
 	}
 
@@ -448,10 +448,10 @@ public class GameManager : MonoBehaviour {
 				selectedUnit,
 				spellTargets));
 		foreach (HexCell cell in validTargets) {
-			cell.highlightLevel = HighlightLevel.IN_RANGE;
+			cell.highlight = Highlight.IN_RANGE;
 		}
 		foreach (HexCell cell in spellTargets) {
-			cell.highlightLevel = HighlightLevel.RELEVANT;
+			cell.highlight = Highlight.RELEVANT;
 		}
 	}
 
@@ -460,7 +460,7 @@ public class GameManager : MonoBehaviour {
 			spellAOE = new Area(selectedSpell.GetAOE(
 				selectedUnit, hoveredCell, spellTargets));
 			foreach (HexCell c in spellAOE) {
-				c.highlightLevel = HighlightLevel.IN_AOE;
+				c.highlight = Highlight.IN_AOE;
 			}
 		}
 	}
@@ -473,7 +473,7 @@ public class GameManager : MonoBehaviour {
 		foreach (HexCell c in teams[turn]
 					.Where(unit => !unit.hasMoved)
 					.Select(unit => unit.cell)) {
-			c.highlightLevel = HighlightLevel.CAN_ACT;
+			c.highlight = Highlight.CAN_ACT;
 		}
 	}
 
