@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour {
 	public RawImage turnIndicator;
 	public RawImage winnerIndicator;
 	public Text gameStateIndicator;
+	public GameObject spellList;
 	
 	public static GameManager GM;
 
@@ -315,6 +317,7 @@ public class GameManager : MonoBehaviour {
 				}
 				break;
 			case GameState.SPELL_CHOICE:
+				spellList.SetActive(true);
 				gameStateIndicator.text = STATE_NAME_SPELL_CHOICE;
 				selectedCell.highlight = Highlight.SELECTED;
 				break;
@@ -357,6 +360,9 @@ public class GameManager : MonoBehaviour {
 					c.highlight = Highlight.NONE;
 				}
 				pairedUnitCell = null;
+				break;
+			case GameState.SPELL_CHOICE:
+				spellList.SetActive(false);
 				break;
 			case GameState.SPELL_SELECT_TARGETS:
 				RemoveSpellHighlight();
@@ -496,6 +502,15 @@ public class GameManager : MonoBehaviour {
 		return Input.GetKeyDown(KeyCode.Backspace)
 				|| Input.GetKeyDown(KeyCode.Escape)
 				|| Input.GetMouseButtonDown(1);
+	}
+
+	public void SpellSelected(String spellName) {
+		FieldInfo info = typeof(Spell).GetField(
+			spellName,
+			System.Reflection.BindingFlags.Public
+				| System.Reflection.BindingFlags.Static);
+		selectedSpell = info.GetValue(null) as Spell;
+		state = GameState.SPELL_SELECT_TARGETS;
 	}
 
 	/*
