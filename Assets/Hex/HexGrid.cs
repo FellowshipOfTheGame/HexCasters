@@ -36,6 +36,7 @@ public class HexGrid : MonoBehaviour {
 		});
 
 		Vector3 camPos = this[0, 0].transform.position;
+		// Vector3 camPos = Camera.main.transform.position;
 		camPos.z = Camera.main.transform.position.z;
 		Camera.main.transform.position = camPos;
 	}
