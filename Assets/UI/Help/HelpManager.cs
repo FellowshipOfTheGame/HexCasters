@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HelpManager : MonoBehaviour {
 
 	public Transform canvas;
 	public int startScreen = 0;
+
+	public Text nextButtonText;
+	public Button prevButton;
 
 	Transform screens;
 	int curScreen;
@@ -22,6 +26,12 @@ public class HelpManager : MonoBehaviour {
 	void EnableScreen(int screen) {
 		curScreen = screen;
 		screens.GetChild(screen).gameObject.SetActive(true);
+		prevButton.interactable = screen != 0;
+		if (screen + 1 == screens.childCount) {
+			nextButtonText.text = "Finish";
+		} else {
+			nextButtonText.text = "Next";
+		}
 	}
 
 	void DisableScreen(int screen) {
@@ -35,26 +45,31 @@ public class HelpManager : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetMouseButtonDown(0)) {
-			NextScreen();
-		} else if (Input.GetMouseButtonDown(1)) {
-			PrevScreen();
-		}
+		// if (Input.GetMouseButtonDown(0)) {
+		// 	NextScreen();
+		// } else if (Input.GetMouseButtonDown(1)) {
+		// 	PrevScreen();
+		// }
 	}
 
-	void NextScreen() {
+	public void NextScreen() {
 		if (curScreen + 1 == screens.childCount) {
+			ExitHelp();
 			return;
 		}
 		DisableScreen(curScreen);
 		EnableScreen(curScreen + 1);
 	}
 
-	void PrevScreen() {
+	public void PrevScreen() {
 		if (curScreen == 0) {
 			return;
 		}
 		DisableScreen(curScreen);
 		EnableScreen(curScreen - 1);
+	}
+
+	public void ExitHelp() {
+		Application.Quit();
 	}
 }

@@ -57,7 +57,7 @@ PlayerSettings:
   androidShowActivityIndicatorOnLoading: -1
   tizenShowActivityIndicatorOnLoading: -1
   iosAppInBackgroundBehavior: 0
-  displayResolutionDialog: 1
+  displayResolutionDialog: 0
   iosAllowHTTPDownload: 1
   allowedAutorotateToPortrait: 1
   allowedAutorotateToPortraitUpsideDown: 1
@@ -68,7 +68,7 @@ PlayerSettings:
   preserveFramebufferAlpha: 0
   disableDepthAndStencilBuffers: 0
   androidBlitType: 0
-  defaultIsFullScreen: 1
+  defaultIsFullScreen: 0
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
   runInBackground: 0
@@ -79,7 +79,7 @@ PlayerSettings:
   deferSystemGesturesMode: 0
   hideHomeButton: 0
   submitAnalytics: 1
-  usePlayerLog: 1
+  usePlayerLog: 0
   bakeCollisionMeshes: 0
   forceSingleInstance: 0
   resizableWindow: 0
@@ -93,7 +93,7 @@ PlayerSettings:
   xboxEnableKinectAutoTracking: 0
   xboxEnableFitness: 0
   visibleInBackground: 1
-  allowFullscreenSwitch: 1
+  allowFullscreenSwitch: 0
   graphicsJobMode: 0
   macFullscreenMode: 2
   d3d11FullscreenMode: 1
