@@ -210,6 +210,18 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114469340674728786, guid: 0f20b267c2284b042a534bce2925980e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 334b0e29d81ee8e40b77dc657cf365d0,
+        type: 3}
+    - target: {fileID: 114911382518628798, guid: 0f20b267c2284b042a534bce2925980e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b6149ae1bf29a5449b2d8fb6d32a6f94,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f20b267c2284b042a534bce2925980e, type: 2}
   m_IsPrefabParent: 0
@@ -437,7 +449,7 @@ Prefab:
       propertyPath: m_Text
       value: 'Hello there, fellow Archmages!
 
-        My name is Morlon, and I''m here to
+        My name is Darcfin, and I''m here to
 
         help you two get on your feet.
 
