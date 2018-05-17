@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Plains
   m_EditorClassIdentifier: 
   type: plains
-  sprite: {fileID: 21300000, guid: df6ece7282a0d4d4ca3d7ea9711a842a, type: 3}
+  sprite: {fileID: 21300000, guid: 7f36ad8d6baea89429d2f3580ef7c50d, type: 3}
   movementCost: 1
