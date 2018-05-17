@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 114511628706531296}
   - component: {fileID: 60345669158055276}
   - component: {fileID: 114707429185851616}
+  - component: {fileID: 114675786751538866}
   m_Layer: 0
   m_Name: HexCell
   m_TagString: Untagged
@@ -400,6 +401,17 @@ MonoBehaviour:
   col: 0
   terrain: {fileID: 0}
   _content: {fileID: 0}
+--- !u!114 &114675786751538866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1852854476105656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdab9ed27625a1c408687db7a5db5a91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114707429185851616
 MonoBehaviour:
   m_ObjectHideFlags: 1
