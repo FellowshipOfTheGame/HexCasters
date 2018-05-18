@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,5 +10,7 @@ public class MapLayout : ScriptableObject {
 	public int ncols;
 
 	public HexTerrain defaultTerrain;
+
+	public Dictionary<HexTerrain, List<HexPos>> diffTerrain;
 
 }

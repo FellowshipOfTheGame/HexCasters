@@ -28,7 +28,7 @@ public class HexGrid : MonoBehaviour {
 		GameManager.AfterInit(delegate {
 			for (int i = 0; i < nrows; i++) {
 				for (int j = 0; j < ncols; j++) {
-					SpawnCell(i, j, layout.defaultTerrain);
+					SpawnCell(i, j);
 				}
 			}
 			Vector3 camPos = this[0, 0].transform.position;
@@ -40,9 +40,23 @@ public class HexGrid : MonoBehaviour {
 
 	}
 
-	void SpawnCell(int row, int col, HexTerrain terrain) {
+	void SpawnCell(int row, int col) {
+		HexTerrain terrain = null;
 		HexCell cell = Instantiate(prefabCell, transform);
+
+		cell.X = col - ncols / 2;
+		cell.Y = row - nrows / 2;
+		cell.row = row;
+		cell.col = col;
+		// MapLayout.DifferentTerrain pos = new MapLayout.DifferentTerrain(
+		// 	cell.X, cell.Y, null);
+		// if (MapLoader.layout.diffTerrain.ContainsKey(pos)) {
+		// 	terrain = MapLoader.layout.diffTerrain[pos];
+		// } else {
+		// 	terrain = MapLoader.layout.defaultTerrain;
+		// }
 		cell.terrain = terrain;
+
 		float ppu = terrain.sprite.pixelsPerUnit;
 		float width = terrain.sprite.bounds.max.x - terrain.sprite.bounds.min.x;
 		float height = terrain.sprite.bounds.max.y - terrain.sprite.bounds.min.y;
@@ -55,12 +69,6 @@ public class HexGrid : MonoBehaviour {
 		position.y = row * (height - (ROW_Y_SPACING / ppu));
 
 		cell.transform.position = position;
-		cell.X = col - ncols / 2;
-		cell.Y = row - nrows / 2;
-		cell.row = row;
-		cell.col = col;
-		cell.terrain = terrain;
-
 		cells[row, col] = cell;
 	}
 

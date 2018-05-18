@@ -14,3 +14,13 @@ MonoBehaviour:
   nrows: 9
   ncols: 9
   defaultTerrain: {fileID: 11400000, guid: 28a7ee73829ea474c8056d2822107d38, type: 2}
+  diffTerrain:
+  - x: 0
+    y: 0
+    terrain: {fileID: 0}
+  - x: 0
+    y: 0
+    terrain: {fileID: 0}
+  - x: 0
+    y: 0
+    terrain: {fileID: 0}
