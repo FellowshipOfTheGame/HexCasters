@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TestCellContent : MonoBehaviour {
-
+/*
 	public GameObject prefabChar;
 	public GameObject prefabMountain;
 	public GameObject prefabOrb;
-
+*/
+/*
 	void Start() {
 		GameManager.AfterInit(delegate {
 			GameManager gm = GameManager.GM;
@@ -43,6 +44,13 @@ public class TestCellContent : MonoBehaviour {
 
 			gm.Begin();
 		});
+	}
+*/
+
+	public MapLayout layout;
+
+	void Start() {
+		MapLoader.LoadLayout(layout);
 	}
 
 }

@@ -68,7 +68,6 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public enum GameState {
-		PREP,
 		OVERVIEW,
 		MOVE_SELECT_DEST,
 		// MOVE_ANIM, (maybe)
@@ -127,7 +126,8 @@ public class GameManager : MonoBehaviour {
 			initEvent();
 		}
 		initEvent = null;
-		state = GameState.PREP;
+
+		Begin();
 	}
 
 	public void Begin() {

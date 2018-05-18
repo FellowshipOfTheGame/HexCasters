@@ -12,9 +12,6 @@ public class HexGrid : MonoBehaviour {
 	public int nrows;
 	public int ncols;
 
-	public HexTerrain terrainPlains;
-	public HexTerrain terrainHills;
-
 	public const int ROW_Y_SPACING = 14;
 
 	public HexCell this[int x, int y] {
@@ -24,21 +21,23 @@ public class HexGrid : MonoBehaviour {
 	}
 
 	void Awake() {
+		MapLayout layout = MapLoader.layout;
+		nrows = layout.nrows;
+		ncols = layout.ncols;
+		cells = new HexCell[nrows, ncols];
 		GameManager.AfterInit(delegate {
-			cells = new HexCell[nrows, ncols];
 			for (int i = 0; i < nrows; i++) {
 				for (int j = 0; j < ncols; j++) {
-					// TODO read terrain info from somewhere
-					// (map scriptable object?)
-					SpawnCell(i, j, terrainPlains);
+					SpawnCell(i, j, layout.defaultTerrain);
 				}
 			}
+			Vector3 camPos = this[0, 0].transform.position;
+			camPos.z = Camera.main.transform.position.z;
+			Camera.main.transform.position = camPos;
+
+			MapLoader.LoadEnd();
 		});
 
-		Vector3 camPos = this[0, 0].transform.position;
-		// Vector3 camPos = Camera.main.transform.position;
-		camPos.z = Camera.main.transform.position.z;
-		Camera.main.transform.position = camPos;
 	}
 
 	void SpawnCell(int row, int col, HexTerrain terrain) {
