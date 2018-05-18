@@ -28,6 +28,11 @@ public class MapLayoutEditor : Editor {
 				false) as HexTerrain;
 
 		EditorGUILayout.Space();
+		DifferentTerrainSection(layout);
+		EditorGUILayout.Space();
+	}
+
+	void DifferentTerrainSection(MapLayout layout) {
 		EditorGUILayout.LabelField("Different terrain instances:");
 		if (layout.diffTerrain == null) {
 			layout.diffTerrain = new Dictionary<HexTerrain, List<HexPos>>();
@@ -35,17 +40,16 @@ public class MapLayoutEditor : Editor {
 
 		bool someExpandedTerrain = false;
 		int i = 0;
+		List<HexTerrain> terrToRemove = new List<HexTerrain>();
 		foreach (KeyValuePair<HexTerrain, List<HexPos>> entry
 			in layout.diffTerrain) {
 			HexTerrain terrain = entry.Key;
 			List<HexPos> pos = entry.Value;
-			bool removeTerr = false;
 			if (EditorGUILayout.Foldout(
 				i == curExpandedTerr,
 				terrain.type,
 				true)) {
 
-				someExpandedTerrain = true;
 				curExpandedTerr = i;
 				List<int> toRemove = new List<int>();
 				for (int j = 0; j < pos.Count; j++) {
@@ -62,13 +66,16 @@ public class MapLayoutEditor : Editor {
 					pos.RemoveAt(idx);
 				}
 				if (pos.Count == 0) {
-					removeTerr = true;
+					terrToRemove.Add(terrain);
+				} else {
+					someExpandedTerrain = true;
 				}
 			}
-			if (removeTerr) {
-				layout.diffTerrain.Remove(terrain);
-			}
 			i++;
+		}
+
+		foreach (HexTerrain terrain in terrToRemove) {
+			layout.diffTerrain.Remove(terrain);
 		}
 
 		if (!someExpandedTerrain) {
@@ -93,10 +100,7 @@ public class MapLayoutEditor : Editor {
 				}
 				List<HexPos> list = layout.diffTerrain[newTerrain];
 				list.Add(new HexPos(newTerrainX, newTerrainY));
-				Debug.Log(list.Count);
 			}
 		}
-
-		EditorGUILayout.Space();
 	}
 }
