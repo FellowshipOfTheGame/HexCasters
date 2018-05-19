@@ -14,6 +14,8 @@ public class MapLayoutEditor : Editor {
 
 	private int curExpandedTerr = -1;
 
+	private bool nondefaultFold = false;
+
 	public override void OnInspectorGUI() {
 		MapLayout layout = target as MapLayout;
 		EditorGUILayout.BeginHorizontal();
@@ -27,17 +29,41 @@ public class MapLayoutEditor : Editor {
 				typeof(HexTerrain),
 				false) as HexTerrain;
 
-		EditorGUILayout.Space();
-		DifferentTerrainSection(layout);
-		EditorGUILayout.Space();
+		nondefaultFold = EditorGUILayout.Foldout(
+			nondefaultFold,
+			"Nondefault terrains",
+			true);
+		if (nondefaultFold) {
+			DifferentTerrainSection(layout);
+			EditorGUILayout.Space();
+		}
 		// TODO team spawns
 	}
 
 	void DifferentTerrainSection(MapLayout layout) {
-		EditorGUILayout.LabelField("Different terrain instances:");
 		if (layout.diffTerrain == null) {
 			layout.diffTerrain = new MapLayout.DTList();
 		}
+
+		newTerrain = EditorGUILayout.ObjectField(
+				"Add new terrain:",
+				newTerrain,
+				typeof(HexTerrain),
+				false
+			) as HexTerrain;
+		EditorGUILayout.BeginHorizontal();
+		newTerrainX = EditorGUILayout.IntField("Position:", newTerrainX);
+		newTerrainY = EditorGUILayout.IntField(newTerrainY);
+		EditorGUILayout.EndHorizontal();
+		if (newTerrain != null) {
+			if (GUILayout.Button("Add")) {
+				layout.diffTerrain.Add(
+					new MapLayout.DifferentTerrainInstance(
+						newTerrainX, newTerrainY, newTerrain));
+			}
+		}
+
+		EditorGUILayout.Space();
 
 		bool someExpandedTerrain = false;
 		int i = 0;
@@ -69,25 +95,6 @@ public class MapLayoutEditor : Editor {
 
 		if (!someExpandedTerrain) {
 			curExpandedTerr = -1;
-		}
-
-		EditorGUILayout.Space();
-		newTerrain = EditorGUILayout.ObjectField(
-				"Add new terrain:",
-				newTerrain,
-				typeof(HexTerrain),
-				false
-			) as HexTerrain;
-		EditorGUILayout.BeginHorizontal();
-		newTerrainX = EditorGUILayout.IntField("Position:", newTerrainX);
-		newTerrainY = EditorGUILayout.IntField(newTerrainY);
-		EditorGUILayout.EndHorizontal();
-		if (newTerrain != null) {
-			if (GUILayout.Button("Add")) {
-				layout.diffTerrain.Add(
-					new MapLayout.DifferentTerrainInstance(
-						newTerrainX, newTerrainY, newTerrain));
-			}
 		}
 	}
 }
