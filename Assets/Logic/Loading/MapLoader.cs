@@ -30,6 +30,7 @@ public static class MapLoader {
 	public static void LoadEnd() {
 		loading = false;
 		layout = null;
+		GameManager.GM.Begin();
 	}
 
 }

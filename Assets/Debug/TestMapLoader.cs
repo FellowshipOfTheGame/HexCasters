@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestCellContent : MonoBehaviour {
+public class TestMapLoader : MonoBehaviour {
 /*
 	public GameObject prefabChar;
 	public GameObject prefabMountain;

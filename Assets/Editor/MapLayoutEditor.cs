@@ -20,6 +20,15 @@ public class MapLayoutEditor : Editor {
 
 	private bool orbFold = false;
 
+	private bool obstaclesFold = false;
+	private int newObstacleX;
+	private int newObstacleY;
+
+	private bool effectFold = false;
+	private bool fireFold = false;
+	private bool snowFold = false;
+	private bool rainFold = false;
+
 	public override void OnInspectorGUI() {
 		MapLayout layout = target as MapLayout;
 		EditorGUILayout.BeginHorizontal();
@@ -38,8 +47,10 @@ public class MapLayoutEditor : Editor {
 			"Nondefault terrains",
 			true);
 		if (nondefaultFold) {
+			EditorGUI.indentLevel++;
 			DifferentTerrainSection(layout);
 			EditorGUILayout.Space();
+			EditorGUI.indentLevel--;
 		}
 
 		spawnRFold = EditorGUILayout.Foldout(
@@ -47,14 +58,18 @@ public class MapLayoutEditor : Editor {
 			"Red spawns",
 			true);
 		if (spawnRFold) {
+			EditorGUI.indentLevel++;
 			SpawnRSection(layout);
+			EditorGUI.indentLevel--;
 		}
 		spawnBFold = EditorGUILayout.Foldout(
 			spawnBFold,
 			"Blue spawns",
 			true);
 		if (spawnBFold) {
+			EditorGUI.indentLevel++;
 			SpawnBSection(layout);
+			EditorGUI.indentLevel--;
 		}
 
 		orbFold = EditorGUILayout.Foldout(
@@ -62,12 +77,57 @@ public class MapLayoutEditor : Editor {
 			"Orbs",
 			true);
 		if (orbFold) {
+			EditorGUI.indentLevel++;
 			OrbSection(layout);
+			EditorGUI.indentLevel--;
 		}
 
-		// TODO obstacles
-		// TODO effects
+		obstaclesFold = EditorGUILayout.Foldout(
+			obstaclesFold,
+			"Obstacles",
+			true);
+		if (obstaclesFold) {
+			EditorGUI.indentLevel++;
+			ObstacleSection(layout);
+			EditorGUI.indentLevel--;
+		}
+		
+		effectFold = EditorGUILayout.Foldout(
+			effectFold,
+			"Effects",
+			true);
 
+		if (effectFold) {
+			EditorGUI.indentLevel++;
+			fireFold = EditorGUILayout.Foldout(
+				fireFold,
+				"Fire",
+				true);
+			if (fireFold) {
+				EditorGUI.indentLevel++;
+				EffectSection(layout, ref layout.fire);
+				EditorGUI.indentLevel--;
+			}
+			rainFold = EditorGUILayout.Foldout(
+				rainFold,
+				"Rain",
+				true);
+			if (rainFold) {
+				EditorGUI.indentLevel++;
+				EffectSection(layout, ref layout.rain);
+				EditorGUI.indentLevel--;
+			}
+			snowFold = EditorGUILayout.Foldout(
+				snowFold,
+				"Snow",
+				true);
+			if (snowFold) {
+				EditorGUI.indentLevel++;
+				EffectSection(layout, ref layout.snow);
+				EditorGUI.indentLevel--;
+			}
+			EditorGUI.indentLevel--;
+		}
 	}
 
 	void DifferentTerrainSection(MapLayout layout) {
@@ -103,12 +163,13 @@ public class MapLayoutEditor : Editor {
 				terrain.type,
 				true)) {
 
+				EditorGUI.indentLevel++;
 				curExpandedTerr = i;
 				List<HexPos> posToRemove = new List<HexPos>();
 				foreach (HexPos p in layout.Find(terrain)) {
 					EditorGUILayout.BeginHorizontal();
-					EditorGUILayout.SelectableLabel(p.x.ToString());
-					EditorGUILayout.SelectableLabel(p.y.ToString());
+					EditorGUILayout.SelectableLabel(
+						String.Format("({0}, {1})", p.x, p.y));
 					if (GUILayout.Button("x")) {
 						posToRemove.Add(p);
 					}
@@ -119,6 +180,7 @@ public class MapLayoutEditor : Editor {
 					layout.RemoveTerrain(pos);
 				}
 				someExpandedTerrain = true;
+				EditorGUI.indentLevel--;
 			}
 			i++;
 		}
@@ -163,5 +225,55 @@ public class MapLayoutEditor : Editor {
 		layout.orbB.x = EditorGUILayout.IntField("Blue", layout.orbB.x);
 		layout.orbB.y = EditorGUILayout.IntField(layout.orbB.y);
 		EditorGUILayout.EndHorizontal();
+	}
+
+	void ObstacleSection(MapLayout layout) {
+		List<int> toRemove = new List<int>();
+		int i = 0;
+		foreach (MapLayout.ObstacleInstance oi in layout.obstacles) {
+			EditorGUILayout.BeginHorizontal();
+			oi.obstacle = EditorGUILayout.ObjectField(
+				oi.obstacle,
+				typeof(GameObject),
+				false) as GameObject;
+			oi.pos.x = EditorGUILayout.IntField(oi.pos.x);
+			oi.pos.y = EditorGUILayout.IntField(oi.pos.y);
+			if (GUILayout.Button("x")) {
+				toRemove.Add(i);
+			}
+			EditorGUILayout.EndHorizontal();
+			i++;
+		}
+		toRemove.Reverse();
+		foreach (int idx in toRemove) {
+			layout.obstacles.RemoveAt(idx);
+		}
+		EditorGUILayout.BeginHorizontal();
+		newObstacleX = EditorGUILayout.IntField(newObstacleX);
+		newObstacleY = EditorGUILayout.IntField(newObstacleY);
+		if (GUILayout.Button("Add")) {
+			layout.obstacles.Add(
+				new MapLayout.ObstacleInstance(
+					newObstacleX, newObstacleY, null));
+		}
+		EditorGUILayout.EndHorizontal();
+	}
+
+	void EffectSection(MapLayout layout, ref HexPos[] eff) {
+		if (eff == null) {
+			eff = new HexPos[0];
+		}
+		int count = EditorGUILayout.DelayedIntField("Count", eff.Length);
+		Array.Resize(ref eff, count);
+		for (int i = 0; i < count; i++) {
+			if (eff[i] == null) {
+				eff[i] = new HexPos(0, 0);
+			}
+			HexPos pos = eff[i];
+			EditorGUILayout.BeginHorizontal();
+			pos.x = EditorGUILayout.IntField(pos.x);
+			pos.y = EditorGUILayout.IntField(pos.y);
+			EditorGUILayout.EndHorizontal();
+		}
 	}
 }

@@ -49,6 +49,22 @@ public class HexGrid : MonoBehaviour {
 				prefabOrb, MapLoader.layout.orbB.x, MapLoader.layout.orbB.y,
 				Team.RIGHT);
 
+			foreach (MapLayout.ObstacleInstance oi
+				in MapLoader.layout.obstacles) {
+				GameManager.GM.AddUnit(
+					oi.obstacle, oi.pos.x, oi.pos.y, Team.NONE);
+			}
+
+			foreach (HexPos pos in MapLoader.layout.fire) {
+				this[pos.x, pos.y].SetEffect(Effect.FLAMES);
+			}
+			foreach (HexPos pos in MapLoader.layout.rain) {
+				this[pos.x, pos.y].SetEffect(Effect.STORM);
+			}
+			foreach (HexPos pos in MapLoader.layout.snow) {
+				this[pos.x, pos.y].SetEffect(Effect.SNOW);
+			}
+
 			Vector3 camPos = this[0, 0].transform.position;
 			camPos.z = Camera.main.transform.position.z;
 			Camera.main.transform.position = camPos;

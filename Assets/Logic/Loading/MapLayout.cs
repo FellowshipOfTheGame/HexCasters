@@ -20,8 +20,20 @@ public class MapLayout : ScriptableObject {
 	[System.Serializable]
 	public class DTList : List<DifferentTerrainInstance> {}
 
-	// [System.Serializable]
-	// public class SPList : List<HexPos> {}
+
+	[System.Serializable]
+	public class ObstacleInstance {
+		public GameObject obstacle;
+		public HexPos pos;
+
+		public ObstacleInstance(int x, int y, GameObject obst) {
+			pos = new HexPos(x, y);
+			obstacle = obst;
+		}
+	}
+
+	[System.Serializable]
+	public class OIList : List<ObstacleInstance> {}
 
 	public int nrows;
 	public int ncols;
@@ -29,13 +41,17 @@ public class MapLayout : ScriptableObject {
 	public HexTerrain defaultTerrain;
 
 	public DTList diffTerrain;
+	public OIList obstacles;
 	public HexPos[] spawnR;
 	public HexPos[] spawnB;
 
 	public HexPos orbR;
 	public HexPos orbB;
 
-	// TODO obstacles
+	public HexPos[] rain;
+	public HexPos[] snow;
+	public HexPos[] fire;
+
 	// TODO effects
 
 	public List<HexPos> Find(HexTerrain type) {
