@@ -690,7 +690,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.546875
+  orthographic size: 2.1171875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -992,10 +992,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabCell: {fileID: 114511628706531296, guid: 370f86e64c8002844a1ea4be64249562,
     type: 2}
+  prefabMage: {fileID: 1614444781376684, guid: 57b383328915b8e4f8af0156b674c9cd, type: 2}
+  prefabOrb: {fileID: 1280138965382990, guid: e8413e6bfa12d384faa1e9a3c6fc80c8, type: 2}
   nrows: 9
   ncols: 9
-  terrainPlains: {fileID: 11400000, guid: 28a7ee73829ea474c8056d2822107d38, type: 2}
-  terrainHills: {fileID: 0}
 --- !u!4 &1072719959
 Transform:
   m_ObjectHideFlags: 0

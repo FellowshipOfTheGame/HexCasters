@@ -15,16 +15,20 @@ public class MapLayoutEditor : Editor {
 	private int curExpandedTerr = -1;
 
 	private bool nondefaultFold = false;
+	private bool spawnRFold = false;
+	private bool spawnBFold = false;
+
+	private bool orbFold = false;
 
 	public override void OnInspectorGUI() {
 		MapLayout layout = target as MapLayout;
 		EditorGUILayout.BeginHorizontal();
-		layout.nrows = EditorGUILayout.IntField("Dimensions:", layout.nrows);
+		layout.nrows = EditorGUILayout.IntField("Dimensions", layout.nrows);
 		layout.ncols = EditorGUILayout.IntField(layout.ncols);
 		EditorGUILayout.EndHorizontal();
 		layout.defaultTerrain =
 			EditorGUILayout.ObjectField(
-				"Default terrain:",
+				"Default terrain",
 				layout.defaultTerrain,
 				typeof(HexTerrain),
 				false) as HexTerrain;
@@ -37,7 +41,33 @@ public class MapLayoutEditor : Editor {
 			DifferentTerrainSection(layout);
 			EditorGUILayout.Space();
 		}
-		// TODO team spawns
+
+		spawnRFold = EditorGUILayout.Foldout(
+			spawnRFold,
+			"Red spawns",
+			true);
+		if (spawnRFold) {
+			SpawnRSection(layout);
+		}
+		spawnBFold = EditorGUILayout.Foldout(
+			spawnBFold,
+			"Blue spawns",
+			true);
+		if (spawnBFold) {
+			SpawnBSection(layout);
+		}
+
+		orbFold = EditorGUILayout.Foldout(
+			orbFold,
+			"Orbs",
+			true);
+		if (orbFold) {
+			OrbSection(layout);
+		}
+
+		// TODO obstacles
+		// TODO effects
+
 	}
 
 	void DifferentTerrainSection(MapLayout layout) {
@@ -46,13 +76,13 @@ public class MapLayoutEditor : Editor {
 		}
 
 		newTerrain = EditorGUILayout.ObjectField(
-				"Add new terrain:",
+				"Add new terrain",
 				newTerrain,
 				typeof(HexTerrain),
 				false
 			) as HexTerrain;
 		EditorGUILayout.BeginHorizontal();
-		newTerrainX = EditorGUILayout.IntField("Position:", newTerrainX);
+		newTerrainX = EditorGUILayout.IntField("Position", newTerrainX);
 		newTerrainY = EditorGUILayout.IntField(newTerrainY);
 		EditorGUILayout.EndHorizontal();
 		if (newTerrain != null) {
@@ -96,5 +126,42 @@ public class MapLayoutEditor : Editor {
 		if (!someExpandedTerrain) {
 			curExpandedTerr = -1;
 		}
+	}
+
+	void SpawnRSection(MapLayout layout) {
+		SpawnSection(layout, ref layout.spawnR);
+	}
+
+	void SpawnBSection(MapLayout layout) {
+		SpawnSection(layout, ref layout.spawnB);
+	}
+
+	void SpawnSection(MapLayout layout, ref HexPos[] spawns) {
+		if (spawns == null) {
+			spawns = new HexPos[0];
+		}
+		int count = EditorGUILayout.DelayedIntField("Count", spawns.Length);
+		Array.Resize(ref spawns, count);
+		for (int i = 0; i < count; i++) {
+			if (spawns[i] == null) {
+				spawns[i] = new HexPos(0, 0);
+			}
+			HexPos pos = spawns[i];
+			EditorGUILayout.BeginHorizontal();
+			pos.x = EditorGUILayout.IntField(pos.x);
+			pos.y = EditorGUILayout.IntField(pos.y);
+			EditorGUILayout.EndHorizontal();
+		}
+	}
+
+	void OrbSection(MapLayout layout) {
+		EditorGUILayout.BeginHorizontal();
+		layout.orbR.x = EditorGUILayout.IntField("Red", layout.orbR.x);
+		layout.orbR.y = EditorGUILayout.IntField(layout.orbR.y);
+		EditorGUILayout.EndHorizontal();
+		EditorGUILayout.BeginHorizontal();
+		layout.orbB.x = EditorGUILayout.IntField("Blue", layout.orbB.x);
+		layout.orbB.y = EditorGUILayout.IntField(layout.orbB.y);
+		EditorGUILayout.EndHorizontal();
 	}
 }

@@ -8,6 +8,8 @@ public class HexGrid : MonoBehaviour {
 	private HexCell[,] cells;
 
 	public HexCell prefabCell;
+	public GameObject prefabMage;
+	public GameObject prefabOrb;
 
 	public int nrows;
 	public int ncols;
@@ -31,6 +33,22 @@ public class HexGrid : MonoBehaviour {
 					SpawnCell(i, j);
 				}
 			}
+
+			foreach (HexPos spawn in MapLoader.layout.spawnR) {
+				GameManager.GM.AddUnit(
+					prefabMage, spawn.x, spawn.y, Team.LEFT);
+			}
+			foreach (HexPos spawn in MapLoader.layout.spawnB) {
+				GameManager.GM.AddUnit(
+					prefabMage, spawn.x, spawn.y, Team.RIGHT);
+			}
+			GameManager.GM.AddUnit(
+				prefabOrb, MapLoader.layout.orbR.x, MapLoader.layout.orbR.y,
+				Team.LEFT);
+			GameManager.GM.AddUnit(
+				prefabOrb, MapLoader.layout.orbB.x, MapLoader.layout.orbB.y,
+				Team.RIGHT);
+
 			Vector3 camPos = this[0, 0].transform.position;
 			camPos.z = Camera.main.transform.position.z;
 			Camera.main.transform.position = camPos;

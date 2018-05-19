@@ -20,12 +20,23 @@ public class MapLayout : ScriptableObject {
 	[System.Serializable]
 	public class DTList : List<DifferentTerrainInstance> {}
 
+	// [System.Serializable]
+	// public class SPList : List<HexPos> {}
+
 	public int nrows;
 	public int ncols;
 
 	public HexTerrain defaultTerrain;
 
 	public DTList diffTerrain;
+	public HexPos[] spawnR;
+	public HexPos[] spawnB;
+
+	public HexPos orbR;
+	public HexPos orbB;
+
+	// TODO obstacles
+	// TODO effects
 
 	public List<HexPos> Find(HexTerrain type) {
 		List<HexPos> positions = new List<HexPos>();
