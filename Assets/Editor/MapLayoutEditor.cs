@@ -30,52 +30,41 @@ public class MapLayoutEditor : Editor {
 		EditorGUILayout.Space();
 		DifferentTerrainSection(layout);
 		EditorGUILayout.Space();
+		// TODO team spawns
 	}
 
 	void DifferentTerrainSection(MapLayout layout) {
 		EditorGUILayout.LabelField("Different terrain instances:");
 		if (layout.diffTerrain == null) {
-			layout.diffTerrain = new Dictionary<HexTerrain, List<HexPos>>();
+			layout.diffTerrain = new MapLayout.DTList();
 		}
 
 		bool someExpandedTerrain = false;
 		int i = 0;
-		List<HexTerrain> terrToRemove = new List<HexTerrain>();
-		foreach (KeyValuePair<HexTerrain, List<HexPos>> entry
-			in layout.diffTerrain) {
-			HexTerrain terrain = entry.Key;
-			List<HexPos> pos = entry.Value;
+		foreach (HexTerrain terrain in layout.ListDifferentTerrains()) {
 			if (EditorGUILayout.Foldout(
 				i == curExpandedTerr,
 				terrain.type,
 				true)) {
 
 				curExpandedTerr = i;
-				List<int> toRemove = new List<int>();
-				for (int j = 0; j < pos.Count; j++) {
+				List<HexPos> posToRemove = new List<HexPos>();
+				foreach (HexPos p in layout.Find(terrain)) {
 					EditorGUILayout.BeginHorizontal();
-					pos[j].x = EditorGUILayout.IntField(pos[j].x);
-					pos[j].y = EditorGUILayout.IntField(pos[j].y);
-					if (GUILayout.Button("Remove")) {
-						toRemove.Add(j);
+					EditorGUILayout.SelectableLabel(p.x.ToString());
+					EditorGUILayout.SelectableLabel(p.y.ToString());
+					if (GUILayout.Button("x")) {
+						posToRemove.Add(p);
 					}
 					EditorGUILayout.EndHorizontal();
 				}
-				toRemove.Reverse();
-				foreach (int idx in toRemove) {
-					pos.RemoveAt(idx);
+				posToRemove.Reverse();
+				foreach (HexPos pos in posToRemove) {
+					layout.RemoveTerrain(pos);
 				}
-				if (pos.Count == 0) {
-					terrToRemove.Add(terrain);
-				} else {
-					someExpandedTerrain = true;
-				}
+				someExpandedTerrain = true;
 			}
 			i++;
-		}
-
-		foreach (HexTerrain terrain in terrToRemove) {
-			layout.diffTerrain.Remove(terrain);
 		}
 
 		if (!someExpandedTerrain) {
@@ -95,11 +84,9 @@ public class MapLayoutEditor : Editor {
 		EditorGUILayout.EndHorizontal();
 		if (newTerrain != null) {
 			if (GUILayout.Button("Add")) {
-				if (!layout.diffTerrain.ContainsKey(newTerrain)) {
-					layout.diffTerrain[newTerrain] = new List<HexPos>();
-				}
-				List<HexPos> list = layout.diffTerrain[newTerrain];
-				list.Add(new HexPos(newTerrainX, newTerrainY));
+				layout.diffTerrain.Add(
+					new MapLayout.DifferentTerrainInstance(
+						newTerrainX, newTerrainY, newTerrain));
 			}
 		}
 	}

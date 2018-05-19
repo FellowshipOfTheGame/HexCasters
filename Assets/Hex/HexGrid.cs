@@ -41,21 +41,17 @@ public class HexGrid : MonoBehaviour {
 	}
 
 	void SpawnCell(int row, int col) {
-		HexTerrain terrain = null;
+		HexTerrain terrain = MapLoader.layout.defaultTerrain;
 		HexCell cell = Instantiate(prefabCell, transform);
 
 		cell.X = col - ncols / 2;
 		cell.Y = row - nrows / 2;
 		cell.row = row;
 		cell.col = col;
-		// MapLayout.DifferentTerrain pos = new MapLayout.DifferentTerrain(
-		// 	cell.X, cell.Y, null);
-		// if (MapLoader.layout.diffTerrain.ContainsKey(pos)) {
-		// 	terrain = MapLoader.layout.diffTerrain[pos];
-		// } else {
-		// 	terrain = MapLoader.layout.defaultTerrain;
-		// }
-		cell.terrain = terrain;
+		cell.terrain = MapLoader.layout.Find(cell.X, cell.Y);
+		if (cell.terrain == null) {
+			cell.terrain = MapLoader.layout.defaultTerrain;
+		}
 
 		float ppu = terrain.sprite.pixelsPerUnit;
 		float width = terrain.sprite.bounds.max.x - terrain.sprite.bounds.min.x;
