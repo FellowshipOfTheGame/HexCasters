@@ -18,10 +18,6 @@ public class MapLayout : ScriptableObject {
 	}
 
 	[System.Serializable]
-	public class DTList : List<DifferentTerrainInstance> {}
-
-
-	[System.Serializable]
 	public class ObstacleInstance {
 		public GameObject obstacle;
 		public HexPos pos;
@@ -32,16 +28,13 @@ public class MapLayout : ScriptableObject {
 		}
 	}
 
-	[System.Serializable]
-	public class OIList : List<ObstacleInstance> {}
-
 	public int nrows;
 	public int ncols;
 
 	public HexTerrain defaultTerrain;
 
-	public DTList diffTerrain;
-	public OIList obstacles;
+	public List<DifferentTerrainInstance> diffTerrain;
+	public List<ObstacleInstance> obstacles;
 	public HexPos[] spawnR;
 	public HexPos[] spawnB;
 

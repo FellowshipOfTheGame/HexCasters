@@ -5,7 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(MapLayout))]
+// [CustomEditor(typeof(MapLayout))]
+[Obsolete("Doesn't work, just use the default inspector")]
 public class MapLayoutEditor : Editor {
 
 	private HexTerrain newTerrain;
@@ -131,10 +132,6 @@ public class MapLayoutEditor : Editor {
 	}
 
 	void DifferentTerrainSection(MapLayout layout) {
-		if (layout.diffTerrain == null) {
-			layout.diffTerrain = new MapLayout.DTList();
-		}
-
 		newTerrain = EditorGUILayout.ObjectField(
 				"Add new terrain",
 				newTerrain,
