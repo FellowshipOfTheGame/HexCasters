@@ -8,12 +8,11 @@ public class HexGrid : MonoBehaviour {
 	private HexCell[,] cells;
 
 	public HexCell prefabCell;
+	public GameObject prefabMage;
+	public GameObject prefabOrb;
 
 	public int nrows;
 	public int ncols;
-
-	public HexTerrain terrainPlains;
-	public HexTerrain terrainHills;
 
 	public const int ROW_Y_SPACING = 14;
 
@@ -24,26 +23,70 @@ public class HexGrid : MonoBehaviour {
 	}
 
 	void Awake() {
+		MapLayout layout = MapLoader.layout;
+		nrows = layout.nrows;
+		ncols = layout.ncols;
+		cells = new HexCell[nrows, ncols];
 		GameManager.AfterInit(delegate {
-			cells = new HexCell[nrows, ncols];
 			for (int i = 0; i < nrows; i++) {
 				for (int j = 0; j < ncols; j++) {
-					// TODO read terrain info from somewhere
-					// (map scriptable object?)
-					SpawnCell(i, j, terrainPlains);
+					SpawnCell(i, j);
 				}
 			}
+
+			foreach (HexPos spawn in MapLoader.layout.spawnR) {
+				GameManager.GM.AddUnit(
+					prefabMage, spawn.x, spawn.y, Team.LEFT);
+			}
+			foreach (HexPos spawn in MapLoader.layout.spawnB) {
+				GameManager.GM.AddUnit(
+					prefabMage, spawn.x, spawn.y, Team.RIGHT);
+			}
+			GameManager.GM.AddUnit(
+				prefabOrb, MapLoader.layout.orbR.x, MapLoader.layout.orbR.y,
+				Team.LEFT);
+			GameManager.GM.AddUnit(
+				prefabOrb, MapLoader.layout.orbB.x, MapLoader.layout.orbB.y,
+				Team.RIGHT);
+
+			foreach (MapLayout.ObstacleInstance oi
+				in MapLoader.layout.obstacles) {
+				GameManager.GM.AddUnit(
+					oi.obstacle, oi.pos.x, oi.pos.y, Team.NONE);
+			}
+
+			foreach (HexPos pos in MapLoader.layout.fire) {
+				this[pos.x, pos.y].SetEffect(Effect.FLAMES);
+			}
+			foreach (HexPos pos in MapLoader.layout.rain) {
+				this[pos.x, pos.y].SetEffect(Effect.STORM);
+			}
+			foreach (HexPos pos in MapLoader.layout.snow) {
+				this[pos.x, pos.y].SetEffect(Effect.SNOW);
+			}
+
+			Vector3 camPos = this[0, 0].transform.position;
+			camPos.z = Camera.main.transform.position.z;
+			Camera.main.transform.position = camPos;
+
+			MapLoader.LoadEnd();
 		});
 
-		Vector3 camPos = this[0, 0].transform.position;
-		// Vector3 camPos = Camera.main.transform.position;
-		camPos.z = Camera.main.transform.position.z;
-		Camera.main.transform.position = camPos;
 	}
 
-	void SpawnCell(int row, int col, HexTerrain terrain) {
+	void SpawnCell(int row, int col) {
+		HexTerrain terrain = MapLoader.layout.defaultTerrain;
 		HexCell cell = Instantiate(prefabCell, transform);
-		cell.terrain = terrain;
+
+		cell.X = col - ncols / 2;
+		cell.Y = row - nrows / 2;
+		cell.row = row;
+		cell.col = col;
+		cell.terrain = MapLoader.layout.Find(cell.X, cell.Y);
+		if (cell.terrain == null) {
+			cell.terrain = MapLoader.layout.defaultTerrain;
+		}
+
 		float ppu = terrain.sprite.pixelsPerUnit;
 		float width = terrain.sprite.bounds.max.x - terrain.sprite.bounds.min.x;
 		float height = terrain.sprite.bounds.max.y - terrain.sprite.bounds.min.y;
@@ -56,12 +99,6 @@ public class HexGrid : MonoBehaviour {
 		position.y = row * (height - (ROW_Y_SPACING / ppu));
 
 		cell.transform.position = position;
-		cell.X = col - ncols / 2;
-		cell.Y = row - nrows / 2;
-		cell.row = row;
-		cell.col = col;
-		cell.terrain = terrain;
-
 		cells[row, col] = cell;
 	}
 
