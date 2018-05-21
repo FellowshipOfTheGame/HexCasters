@@ -19,7 +19,7 @@ public class Orb : MonoBehaviour {
 	}
 
 	void OrbDeath() {
-		GameManager.GM.RegisterVictory(Team.Opposite(unit.team));
+		GameManager.GM.RegisterVictory(unit.team.Opposite());
 	}
 
 	void OrbTurnSwap() {

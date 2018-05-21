@@ -20,8 +20,8 @@ public class GameManager : MonoBehaviour {
 	
 	public static GameManager GM;
 
-	private int _turn;
-	public int turn {
+	private Team _turn;
+	public Team turn {
 		get {
 			return _turn;
 		}
@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour {
 	private Area spellAOE;
 	private HashSet<HexUnit> toBeDestroyed;
 	private HashSet<HexUnit> beingDestroyed;
-	private int winner;
+	private Team winner;
 
 	public GameObject prefabGolem;
 
@@ -113,12 +113,12 @@ public class GameManager : MonoBehaviour {
 		}
 		GM = this;
 		winner = Team.NONE;
-		turn = 0;
+		turn = Team.RED;
 		turnTransition = false;
-		teams = new HashSet<HexUnit>[] {
-			new HashSet<HexUnit>(),
-			new HashSet<HexUnit>()
-		};
+		teams = new HashSet<HexUnit>[(int) Team.N_TEAMS];
+		for (int i = 0; i < teams.Length; i++) {
+			teams[i] = new HashSet<HexUnit>();
+		}
 		toBeDestroyed = new HashSet<HexUnit>();
 		beingDestroyed = new HashSet<HexUnit>();
 
@@ -351,7 +351,7 @@ public class GameManager : MonoBehaviour {
 		}
 		switch (state) {
 			case GameState.OVERVIEW:
-				foreach (HexUnit u in teams[turn]) {
+				foreach (HexUnit u in teams[(int) turn]) {
 					u.cell.highlight = Highlight.NONE;
 				}
 				break;
@@ -371,12 +371,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public GameObject AddUnit(
-			GameObject unitPrefab, int x, int y, int team=Team.NONE) {
+			GameObject unitPrefab, int x, int y, Team team=Team.NONE) {
 		GameObject inst = Instantiate(unitPrefab);
 		grid[x, y].content = inst;
 		if (team != Team.NONE) {
 			HexUnit unit = inst.GetComponent<HexUnit>();
-			teams[team].Add(unit);
+			teams[(int) team].Add(unit);
 			unit.team = team;
 		}
 		return inst;
@@ -393,26 +393,26 @@ public class GameManager : MonoBehaviour {
 	private void DestroyUnit(HexUnit unit) {
 		unit.DeathEvent();
 		if (unit.team != Team.NONE) {
-			teams[unit.team].Remove(unit);
+			teams[(int) unit.team].Remove(unit);
 		}
 		unit.cell.content = null;
 		Destroy(unit.gameObject);
-		if (teams[unit.team].All(u => u.isOrb)) {
-			RegisterVictory(Team.Opposite(unit.team));
+		if (teams[(int) unit.team].All(u => u.isOrb)) {
+			RegisterVictory(unit.team.Opposite());
 		}
 	}
 
 	public void EndTurn() {
-		foreach (HexCell c in teams[turn]
+		foreach (HexCell c in teams[(int) turn]
 					.Select(unit => unit.cell)) {
 			c.highlight = Highlight.NONE;
 		}
 		turnTransition = true;
-		foreach (HexUnit unit in teams[turn]) {
+		foreach (HexUnit unit in teams[(int) turn]) {
 			unit.EndTurn();
 		}
-		turn = Team.Opposite(turn);
-		foreach (HexUnit unit in teams[turn]) {
+		turn = turn.Opposite();
+		foreach (HexUnit unit in teams[(int) turn]) {
 			unit.StartTurn();
 		}
 		turnTransition = false;
@@ -472,11 +472,11 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void UpdateTurnIndicator() {
-		turnIndicator.color = Team.COLORS[turn];
+		turnIndicator.color = TeamExtensions.COLORS[(int) turn];
 	}
 
 	void UpdateActionableUnitsHighlight() {
-		foreach (HexCell c in teams[turn]
+		foreach (HexCell c in teams[(int) turn]
 					.Where(unit => !unit.hasMoved)
 					.Select(unit => unit.cell)) {
 			c.highlight = Highlight.CAN_ACT;
@@ -489,13 +489,13 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public void RegisterVictory(int team) {
+	public void RegisterVictory(Team team) {
 		winner = team;
 		state = GameState.RESULTS;
 	}
 
 	void ShowWinner() {
-		winnerIndicator.color = Team.COLORS[winner];
+		winnerIndicator.color = TeamExtensions.COLORS[(int) winner];
 	}
 
 	bool InputCancel() {

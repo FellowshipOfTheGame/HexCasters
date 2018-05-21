@@ -204,7 +204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movespeed: 2
   maxHP: 10
-  team: -1
+  team: 0
   cell: {fileID: 0}
   asOrb: {fileID: 0}
   asMage: {fileID: 0}

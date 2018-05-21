@@ -44,7 +44,7 @@ public class Golem : MonoBehaviour {
 	void GolemTurnSwap() {
 		foreach (HexCell cell in unit.cell.EnumerateNeighbors()) {
 			if (cell.unit != null
-					&& cell.unit.team == Team.Opposite(unit.team)) {
+					&& cell.unit.team == unit.team.Opposite()) {
 				cell.unit.Damage(GOLEM_DMG);
 			}
 		}

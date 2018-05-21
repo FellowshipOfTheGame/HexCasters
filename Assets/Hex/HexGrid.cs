@@ -34,37 +34,32 @@ public class HexGrid : MonoBehaviour {
 				}
 			}
 
-			foreach (HexPos spawn in MapLoader.layout.spawnR) {
-				GameManager.GM.AddUnit(
-					prefabMage, spawn.x, spawn.y, Team.LEFT);
-			}
-			foreach (HexPos spawn in MapLoader.layout.spawnB) {
-				GameManager.GM.AddUnit(
-					prefabMage, spawn.x, spawn.y, Team.RIGHT);
-			}
-			GameManager.GM.AddUnit(
-				prefabOrb, MapLoader.layout.orbR.x, MapLoader.layout.orbR.y,
-				Team.LEFT);
-			GameManager.GM.AddUnit(
-				prefabOrb, MapLoader.layout.orbB.x, MapLoader.layout.orbB.y,
-				Team.RIGHT);
+			foreach (var inst in MapLoader.layout.info) {
+				HexPos pos = inst.Key;
+				MapLayout.HexInfo info = inst.Value;
 
-			foreach (MapLayout.ObstacleInstance oi
-				in MapLoader.layout.obstacles) {
-				GameManager.GM.AddUnit(
-					oi.obstacle, oi.pos.x, oi.pos.y, Team.NONE);
-			}
+				HexCell cell = this[pos.x, pos.y];
+				if (info.terrain != null) {
+					cell.terrain = info.terrain;
+				}
 
-			foreach (HexPos pos in MapLoader.layout.fire) {
-				this[pos.x, pos.y].SetEffect(Effect.FLAMES);
-			}
-			foreach (HexPos pos in MapLoader.layout.rain) {
-				this[pos.x, pos.y].SetEffect(Effect.STORM);
-			}
-			foreach (HexPos pos in MapLoader.layout.snow) {
-				this[pos.x, pos.y].SetEffect(Effect.SNOW);
-			}
+				switch (info.effect) {
+					case MapLayout.Effect.FLAMES:
+						cell.SetEffect(Effect.FLAMES);
+						break;
+					case MapLayout.Effect.SNOW:
+						cell.SetEffect(Effect.SNOW);
+						break;
+					case MapLayout.Effect.STORM:
+						cell.SetEffect(Effect.STORM);
+						break;
+				}
 
+				if (info.content != null) {
+					GameManager.GM.AddUnit(
+						info.content, pos.x, pos.y, info.contentTeam);
+				}
+			}
 			Vector3 camPos = this[0, 0].transform.position;
 			camPos.z = Camera.main.transform.position.z;
 			Camera.main.transform.position = camPos;
@@ -82,10 +77,7 @@ public class HexGrid : MonoBehaviour {
 		cell.Y = row - nrows / 2;
 		cell.row = row;
 		cell.col = col;
-		cell.terrain = MapLoader.layout.Find(cell.X, cell.Y);
-		if (cell.terrain == null) {
-			cell.terrain = MapLoader.layout.defaultTerrain;
-		}
+		cell.terrain = terrain;
 
 		float ppu = terrain.sprite.pixelsPerUnit;
 		float width = terrain.sprite.bounds.max.x - terrain.sprite.bounds.min.x;

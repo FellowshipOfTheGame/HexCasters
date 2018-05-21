@@ -1,6 +1,6 @@
 public static class Effect {
-	public static string NONE = null;
-	public static string SNOW = "Snow";
-	public static string FLAMES = "Flames";
-	public static string STORM = "Storm";
+	public static readonly string NONE = null;
+	public static readonly string SNOW = "Snow";
+	public static readonly string FLAMES = "Flames";
+	public static readonly string STORM = "Storm";
 }

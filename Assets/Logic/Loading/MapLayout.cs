@@ -4,49 +4,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Map", menuName = "Map Layout", order = 1)]
-public class MapLayout : ScriptableObject {
+public class MapLayout : ScriptableObject {	
 
-	[System.Serializable]
-	public class DifferentTerrainInstance {
+	public enum Effect {
+		NONE,
+		FLAMES,
+		STORM,
+		SNOW
+	}
+
+	[Serializable]
+	public class HexInfo {
 		public HexTerrain terrain;
-		public HexPos pos;
+		public MapLayout.Effect effect = MapLayout.Effect.NONE;
 
-		public DifferentTerrainInstance(int x, int y, HexTerrain terr) {
-			pos = new HexPos(x, y);
-			terrain = terr;
-		}
+		public GameObject content;
+		public Team contentTeam;
 	}
 
-	[System.Serializable]
-	public class ObstacleInstance {
-		public GameObject obstacle;
-		public HexPos pos;
-
-		public ObstacleInstance(int x, int y, GameObject obst) {
-			pos = new HexPos(x, y);
-			obstacle = obst;
-		}
-	}
+	[Serializable]
+	public class PosInfoDict :
+		SerializableDictionary<HexPos, MapLayout.HexInfo> {}
 
 	public int nrows;
 	public int ncols;
 
 	public HexTerrain defaultTerrain;
 
-	public List<DifferentTerrainInstance> diffTerrain;
-	public List<ObstacleInstance> obstacles;
-	public HexPos[] spawnR;
-	public HexPos[] spawnB;
-
-	public HexPos orbR;
-	public HexPos orbB;
-
-	public HexPos[] rain;
-	public HexPos[] snow;
-	public HexPos[] fire;
-
-	// TODO effects
-
+	public PosInfoDict info;
+/*
 	public List<HexPos> Find(HexTerrain type) {
 		List<HexPos> positions = new List<HexPos>();
 		foreach (DifferentTerrainInstance inst in diffTerrain) {
@@ -105,5 +91,5 @@ public class MapLayout : ScriptableObject {
 		}
 		return terr;
 	}
-
+*/
 }

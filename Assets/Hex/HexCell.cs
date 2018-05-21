@@ -7,7 +7,8 @@ using UnityEngine.EventSystems;
 public class HexCell : MonoBehaviour {
 
 	[SerializeField]
-	private int x, y, z;
+	private HexPos pos;
+	// private int x, y, z;
 	public int row, col;
 	public HexTerrain terrain;
 	[SerializeField]
@@ -41,25 +42,23 @@ public class HexCell : MonoBehaviour {
 
 	public int X {
 		get {
-			return x;
+			return pos.x;
 		}
 		set {
-			x = value;
-			CoordsChanged();
+			pos.x = value;
 		}
 	}
 	public int Y {
 		get {
-			return y;
+			return pos.y;
 		}
 		set {
-			y = value;
-			CoordsChanged();
+			pos.y = value;
 		}
 	}
 	public int Z {
 		get {
-			return z;
+			return -X - Y;
 		}
 	}
 
@@ -162,8 +161,8 @@ public class HexCell : MonoBehaviour {
 
 	public HexCell GetNeighbor(int dir) {
 		int[] delta = directions[dir];
-		int neighX = x + delta[0];
-		int neighY = y + delta[1];
+		int neighX = X + delta[0];
+		int neighY = Y + delta[1];
 		if (grid.ValidCoords(neighX, neighY)) {
 			return grid[neighX, neighY];
 		}
@@ -341,8 +340,7 @@ public class HexCell : MonoBehaviour {
 	}
 
 
-	private void CoordsChanged() {
-		z = -x - y;
+	private void UpdateName() {
 		gameObject.name = String.Format(
 			"Cell ({0:+0; -#}, {1:+0; -#}, {2:+0; -#})", X, Y, Z);
 	}

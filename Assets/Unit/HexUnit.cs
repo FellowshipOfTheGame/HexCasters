@@ -21,7 +21,7 @@ public class HexUnit : MonoBehaviour {
 		}
 	}
 	public int maxHP;
-	public int team = Team.NONE;
+	public Team team = Team.NONE;
 	public HexCell cell;
 	public Orb asOrb;
 	public Mage asMage;
@@ -73,8 +73,8 @@ public class HexUnit : MonoBehaviour {
 			hp = maxHP;
 		}
 		if (team != Team.NONE) {
-			teamRend.color = Team.COLORS[team];
-			if (team == Team.LEFT) {
+			teamRend.color = TeamExtensions.COLORS[(int) team];
+			if (team == Team.RED) {
 				rend.flipX = true;
 				teamRend.flipX = true;
 			}
