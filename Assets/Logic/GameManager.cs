@@ -495,7 +495,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void ShowWinner() {
+		winnerIndicator.gameObject.SetActive(true);
 		winnerIndicator.color = TeamExtensions.COLORS[(int) winner];
+	}
+
+	public void BackToMainMenu() {
+		SceneManager.LoadScene("MainMenu");
 	}
 
 	bool InputCancel() {
