@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HelpManager : MonoBehaviour {
 
@@ -44,14 +45,6 @@ public class HelpManager : MonoBehaviour {
 		}
 	}
 
-	void Update () {
-		// if (Input.GetMouseButtonDown(0)) {
-		// 	NextScreen();
-		// } else if (Input.GetMouseButtonDown(1)) {
-		// 	PrevScreen();
-		// }
-	}
-
 	public void NextScreen() {
 		if (curScreen + 1 == screens.childCount) {
 			ExitHelp();
@@ -70,6 +63,6 @@ public class HelpManager : MonoBehaviour {
 	}
 
 	public void ExitHelp() {
-		Application.Quit();
+		SceneManager.LoadScene("MainMenu");
 	}
 }
