@@ -3,9 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Board
-  - Obstacle
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -43,18 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Grid
-    uniqueID: 2264501359
+  - name: Background
+    uniqueID: 4249962941
     locked: 0
-  - name: GridHighlight
-    uniqueID: 2148793323
+  - name: Tiles
+    uniqueID: 2008586075
     locked: 0
-  - name: Characters
-    uniqueID: 1195025829
+  - name: Units
+    uniqueID: 559485819
     locked: 0
   - name: Effects
-    uniqueID: 3373508519
+    uniqueID: 99944725
     locked: 0
   - name: UI
-    uniqueID: 925495741
+    uniqueID: 2782976485
     locked: 0
