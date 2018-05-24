@@ -1,0 +1,9 @@
+Copyright (c) 2018 Fellowship of the Game ICMC/USP
+
+All source code, documentation and other software files are published under
+the MIT License.
+Other assets, which include graphic assets and sound assets, are published
+under the CC-BY License.
+
+The full text for these licenses can be found in the LICENSES directory found
+in the root of the repository.
