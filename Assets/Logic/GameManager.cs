@@ -531,4 +531,10 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	public void EndTurnButton() {
+		if (state == GameState.OVERVIEW) {
+			EndTurn();
+		}
+	}
+
 }
