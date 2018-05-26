@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09dfba26c7ea1994aa75b33c92b651b3, type: 3}
+  m_Name: Simple_0
+  m_EditorClassIdentifier: 
+  nrows: 9
+  ncols: 9
+  defaultTerrain: {fileID: 11400000, guid: 28a7ee73829ea474c8056d2822107d38, type: 2}
+  info:
+    m_keys:
+    - x: 0
+      y: 0
+    - x: 3
+      y: -3
+    - x: -3
+      y: 3
+    - x: 2
+      y: -2
+    - x: -2
+      y: 2
+    - x: -1
+      y: 1
+    - x: 1
+      y: -1
+    - x: 4
+      y: -4
+    - x: -4
+      y: 4
+    - x: -3
+      y: -3
+    - x: -4
+      y: -1
+    - x: -1
+      y: -4
+    - x: -2
+      y: -2
+    - x: 3
+      y: 3
+    - x: 4
+      y: 1
+    - x: 1
+      y: 4
+    - x: 2
+      y: 2
+    m_values:
+    - terrain: {fileID: 0}
+      effect: 3
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 3
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 3
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 2
+      content: {fileID: 0}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 2
+      content: {fileID: 0}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 2
+      content: {fileID: 0}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 2
+      content: {fileID: 0}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 2
+      content: {fileID: 0}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 2
+      content: {fileID: 0}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1280138965382990, guid: e8413e6bfa12d384faa1e9a3c6fc80c8,
+        type: 2}
+      contentTeam: 1
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1614444781376684, guid: 57b383328915b8e4f8af0156b674c9cd,
+        type: 2}
+      contentTeam: 1
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1614444781376684, guid: 57b383328915b8e4f8af0156b674c9cd,
+        type: 2}
+      contentTeam: 1
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1614444781376684, guid: 57b383328915b8e4f8af0156b674c9cd,
+        type: 2}
+      contentTeam: 1
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1280138965382990, guid: e8413e6bfa12d384faa1e9a3c6fc80c8,
+        type: 2}
+      contentTeam: 2
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1614444781376684, guid: 57b383328915b8e4f8af0156b674c9cd,
+        type: 2}
+      contentTeam: 2
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1614444781376684, guid: 57b383328915b8e4f8af0156b674c9cd,
+        type: 2}
+      contentTeam: 2
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1614444781376684, guid: 57b383328915b8e4f8af0156b674c9cd,
+        type: 2}
+      contentTeam: 2
