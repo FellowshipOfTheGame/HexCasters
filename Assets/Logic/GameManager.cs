@@ -467,6 +467,9 @@ public class GameManager : MonoBehaviour {
 				selectedUnit, hoveredCell, spellTargets));
 			foreach (HexCell c in spellAOE) {
 				c.highlight = Highlight.IN_AOE;
+				if (c.unit != null) {
+					c.highlight = Highlight.RELEVANT; //change highlight sprite and name
+				}
 			}
 		}
 	}
