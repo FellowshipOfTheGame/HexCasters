@@ -67,13 +67,13 @@ public class HexUnit : MonoBehaviour {
 		if (!isImmobile) {
 			MoveEvent = delegate {};
 		}
+		if (!isInvincible) {
+			hp = maxHP;
+		}
 		TurnSwapEvent = CheckFlames;
 	}
 
 	void Start() {
-		if (!isInvincible) {
-			hp = maxHP;
-		}
 		if (team != Team.NONE) {
 			teamRend.color = TeamExtensions.COLORS[(int) team];
 			if (team == Team.RED) {
