@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HexUnit : MonoBehaviour {
 
@@ -49,6 +50,7 @@ public class HexUnit : MonoBehaviour {
 	private SpriteRenderer rend;
 	private SpriteRenderer teamRend;
 	private Transform hbarFill;
+	public GameObject healthpoint;
 
 	void Awake() {
 		id = lastId;
@@ -65,13 +67,13 @@ public class HexUnit : MonoBehaviour {
 		if (!isImmobile) {
 			MoveEvent = delegate {};
 		}
+		if (!isInvincible) {
+			hp = maxHP;
+		}
 		TurnSwapEvent = CheckFlames;
 	}
 
 	void Start() {
-		if (!isInvincible) {
-			hp = maxHP;
-		}
 		if (team != Team.NONE) {
 			teamRend.color = TeamExtensions.COLORS[(int) team];
 			if (team == Team.RED) {
@@ -98,6 +100,14 @@ public class HexUnit : MonoBehaviour {
 	private void CheckFlames() {
 		if (cell.effect == Effect.FLAMES) {
 			Damage(Spell.FIRE_DPT);
+		}
+	}
+
+	public void UpdateHealthpointText() {
+		if (maxHP > 0) {
+			Transform textTr = transform.Find("Healthpoint").Find("Text");
+			Text hpText = textTr.GetComponent<Text>();
+			hpText.text = hp + "/" + maxHP;
 		}
 	}
 

@@ -236,6 +236,7 @@ public class GameManager : MonoBehaviour {
 
 	public void HoverEnter(HexCell cell) {
 		hoveredCell = cell;
+		ShowHealthpointText(cell.unit);
 		switch (state) {
 			case GameState.OVERVIEW:
 				UpdateActionableUnitsHighlight();
@@ -261,6 +262,7 @@ public class GameManager : MonoBehaviour {
 
 	public void HoverExit(HexCell cell) {
 		hoveredCell = null;
+		RemoveHealthpointText(cell.unit);
 		switch (state) {
 			case GameState.OVERVIEW:
 				cell.highlight = Highlight.NONE;
@@ -439,6 +441,23 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	void ShowHealthpointText(HexUnit unit) {
+		if (unit != null) {
+			if (unit.maxHP > 0) {
+				unit.UpdateHealthpointText();
+				unit.healthpoint.SetActive(true);
+			}
+		}
+	}
+
+	void RemoveHealthpointText(HexUnit unit) {
+		if (unit != null) {
+			if (unit.maxHP > 0) {
+				unit.healthpoint.SetActive(false);
+			}
+		}
+	}
+
 	void RemoveSpellHighlight() {
 		foreach (HexCell cell in
 					validTargets
@@ -467,6 +486,9 @@ public class GameManager : MonoBehaviour {
 				selectedUnit, hoveredCell, spellTargets));
 			foreach (HexCell c in spellAOE) {
 				c.highlight = Highlight.IN_AOE;
+				if (c.unit != null) {
+					c.highlight = Highlight.RELEVANT; //change highlight sprite and name
+				}
 			}
 		}
 	}
