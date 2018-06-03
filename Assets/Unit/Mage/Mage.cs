@@ -7,7 +7,10 @@ public class Mage : MonoBehaviour {
 	public HexUnit unit;
 	public Golem ownedGolem;
 
+	[Header("Animation prefabs")]
 	public GameObject animFireball;
+
+	public GameObject animRockStrike;
 
 	void Awake() {
 		unit = GetComponent<HexUnit>();
@@ -49,5 +52,12 @@ public class Mage : MonoBehaviour {
 		GameObject anim = Instantiate(
 			animFireball, target.transform.parent, false);
 		anim.transform.position = target.transform.position;
+	}
+
+	public void AnimateRockStrike(HexCell firstOccupiedCell) {
+		GameObject anim = Instantiate(animRockStrike);
+		RockStrikeAnimController contr = 
+			anim.GetComponent<RockStrikeAnimController>();
+		contr.Init(unit.cell, firstOccupiedCell);
 	}
 }

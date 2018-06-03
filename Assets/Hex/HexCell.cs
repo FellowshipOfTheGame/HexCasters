@@ -8,6 +8,8 @@ public class HexCell : MonoBehaviour {
 
 	[SerializeField]
 	private HexPos pos;
+
+	public HexPos position { get { return pos; } }
 	// private int x, y, z;
 	public int row, col;
 	public HexTerrain terrain;

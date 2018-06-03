@@ -101,20 +101,31 @@ public class Spell {
 			HexCell target = aoe
 				.Where(cell => cell.content != null )
 				.FirstOrDefault();
-			if (target != null && !target.unit.isImmobile) {
-				bool alive = target.unit.Damage(ROCK_STRIKE_DAMAGE);
-				int dir = caster.cell.DirectionTo(target);
-				HexCell knockedBack = target.GetNeighbor(dir);
-				if (knockedBack != null) {
-					if (knockedBack.content == null) {
-						if (alive) {
-							target.MoveContentTo(knockedBack);
+			HexCell animEnd = null;
+			if (target != null) {
+				animEnd = target;
+				if (!target.unit.isImmobile) {
+					bool alive = target.unit.Damage(ROCK_STRIKE_DAMAGE);
+					int dir = caster.cell.DirectionTo(target);
+					HexCell knockedBack = target.GetNeighbor(dir);
+					if (knockedBack != null) {
+						if (knockedBack.content == null) {
+							if (alive) {
+								target.MoveContentTo(knockedBack);
+							}
+						} else if (knockedBack.unit != null) {
+							knockedBack.unit.Damage(ROCK_STRIKE_DAMAGE);
 						}
-					} else if (knockedBack.unit != null) {
-						knockedBack.unit.Damage(ROCK_STRIKE_DAMAGE);
 					}
 				}
+			} else {
+				// get furthest cell from origin in AoE
+				animEnd = aoe
+					.OrderByDescending(
+						cell => cell.ManhattanDistanceTo(caster.cell))
+					.First();
 			}
+			caster.asMage.AnimateRockStrike(animEnd);
 		},
 		delegate (HexUnit caster, List<HexCell> curTargets) {
 			return Enumerable.Range(0, HexCell.directions.Length)

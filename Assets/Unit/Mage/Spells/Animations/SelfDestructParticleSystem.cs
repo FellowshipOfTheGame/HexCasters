@@ -14,6 +14,5 @@ public class SelfDestructParticleSystem : MonoBehaviour {
 		if (!sys.IsAlive()) {
 			Destroy(gameObject);
 		}
-		print("oi");
 	}
 }

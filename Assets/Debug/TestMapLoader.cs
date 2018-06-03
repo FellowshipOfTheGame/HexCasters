@@ -15,11 +15,12 @@ public class TestMapLoader : MonoBehaviour {
 	}
 
 	void Loaded(Scene scene, LoadSceneMode mode) {
+		SceneManager.sceneLoaded -= Loaded;
 		Invoke("TestAnim", 0.1f);
 	}
 
 	void TestAnim() {
-		Mage m = GameManager.GM.grid[-1, -4].unit.asMage;
+		// Mage m = GameManager.GM.grid[-1, -4].unit.asMage;
 		// m.AnimateFireball(GameManager.GM.grid[0, 0]);
 	}
 
