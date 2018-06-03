@@ -7,6 +7,8 @@ public class Mage : MonoBehaviour {
 	public HexUnit unit;
 	public Golem ownedGolem;
 
+	public GameObject animFireball;
+
 	void Awake() {
 		unit = GetComponent<HexUnit>();
 		ownedGolem = null;
@@ -41,5 +43,11 @@ public class Mage : MonoBehaviour {
 		// if (ownedGolem != null) {
 		// 	ownedGolem.unit.hasMoved = true;
 		// }
+	}
+
+	public void AnimateFireball(HexCell target) {
+		GameObject anim = Instantiate(
+			animFireball, target.transform.parent, false);
+		anim.transform.position = target.transform.position;
 	}
 }

@@ -334,6 +334,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unit: {fileID: 0}
   ownedGolem: {fileID: 0}
+  animFireball: {fileID: 1714654073947148, guid: 4c620befea204064db6634287df98bb7,
+    type: 2}
 --- !u!212 &212230828755276194
 SpriteRenderer:
   m_ObjectHideFlags: 1
