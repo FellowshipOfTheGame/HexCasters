@@ -236,6 +236,7 @@ public class GameManager : MonoBehaviour {
 
 	public void HoverEnter(HexCell cell) {
 		hoveredCell = cell;
+		ShowHealthpointText(cell.unit);
 		switch (state) {
 			case GameState.OVERVIEW:
 				UpdateActionableUnitsHighlight();
@@ -261,6 +262,7 @@ public class GameManager : MonoBehaviour {
 
 	public void HoverExit(HexCell cell) {
 		hoveredCell = null;
+		RemoveHealthpointText(cell.unit);
 		switch (state) {
 			case GameState.OVERVIEW:
 				cell.highlight = Highlight.NONE;
@@ -435,6 +437,23 @@ public class GameManager : MonoBehaviour {
 				pairedUnitCell = unit.asMage.ownedGolem.unit.cell;
 			} else if (unit.isGolem && unit.asGolem.owner != null) {
 				pairedUnitCell = unit.asGolem.owner.unit.cell;
+			}
+		}
+	}
+
+	void ShowHealthpointText(HexUnit unit) {
+		if (unit != null) {
+			if (unit.maxHP > 0) {
+				unit.UpdateHealthpointText();
+				unit.healthpoint.SetActive(true);
+			}
+		}
+	}
+
+	void RemoveHealthpointText(HexUnit unit) {
+		if (unit != null) {
+			if (unit.maxHP > 0) {
+				unit.healthpoint.SetActive(false);
 			}
 		}
 	}
