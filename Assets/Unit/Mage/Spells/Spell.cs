@@ -151,6 +151,7 @@ public class Spell {
 			} else {
 				target.unit.Heal(IMBUE_LIFE_HEAL);
 			}
+			caster.asMage.AnimateImbueLife(target);
 		},
 		delegate (HexUnit caster, List<HexCell> curTargets) {
 			IEnumerable<HexCell> heal =

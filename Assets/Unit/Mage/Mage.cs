@@ -12,6 +12,7 @@ public class Mage : MonoBehaviour {
 	public GameObject animLightningBolt;
 
 	public GameObject animRockStrike;
+	public GameObject animImbueLife;
 
 	void Awake() {
 		unit = GetComponent<HexUnit>();
@@ -50,14 +51,11 @@ public class Mage : MonoBehaviour {
 	}
 
 	public void AnimateFireball(HexCell target) {
-		GameObject anim = Instantiate(
-			animFireball, target.transform, false);
-		anim.transform.position = target.transform.position;
+		Instantiate(animFireball, target.transform, false);
 	}
 
 	public void AnimateLightningBolt(HexCell target) {
-		GameObject anim = Instantiate(
-			animLightningBolt, target.transform, false);
+		Instantiate(animLightningBolt, target.transform, false);
 	}
 
 	public void AnimateRockStrike(HexCell firstOccupiedCell) {
@@ -65,5 +63,9 @@ public class Mage : MonoBehaviour {
 		RockStrikeAnimController contr = 
 			anim.GetComponent<RockStrikeAnimController>();
 		contr.Init(unit.cell, firstOccupiedCell);
+	}
+
+	public void AnimateImbueLife(HexCell target) {
+		Instantiate(animImbueLife, target.transform, false);
 	}
 }

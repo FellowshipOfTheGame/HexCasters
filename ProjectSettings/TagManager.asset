@@ -55,6 +55,9 @@ TagManager:
   - name: Effects
     uniqueID: 3373508519
     locked: 0
+  - name: Spell animations
+    uniqueID: 413380793
+    locked: 0
   - name: UI
     uniqueID: 925495741
     locked: 0
