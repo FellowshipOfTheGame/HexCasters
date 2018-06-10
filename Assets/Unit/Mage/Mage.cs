@@ -9,6 +9,7 @@ public class Mage : MonoBehaviour {
 
 	[Header("Animation prefabs")]
 	public GameObject animFireball;
+	public GameObject animLightningBolt;
 
 	public GameObject animRockStrike;
 
@@ -50,8 +51,13 @@ public class Mage : MonoBehaviour {
 
 	public void AnimateFireball(HexCell target) {
 		GameObject anim = Instantiate(
-			animFireball, target.transform.parent, false);
+			animFireball, target.transform, false);
 		anim.transform.position = target.transform.position;
+	}
+
+	public void AnimateLightningBolt(HexCell target) {
+		GameObject anim = Instantiate(
+			animLightningBolt, target.transform, false);
 	}
 
 	public void AnimateRockStrike(HexCell firstOccupiedCell) {
