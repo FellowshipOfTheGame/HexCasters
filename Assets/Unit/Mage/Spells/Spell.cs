@@ -43,10 +43,11 @@ public class Spell {
 	public static readonly Spell LIGHTNING_BOLT = new Spell(
 		1,
 		delegate (HexUnit caster, List<HexCell> targets, Area aoe) {
-			foreach (HexUnit unit in aoe
-						.Select(cell => cell.unit)
-						.Where(unit => unit != null)) {
-				unit.Damage(LIGHTNING_BOLT_DAMAGE);
+			foreach (HexCell cell in aoe) {
+				caster.asMage.AnimateLightningBolt(cell);
+				if (cell.unit != null) {
+					cell.unit.Damage(LIGHTNING_BOLT_DAMAGE);
+				}
 			}
 		},
 		delegate (HexUnit caster, List<HexCell> curTargets) {
@@ -150,6 +151,7 @@ public class Spell {
 			} else {
 				target.unit.Heal(IMBUE_LIFE_HEAL);
 			}
+			caster.asMage.AnimateImbueLife(target);
 		},
 		delegate (HexUnit caster, List<HexCell> curTargets) {
 			IEnumerable<HexCell> heal =
