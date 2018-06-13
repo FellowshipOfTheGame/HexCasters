@@ -156,7 +156,7 @@ public class Spell {
 		delegate (HexUnit caster, List<HexCell> curTargets) {
 			IEnumerable<HexCell> heal =
 				caster.cell.Radius(IMBUE_LIFE_HEAL_RANGE)
-					.Where(cell => cell.unit != null && !cell.unit.isObstacle);
+					.Where(cell => cell.unit != null && !cell.unit.isInvincible);
 			if (caster.asMage.ownedGolem != null) {
 				// can't spawn another golem
 				return heal;
