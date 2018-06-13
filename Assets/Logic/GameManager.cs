@@ -16,8 +16,9 @@ public class GameManager : MonoBehaviour {
 	public RawImage turnIndicator;
 	public RawImage winnerIndicator;
 	public Text gameStateIndicator;
+	public Text winnerMessage;
 	public GameObject spellList;
-	
+
 	public static GameManager GM;
 
 	private Team _turn;
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 	private bool turnTransition;
-	public HashSet<HexUnit>[] teams; 
+	public HashSet<HexUnit>[] teams;
 
 	public HexCell selectedCell;
 	public HexCell hoveredCell;
@@ -186,7 +187,7 @@ public class GameManager : MonoBehaviour {
 				}
 				break;
 		}
-		
+
 	}
 
 	public void Click(HexCell cell) {
@@ -343,7 +344,7 @@ public class GameManager : MonoBehaviour {
 		if (hoveredCell != null) {
 			HoverEnter(hoveredCell);
 		}
-	
+
 }
 	private void ExitState() {
 		if (hoveredCell != null) {
@@ -517,8 +518,9 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void ShowWinner() {
+		winnerMessage.text = winner + " Team win!";
+		winnerMessage.color = TeamExtensions.COLORS[(int) winner];
 		winnerIndicator.gameObject.SetActive(true);
-		winnerIndicator.color = TeamExtensions.COLORS[(int) winner];
 	}
 
 	public void BackToMainMenu() {
