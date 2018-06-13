@@ -2747,6 +2747,7 @@ GameObject:
   - component: {fileID: 1072719959}
   - component: {fileID: 1072719958}
   - component: {fileID: 1072719957}
+  - component: {fileID: 1072719960}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -2771,10 +2772,8 @@ MonoBehaviour:
   turnIndicator: {fileID: 1881933807}
   winnerIndicator: {fileID: 284460352}
   gameStateIndicator: {fileID: 1423552676}
-  timerIndicator: {fileID: 625325183}
   winnerMessage: {fileID: 1026457987}
   spellList: {fileID: 1686263352}
-  turnTime: 0
   selectedCell: {fileID: 0}
   hoveredCell: {fileID: 0}
   _pairedUnitCell: {fileID: 0}
@@ -2813,6 +2812,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1072719960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1072719956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b3f8504bf70aa4d8811027d31a9601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerIndicator: {fileID: 625325183}
+  turnTime: 0
 --- !u!1 &1080102272
 GameObject:
   m_ObjectHideFlags: 0
