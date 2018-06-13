@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
 
 	private static event Action initEvent;
 
+	public Button endTurnButton;
 	public HexGrid grid;
 	public RawImage turnIndicator;
 	public RawImage winnerIndicator;
@@ -521,6 +522,7 @@ public class GameManager : MonoBehaviour {
 		winnerMessage.text = winner + " Team win!";
 		winnerMessage.color = TeamExtensions.COLORS[(int) winner];
 		winnerIndicator.gameObject.SetActive(true);
+		endTurnButton.interactable = false;
 	}
 
 	public void BackToMainMenu() {
