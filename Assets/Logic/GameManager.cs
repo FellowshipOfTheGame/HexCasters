@@ -372,12 +372,12 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public GameObject AddUnit(
-			GameObject unitPrefab, int x, int y, Team team=Team.NONE) {
-		GameObject inst = Instantiate(unitPrefab);
+	public GameObject AddObject(
+			GameObject obj, int x, int y, Team team=Team.NONE) {
+		GameObject inst = Instantiate(obj);
 		grid[x, y].content = inst;
-		if (team != Team.NONE) {
-			HexUnit unit = inst.GetComponent<HexUnit>();
+		HexUnit unit = inst.GetComponent<HexUnit>();
+		if (unit != null) {
 			teams[(int) team].Add(unit);
 			unit.team = team;
 		}
@@ -399,7 +399,8 @@ public class GameManager : MonoBehaviour {
 		}
 		unit.cell.content = null;
 		Destroy(unit.gameObject);
-		if (teams[(int) unit.team].All(u => u.isOrb)) {
+		if (unit.team != Team.NONE
+				&& teams[(int) unit.team].All(u => u.isOrb)) {
 			RegisterVictory(unit.team.Opposite());
 		}
 	}
@@ -410,7 +411,8 @@ public class GameManager : MonoBehaviour {
 			c.highlight = Highlight.NONE;
 		}
 		turnTransition = true;
-		foreach (HexUnit unit in teams[(int) turn]) {
+		foreach (HexUnit unit in teams[(int) turn]
+				.Union(teams[(int) Team.NONE])) {
 			unit.EndTurn();
 		}
 		turn = turn.Opposite();

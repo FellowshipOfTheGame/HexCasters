@@ -26,7 +26,7 @@ public class Mage : MonoBehaviour {
 	}
 
 	public void SpawnGolem(HexCell targetCell) {
-		GameObject golemObj = GameManager.GM.AddUnit(
+		GameObject golemObj = GameManager.GM.AddObject(
 			GameManager.GM.prefabGolem,
 			targetCell.X, targetCell.Y,
 			unit.team);
