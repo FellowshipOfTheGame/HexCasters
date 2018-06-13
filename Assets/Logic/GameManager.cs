@@ -17,10 +17,14 @@ public class GameManager : MonoBehaviour {
 	public RawImage turnIndicator;
 	public RawImage winnerIndicator;
 	public Text gameStateIndicator;
+	public Text timerIndicator;
 	public Text winnerMessage;
 	public GameObject spellList;
 
 	public static GameManager GM;
+
+	private float startTime;
+	public float turnTime;
 
 	private Team _turn;
 	public Team turn {
@@ -117,6 +121,8 @@ public class GameManager : MonoBehaviour {
 		winner = Team.NONE;
 		turn = Team.RED;
 		turnTransition = false;
+		startTime = Time.time;
+		turnTime = 10f;
 		teams = new HashSet<HexUnit>[(int) Team.N_TEAMS];
 		for (int i = 0; i < teams.Length; i++) {
 			teams[i] = new HashSet<HexUnit>();
@@ -188,7 +194,7 @@ public class GameManager : MonoBehaviour {
 				}
 				break;
 		}
-
+		UpdateCountdownTimer();
 	}
 
 	public void Click(HexCell cell) {
@@ -433,6 +439,23 @@ public class GameManager : MonoBehaviour {
 		}
 		toBeDestroyed.Clear();
 		UpdateActionableUnitsHighlight();
+		ResetCountdownTimer();
+	}
+
+	private void UpdateCountdownTimer() {
+		if (state != GameState.RESULTS) {
+			float t = Time.time - startTime; //growing count
+			float secondsLeft = (turnTime - (t % 60));
+			timerIndicator.text = secondsLeft.ToString("f0");
+			if ((int)secondsLeft == 0) {
+				EndTurn();
+				state = GameState.OVERVIEW;
+			}
+		}
+	}
+
+	private void ResetCountdownTimer() {
+		startTime = Time.time;
 	}
 
 	void HighlightPairedUnit(HexUnit unit) {
