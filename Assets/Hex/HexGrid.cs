@@ -56,7 +56,7 @@ public class HexGrid : MonoBehaviour {
 				}
 
 				if (info.content != null) {
-					GameManager.GM.AddUnit(
+					GameManager.GM.AddObject(
 						info.content, pos.x, pos.y, info.contentTeam);
 				}
 			}

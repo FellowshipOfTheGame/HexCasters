@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class TestMapLoader : MonoBehaviour {
 
 	public MapLayout layout;
+	public GameObject prefabWall;
 
 	void Start() {
 		DontDestroyOnLoad(gameObject);
@@ -16,12 +17,11 @@ public class TestMapLoader : MonoBehaviour {
 
 	void Loaded(Scene scene, LoadSceneMode mode) {
 		SceneManager.sceneLoaded -= Loaded;
-		Invoke("TestAnim", 0.1f);
+		Invoke("OnLoad", 0.1f);
 	}
 
-	void TestAnim() {
-		// Mage m = GameManager.GM.grid[-1, -4].unit.asMage;
-		// m.AnimateFireball(GameManager.GM.grid[0, 0]);
+	void OnLoad() {
+		// GameManager.GM.AddObject(prefabWall, -1, -1);
 	}
 
 }

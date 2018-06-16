@@ -17,7 +17,6 @@ public class RockStrikeAnimController : MonoBehaviour {
 	void Update() {
 		time += Time.deltaTime;
 		transform.Rotate(Vector3.forward, rotSpeed * Time.deltaTime);
-		print(transform.rotation);
 		transform.position = Vector3.Lerp(
 			orig.transform.position,
 			dest.transform.position,
@@ -31,7 +30,6 @@ public class RockStrikeAnimController : MonoBehaviour {
 		transform.position = from.transform.position;
 		orig = from;
 		dest = to;
-		print("from " + from.position + " to " + to.position);
 		// if we add a trail later
 		// transform.LookAt(dest.transform);
 

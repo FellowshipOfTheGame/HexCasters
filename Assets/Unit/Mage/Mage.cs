@@ -9,8 +9,10 @@ public class Mage : MonoBehaviour {
 
 	[Header("Animation prefabs")]
 	public GameObject animFireball;
+	public GameObject animLightningBolt;
 
 	public GameObject animRockStrike;
+	public GameObject animImbueLife;
 
 	void Awake() {
 		unit = GetComponent<HexUnit>();
@@ -24,7 +26,7 @@ public class Mage : MonoBehaviour {
 	}
 
 	public void SpawnGolem(HexCell targetCell) {
-		GameObject golemObj = GameManager.GM.AddUnit(
+		GameObject golemObj = GameManager.GM.AddObject(
 			GameManager.GM.prefabGolem,
 			targetCell.X, targetCell.Y,
 			unit.team);
@@ -49,9 +51,11 @@ public class Mage : MonoBehaviour {
 	}
 
 	public void AnimateFireball(HexCell target) {
-		GameObject anim = Instantiate(
-			animFireball, target.transform.parent, false);
-		anim.transform.position = target.transform.position;
+		Instantiate(animFireball, target.transform, false);
+	}
+
+	public void AnimateLightningBolt(HexCell target) {
+		Instantiate(animLightningBolt, target.transform, false);
 	}
 
 	public void AnimateRockStrike(HexCell firstOccupiedCell) {
@@ -59,5 +63,9 @@ public class Mage : MonoBehaviour {
 		RockStrikeAnimController contr = 
 			anim.GetComponent<RockStrikeAnimController>();
 		contr.Init(unit.cell, firstOccupiedCell);
+	}
+
+	public void AnimateImbueLife(HexCell target) {
+		Instantiate(animImbueLife, target.transform, false);
 	}
 }
