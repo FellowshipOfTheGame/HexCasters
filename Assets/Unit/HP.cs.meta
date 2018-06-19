@@ -1,11 +1,13 @@
 fileFormatVersion: 2
-guid: 2ea6a233f24262743ab594392210921b
-timeCreated: 1526823629
+guid: 8d08ee5ab5d392e48b5a2d2c234d7dcd
+timeCreated: 1529418427
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - prefabHealthBar: {fileID: 1652310961649920, guid: a883d871c6d0bcf4cb4af4b4a78e7fa1,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

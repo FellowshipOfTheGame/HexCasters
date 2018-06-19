@@ -150,7 +150,6 @@ public class GameManager : MonoBehaviour {
 				}
 				break;
 			case GameState.MOVE_SELECT_DEST:
-				// if (Input.GetKeyDown(KeyCode.Backspace)) {
 				if (InputCancel()) {
 					selectedCell = null;
 					state = GameState.OVERVIEW;
@@ -182,7 +181,6 @@ public class GameManager : MonoBehaviour {
 				}
 				break;
 			case GameState.SPELL_SELECT_TARGETS:
-				// if (Input.GetKeyDown(KeyCode.Backspace)) {
 				if (InputCancel()) {
 					state = GameState.SPELL_CHOICE;
 				}
@@ -242,7 +240,6 @@ public class GameManager : MonoBehaviour {
 			case GameState.OVERVIEW:
 				UpdateActionableUnitsHighlight();
 				cell.highlight = Highlight.IN_RANGE;
-				// TODO spaghetti
 				HighlightPairedUnit(cell.unit);
 				break;
 			case GameState.MOVE_SELECT_DEST:
@@ -408,7 +405,8 @@ public class GameManager : MonoBehaviour {
 
 	public void EndTurn() {
 		foreach (HexCell c in teams[(int) turn]
-					.Select(unit => unit.cell)) {
+					.Select(unit => unit.cell)
+					.Except(new List<HexCell> { hoveredCell })) {
 			c.highlight = Highlight.NONE;
 		}
 		turnTransition = true;
@@ -432,7 +430,9 @@ public class GameManager : MonoBehaviour {
 		}
 		toBeDestroyed.Clear();
 		UpdateActionableUnitsHighlight();
-		Timer.T.ResetCountdownTimer();
+		if (hoveredCell != null) {
+			ShowHealthpointText(hoveredCell.unit);
+		}
 	}
 
 	void HighlightPairedUnit(HexUnit unit) {
@@ -447,18 +447,13 @@ public class GameManager : MonoBehaviour {
 
 	void ShowHealthpointText(HexUnit unit) {
 		if (unit != null) {
-			if (unit.maxHP > 0) {
-				unit.UpdateHealthpointText();
-				unit.healthpoint.SetActive(true);
-			}
+			unit.ShowHealthPoint();
 		}
 	}
 
 	void RemoveHealthpointText(HexUnit unit) {
 		if (unit != null) {
-			if (unit.maxHP > 0) {
-				unit.healthpoint.SetActive(false);
-			}
+			unit.HideHealthPoint();
 		}
 	}
 

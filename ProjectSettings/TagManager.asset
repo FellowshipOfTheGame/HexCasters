@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Board
   - Obstacle
+  - Unit
   layers:
   - Default
   - TransparentFX
