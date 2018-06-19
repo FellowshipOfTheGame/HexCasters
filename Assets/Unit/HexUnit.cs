@@ -6,31 +6,19 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HexUnit : MonoBehaviour {
-
 	private static int lastId = 0;
 	private int id;
 
 	public int movespeed = 0;
-	private int _hp;
-	public int hp {
-		get {
-			return _hp;
-		}
-		private set {
-			_hp = value;
-			hbarFill.localScale = new Vector3((float) _hp / maxHP, 1.0f, 1.0f);
-		}
-	}
-	public int maxHP;
+	public HP hp;
 	public Team team = Team.NONE;
 	public HexCell cell;
 	public Orb asOrb;
 	public Mage asMage;
 	public Golem asGolem;
-	// public Golem ownedGolem;
 
 	public bool isImmobile;
-	public bool isInvincible;
+	public bool isInvincible { get; private set; }
 	public bool isMage {
 		get { return asMage != null; }
 	}
@@ -40,35 +28,29 @@ public class HexUnit : MonoBehaviour {
 	public bool isOrb {
 		get { return asOrb != null; }
 	}
-	public bool isObstacle;
 	public bool hasMoved;
 
-	public Action DeathEvent;
-	public Action MoveEvent;
-	public Action TurnSwapEvent;
+	public Action DeathEvent = delegate {};
+	public Action MoveEvent = delegate {};
+	public Action TurnSwapEvent = delegate {};
 
 	private SpriteRenderer rend;
 	private SpriteRenderer teamRend;
 	private Transform hbarFill;
-	public GameObject healthpoint;
 
 	void Awake() {
 		id = lastId;
 		lastId++;
 		rend = GetComponent<SpriteRenderer>();
+		hp = GetComponent<HP>();
 		Transform trTransform = transform.Find("TeamOverlay");
 		if (trTransform != null) {
 			teamRend = trTransform.GetComponent<SpriteRenderer>();
 		}
+		isInvincible = (hp == null);
 		if (!isInvincible) {
-			hbarFill = transform.Find("Healthbar").Find("Fill");
+			hp.OnReachZero += Die;
 			DeathEvent = UnitDeath;
-		}
-		if (!isImmobile) {
-			MoveEvent = delegate {};
-		}
-		if (!isInvincible) {
-			hp = maxHP;
 		}
 		TurnSwapEvent = CheckFlames;
 	}
@@ -88,12 +70,10 @@ public class HexUnit : MonoBehaviour {
 
 	public void StartTurn() {
 		TurnSwapEvent();
-		// CheckFlames();
 		hasMoved = false;
 	}
 
 	public void EndTurn() {
-		// CheckFlames();
 		TurnSwapEvent();
 	}
 
@@ -103,11 +83,16 @@ public class HexUnit : MonoBehaviour {
 		}
 	}
 
-	public void UpdateHealthpointText() {
-		if (maxHP > 0) {
-			Transform textTr = transform.Find("Healthpoint").Find("Text");
-			Text hpText = textTr.GetComponent<Text>();
-			hpText.text = hp + "/" + maxHP;
+	public void ShowHealthPoint() {
+		if (hp != null) {
+			hp.UpdateNumberDisplay();
+			hp.EnableNumberDisplay();
+		}
+	}
+
+	public void HideHealthPoint() {
+		if (hp != null) {
+			hp.DisableNumberDisplay();
 		}
 	}
 
@@ -118,14 +103,10 @@ public class HexUnit : MonoBehaviour {
 				"Argument cannot be negative",
 				"dmg");
 		}
-		if (isInvincible) {
+		if (hp == null) {
 			return true;
 		}
-		hp -= dmg;
-		if (hp <= 0) {
-			Die();
-			return false;
-		}
+		hp.current -= dmg;
 		return true;
 	}
 
@@ -135,8 +116,8 @@ public class HexUnit : MonoBehaviour {
 				"Argument cannot be negative",
 				"heal");
 		}
-		if (!isInvincible) {
-			hp = Math.Min(hp + heal, maxHP);
+		if (hp != null) {
+			hp.current += heal;
 		}
 	}
 
