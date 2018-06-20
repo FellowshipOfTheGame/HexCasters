@@ -430,6 +430,7 @@ public class GameManager : MonoBehaviour {
 		}
 		toBeDestroyed.Clear();
 		UpdateActionableUnitsHighlight();
+		Timer.T.ResetCountdownTimer();
 		if (hoveredCell != null) {
 			ShowHealthpointText(hoveredCell.unit);
 		}
