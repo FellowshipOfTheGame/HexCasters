@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour {
 	void Start () {
 		T = this;
 		startTime = Time.time;
-		turnTime = 10f;
+		turnTime = 30f;
 	}
 
 	void Update () {
