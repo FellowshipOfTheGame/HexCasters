@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MapSelectMenu : MonoBehaviour {
 
@@ -17,6 +18,10 @@ public class MapSelectMenu : MonoBehaviour {
 
 	public void SelectMap(MapLayout layout) {
 		MapLoader.LoadLayout(layout);
+	}
+
+	public void BackToMainMenu() {
+		SceneManager.LoadScene("MainMenu");
 	}
 
 }
