@@ -8,7 +8,6 @@ public class MainMenu : MonoBehaviour {
 	public MapLayout layout;
 
 	public void PlayGame() {
-		//MapLoader.LoadLayout(layout);
 		SceneManager.LoadScene("MapSelectMenu");
 	}
 
