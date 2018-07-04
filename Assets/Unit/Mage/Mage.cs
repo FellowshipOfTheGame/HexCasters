@@ -14,6 +14,8 @@ public class Mage : MonoBehaviour {
 	public GameObject animRockStrike;
 	public GameObject animImbueLife;
 
+	public GameObject animWind;
+
 	void Awake() {
 		unit = GetComponent<HexUnit>();
 		ownedGolem = null;
@@ -67,5 +69,26 @@ public class Mage : MonoBehaviour {
 
 	public void AnimateImbueLife(HexCell target) {
 		Instantiate(animImbueLife, target.transform, false);
+	}
+
+	public void AnimateCallWinds(HexCell origin, HexCell target) {
+		var wind = AnimateGenericWind(origin, target);
+		if (origin.effect == Effect.FLAMES) {
+			wind.startColor = Color.red;
+		} else if (origin.effect == Effect.STORM) {
+			wind.startColor = Color.blue;
+		} else {
+			wind.startColor = Color.white;
+		}
+	}
+
+	public void AnimateFlight(HexCell origin, HexCell target) {
+		AnimateGenericWind(origin, target);
+	}
+
+	public ParticleSystem.MainModule AnimateGenericWind(HexCell origin, HexCell target) {
+		GameObject ps =  Instantiate(animWind, origin.transform, false);
+		ps.transform.LookAt(target.transform, Vector2.up);
+		return ps.GetComponent<ParticleSystem>().main;
 	}
 }

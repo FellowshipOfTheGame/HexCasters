@@ -114,6 +114,7 @@ MonoBehaviour:
     type: 2}
   animImbueLife: {fileID: 1015382808817320, guid: b22ef8b51911e0d4786291d5d36ca792,
     type: 2}
+  animWind: {fileID: 1833544241214378, guid: 027ec2d105fcea847a70a769fe14b038, type: 2}
 --- !u!114 &114775389759710834
 MonoBehaviour:
   m_ObjectHideFlags: 1
