@@ -88,7 +88,7 @@ public class Mage : MonoBehaviour {
 
 	public ParticleSystem.MainModule AnimateGenericWind(HexCell origin, HexCell target) {
 		GameObject ps =  Instantiate(animWind, origin.transform, false);
-		ps.transform.LookAt(target.transform);
+		ps.transform.LookAt(target.transform, Vector2.up);
 		return ps.GetComponent<ParticleSystem>().main;
 	}
 }
