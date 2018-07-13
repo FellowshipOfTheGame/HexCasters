@@ -110,6 +110,7 @@ MonoBehaviour:
     type: 2}
   animLightningBolt: {fileID: 1587843836015762, guid: 9c204e290aee23d489eb891a562f0a2b,
     type: 2}
+  animSnow: {fileID: 1593532297556256, guid: 2bec73ddab6843a4eacf5c76776cb361, type: 2}
   animRockStrike: {fileID: 1817259679540952, guid: 7c1b20c3d58cc3a48a07682889df82f1,
     type: 2}
   animImbueLife: {fileID: 1015382808817320, guid: b22ef8b51911e0d4786291d5d36ca792,

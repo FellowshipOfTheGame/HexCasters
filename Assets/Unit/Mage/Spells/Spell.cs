@@ -8,7 +8,7 @@ public class Spell {
 	// All delegates receive a list of cells which the
 	// player has *already clicked on* previously as the targets
 	// for the spell
-	
+
 	public delegate IEnumerable<HexCell> GetAOEDelegate(
 		HexUnit caster, HexCell hovered, List<HexCell> targets);
 	public delegate IEnumerable<HexCell> GetValidNextTargetsDelegate(
@@ -82,6 +82,9 @@ public class Spell {
 		1,
 		delegate (HexUnit caster, List<HexCell> targets, Area aoe) {
 			targets[0].ApplySnow(); // SetEffect expands through storms
+			foreach (HexCell cell in aoe) {
+				caster.asMage.AnimateSnow(cell);
+			}
 		},
 		delegate (HexUnit caster, List<HexCell> curTargets) {
 			return caster.cell.Radius(BLIZZARD_RANGE);
