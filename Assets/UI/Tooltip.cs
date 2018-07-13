@@ -75,7 +75,9 @@ public class Tooltip : MonoBehaviour {
 	}
 
 	void PointerEnter(BaseEventData data) {
-		hoverTime = 0;
+		foreach (var tooltip in Object.FindObjectsOfType<Tooltip>()) {
+			tooltip.hoverTime = 0;
+		}
 		beingHovered = true;
 	}
 
