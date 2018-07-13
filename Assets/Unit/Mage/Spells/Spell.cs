@@ -66,6 +66,7 @@ public class Spell {
 		delegate (HexUnit caster, List<HexCell> targets, Area aoe) {
 			foreach (HexCell cell in aoe) {
 				cell.ApplyStorm();
+				caster.asMage.AnimateRain(cell);
 			}
 		},
 		delegate (HexUnit caster, List<HexCell> curTargets) {

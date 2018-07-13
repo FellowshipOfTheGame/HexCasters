@@ -11,6 +11,7 @@ public class Mage : MonoBehaviour {
 	public GameObject animFireball;
 	public GameObject animLightningBolt;
 
+	public GameObject animRain;
 	public GameObject animSnow;
 
 	public GameObject animRockStrike;
@@ -60,6 +61,10 @@ public class Mage : MonoBehaviour {
 
 	public void AnimateLightningBolt(HexCell target) {
 		Instantiate(animLightningBolt, target.transform, false);
+	}
+
+	public void AnimateRain(HexCell target) {
+		Instantiate(animRain, target.transform, false);
 	}
 
 	public void AnimateSnow(HexCell target) {
