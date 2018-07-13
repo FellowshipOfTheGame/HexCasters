@@ -67,6 +67,11 @@ public class Tooltip : MonoBehaviour {
 		pointerExitEntry.eventID = EventTriggerType.PointerExit;
 		pointerExitEntry.callback.AddListener(PointerExit);
 		trigger.triggers.Add(pointerExitEntry);
+
+		EventTrigger.Entry clickEntry = new EventTrigger.Entry();
+		clickEntry.eventID = EventTriggerType.PointerClick;
+		clickEntry.callback.AddListener(PointerExit);
+		trigger.triggers.Add(clickEntry);
 	}
 
 	void PointerEnter(BaseEventData data) {
@@ -90,5 +95,5 @@ public class Tooltip : MonoBehaviour {
 	void HideTooltip() {
 		tooltipObj.SetActive(false);
 	}
-	
+
 }
