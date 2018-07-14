@@ -11,6 +11,9 @@ public class Mage : MonoBehaviour {
 	public GameObject animFireball;
 	public GameObject animLightningBolt;
 
+	public GameObject animRain;
+	public GameObject animSnow;
+
 	public GameObject animRockStrike;
 	public GameObject animImbueLife;
 
@@ -60,9 +63,17 @@ public class Mage : MonoBehaviour {
 		Instantiate(animLightningBolt, target.transform, false);
 	}
 
+	public void AnimateRain(HexCell target) {
+		Instantiate(animRain, target.transform, false);
+	}
+
+	public void AnimateSnow(HexCell target) {
+		Instantiate(animSnow, target.transform, false);
+	}
+
 	public void AnimateRockStrike(HexCell firstOccupiedCell) {
 		GameObject anim = Instantiate(animRockStrike);
-		RockStrikeAnimController contr = 
+		RockStrikeAnimController contr =
 			anim.GetComponent<RockStrikeAnimController>();
 		contr.Init(unit.cell, firstOccupiedCell);
 	}
