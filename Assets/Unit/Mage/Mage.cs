@@ -102,4 +102,8 @@ public class Mage : MonoBehaviour {
 		ps.transform.LookAt(target.transform, Vector2.up);
 		return ps.GetComponent<ParticleSystem>().main;
 	}
+
+	public void PlaySpellSFX(string name) {
+		FindObjectOfType<AudioManager>().Play(name);
+	}
 }

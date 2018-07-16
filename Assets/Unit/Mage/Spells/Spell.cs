@@ -181,6 +181,7 @@ public class Spell {
 	public static readonly Spell CALL_WINDS = new Spell(
 		2,
 		delegate (HexUnit caster, List<HexCell> targets, Area aoe) {
+			caster.asMage.PlaySpellSFX("CallWinds");
 			caster.asMage.AnimateCallWinds(targets[0], targets[1]);
 			HexCell start = targets[0];
 			foreach (HexCell target in aoe) {
