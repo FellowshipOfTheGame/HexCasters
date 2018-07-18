@@ -311,7 +311,7 @@ public class GameManager : MonoBehaviour {
 			case GameState.MOVE_SELECT_DEST:
 				gameStateIndicator.text = STATE_NAME_MOVE_SELECT_DEST;
 				int r = selectedUnit.movespeed;
-				validTargets = selectedCell.Radius(r, true, true);
+				validTargets = selectedCell.Radius(r, true, true, false);
 				foreach (HexCell c in validTargets) {
 					c.highlight = Highlight.IN_RANGE;
 				}

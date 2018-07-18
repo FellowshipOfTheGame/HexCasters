@@ -114,7 +114,7 @@ public class Spell {
 					int dir = caster.cell.DirectionTo(target);
 					HexCell knockedBack = target.GetNeighbor(dir);
 					if (knockedBack != null) {
-						if (knockedBack.content == null) {
+						if (knockedBack.content == null && knockedBack.terrain.transponible) {
 							if (alive) {
 								target.MoveContentTo(knockedBack);
 							}
@@ -168,7 +168,8 @@ public class Spell {
 			return heal
 				.Union(
 					caster.cell.Radius(IMBUE_LIFE_GOLEM_RANGE)
-						.Where(cell => cell.content == null));
+						.Where(cell => cell.content == null)
+						.Where(cell => cell.terrain.transponible));
 		},
 		delegate (HexUnit caster, HexCell hovered, List<HexCell> targets) {
 			return hovered.AsArea();
@@ -230,7 +231,8 @@ public class Spell {
 					.Where(cell => cell.unit != null && !cell.unit.isImmobile);
 			} else {
 				return curTargets[0].Radius(FLIGHT_DEST_DIST)
-					.Where(cell => cell.content == null);
+					.Where(cell => cell.content == null)
+					.Where(cell => cell.terrain.transponible);
 			}
 		},
 		delegate (HexUnit caster, HexCell hovered, List<HexCell> targets) {
