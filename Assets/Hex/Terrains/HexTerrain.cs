@@ -7,4 +7,5 @@ public class HexTerrain : ScriptableObject {
 	public string type;
 	public Sprite sprite;
 	public int movementCost = 1;
+	public bool transponible = true;
 }
