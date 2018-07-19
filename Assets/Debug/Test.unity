@@ -7424,7 +7424,6 @@ MonoBehaviour:
   asMage: {fileID: 0}
   asGolem: {fileID: 0}
   isImmobile: 1
-  blocksVision: 1
   hasMoved: 0
 --- !u!212 &797789833
 SpriteRenderer:
@@ -14519,7 +14518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24df45fbbd77bb6449ed3b94a889f19d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layout: {fileID: 11400000, guid: a344e002dded5d541b59b4a3d01f608f, type: 2}
+  layout: {fileID: 11400000, guid: 67ea238fdb8e11e4e98c6332118de66c, type: 2}
   prefabWall: {fileID: 1591940388647404, guid: 7e40685a321785245bbd50f20fb42041, type: 2}
 --- !u!4 &1022242103
 Transform:

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Orb : MonoBehaviour {
 	private HexUnit unit;
 
-	public const int ORB_HEAL = 2;
+	public const int ORB_HEAL = 3;
 
 	void Awake() {
 		unit = GetComponent<HexUnit>();
