@@ -104,13 +104,15 @@ public class Spell {
 			// Can't use clicked target because enemy hit is not necessarily
 			// in the cell the player clicked on
 			HexCell target = aoe
-				.Where(cell => cell.content != null )
+				.Where(cell => cell.content != null)
 				.FirstOrDefault();
 			HexCell animEnd = null;
 			if (target != null) {
-				animEnd = target;
+				bool alive = false;
+				if (!target.unit.isInvincible) {
+					alive = target.unit.Damage(ROCK_STRIKE_DAMAGE);
+				}
 				if (!target.unit.isImmobile) {
-					bool alive = target.unit.Damage(ROCK_STRIKE_DAMAGE);
 					int dir = caster.cell.DirectionTo(target);
 					HexCell knockedBack = target.GetNeighbor(dir);
 					if (knockedBack != null) {
@@ -123,6 +125,7 @@ public class Spell {
 						}
 					}
 				}
+				animEnd = target;
 			} else {
 				// get furthest cell from origin in AoE
 				animEnd = aoe
