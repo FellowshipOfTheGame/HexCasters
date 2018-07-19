@@ -98,7 +98,7 @@ MonoBehaviour:
   prefabHealthBar: {fileID: 1652310961649920, guid: a883d871c6d0bcf4cb4af4b4a78e7fa1,
     type: 2}
   healthBarHeight: 0.5
-  max: 15
+  max: 8
 --- !u!114 &114975261782705768
 MonoBehaviour:
   m_ObjectHideFlags: 1
