@@ -184,7 +184,8 @@ public class HexCell : MonoBehaviour {
 	public Area Radius(
 			int r,
 			bool blockedByTerrain=false,
-			bool blockedByUnits=false) {
+			bool blockedByUnits=false,
+			bool stepOverIntransponible=true) {
 		Area a = new Area();
 		Queue<HexCell> q = new Queue<HexCell>();
 		Queue<int> qdist = new Queue<int>();
@@ -205,6 +206,10 @@ public class HexCell : MonoBehaviour {
 					if (blockedByUnits && neigh.content != null) {
 						// cannot explore cell,
 						// skip
+						continue;
+					}
+
+					if (!neigh.terrain.transponible && !stepOverIntransponible) {
 						continue;
 					}
 
