@@ -4,11 +4,23 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class TitleScreen : MonoBehaviour, IPointerClickHandler {
+public class TitleScreen : MonoBehaviour {
 
-	public void OnPointerClick(PointerEventData eventData) {
-		//create asset to load main menu scene
-		//MapLoader.LoadLayoutFromResource("Simple_1");
+	private float timeInTitleScreen;
+	public float maxTimeInTitleScreen;
+
+	public void Start() {
+		timeInTitleScreen = 0.0f;
+	}
+
+	public void Update() {
+		timeInTitleScreen += Time.deltaTime;
+		if (timeInTitleScreen >= maxTimeInTitleScreen || Input.GetMouseButton(0)) {
+			GoToMainMenu();
+		}
+	}
+
+	public void GoToMainMenu() {
 		SceneManager.LoadScene("MainMenu");
 	}
 }
