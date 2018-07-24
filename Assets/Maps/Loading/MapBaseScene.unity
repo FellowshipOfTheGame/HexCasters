@@ -2317,8 +2317,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: CallWinds
+  - name: Fireball
+    clip: {fileID: 8300000, guid: 5bd1934cd36c02a4096d2d61abac6557, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: Bolt
+    clip: {fileID: 8300000, guid: 95dd0bac019f6d04995490dbd0876c7a, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: Storm
+    clip: {fileID: 8300000, guid: cf0999198ada2dd4dbaad86e76b052cd, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: Blizzard
+    clip: {fileID: 8300000, guid: d711872c3ab8ff145aa8ea32b471d93c, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: Rock
+    clip: {fileID: 8300000, guid: ad4ddb0a015cfe74b8418f888bb94f40, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: Life
+    clip: {fileID: 8300000, guid: a8bc077b7605c444da06938872471a1b, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: Wind
     clip: {fileID: 8300000, guid: 4692c72c390f7c7448950c41502c050d, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: Flight
+    clip: {fileID: 8300000, guid: 4e0d7f2a1e3d06c4ab562e2f09a52656, type: 3}
     source: {fileID: 0}
     loop: 0
     volume: 0.55
@@ -3428,7 +3470,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.1171875
+  orthographic size: 4.6875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
