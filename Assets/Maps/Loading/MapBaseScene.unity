@@ -960,7 +960,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a75d8b61f8d8346ac8644de9073396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layout: {fileID: 11400000, guid: 8910b229f9916374792ecb57274f6dfb, type: 2}
 --- !u!1 &198913571
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,7 +2906,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: test
+  m_Text: 
 --- !u!222 &625325184
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3470,7 +3469,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: NaN
+  orthographic size: 2.921875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4526,6 +4525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerIndicator: {fileID: 625325183}
   turnTime: 0
+  hasTimeLimit: 0
 --- !u!1 &1080102272
 GameObject:
   m_ObjectHideFlags: 0

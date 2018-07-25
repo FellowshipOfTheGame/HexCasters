@@ -5,10 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
-	public MapLayout layout;
-
 	public void PlayGame() {
-		SceneManager.LoadScene("MapSelectMenu");
+		SceneManager.LoadScene("TimerMenu");
 	}
 
 	public void QuitGame() {

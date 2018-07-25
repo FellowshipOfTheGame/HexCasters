@@ -16,12 +16,12 @@ public class MapSelectMenu : MonoBehaviour {
 		mapName.text = "";
 	}
 
-	public void SelectMap(MapLayout layout) {
-		MapLoader.LoadLayout(layout);
+	public void SelectMap(MapLayout ml) {
+		MapLoader.LoadLayout(ml);
 	}
 
-	public void BackToMainMenu() {
-		SceneManager.LoadScene("MainMenu");
+	public void BackToTimerMenu() {
+		SceneManager.LoadScene("TimerMenu");
 	}
 
 }
