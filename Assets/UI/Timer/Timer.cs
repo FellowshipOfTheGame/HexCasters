@@ -10,15 +10,20 @@ public class Timer : MonoBehaviour {
 
 	private float startTime;
 	public float turnTime;
+	public bool hasTimeLimit;
 
 	void Start () {
 		T = this;
-		startTime = Time.time;
-		turnTime = 30f;
+		hasTimeLimit = false;
+		turnTime = TimerMenu.TMenu.turnTime;
+		if (turnTime > 0) {
+			startTime = Time.time;
+			hasTimeLimit = true;
+		}
 	}
 
 	void Update () {
-		if (GameManager.GM.state == GameManager.GameState.RESULTS) {
+		if (!hasTimeLimit || GameManager.GM.state == GameManager.GameState.RESULTS) {
 			return;
 		}
 		float t = Time.time - startTime; //growing count
@@ -30,12 +35,14 @@ public class Timer : MonoBehaviour {
 	}
 
 	public void ResetCountdownTimer() {
-		startTime = Time.time;
-		if (GameManager.GM.state == GameManager.GameState.RESULTS) {
-			timerIndicator.text = "";
-		}
-		else {
-			GameManager.GM.state = GameManager.GameState.OVERVIEW;
+		if (hasTimeLimit) {
+			startTime = Time.time;
+			if (GameManager.GM.state == GameManager.GameState.RESULTS) {
+				timerIndicator.text = "";
+			}
+			else {
+				GameManager.GM.state = GameManager.GameState.OVERVIEW;
+			}
 		}
 	}
 
