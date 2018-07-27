@@ -21,10 +21,10 @@ public static class MapLoader {
 		LoadLayout(ml);
 	}
 
-	public static void LoadLayout(MapLayout ml) {
+	public static void LoadLayout(MapLayout ml, LoadSceneMode mode = LoadSceneMode.Single) {
 		layout = ml;
 		loading = true;
-		SceneManager.LoadScene(MAP_BASE_SCENE_NAME);
+		SceneManager.LoadScene(MAP_BASE_SCENE_NAME, mode);
 	}
 
 	public static void LoadEnd() {
