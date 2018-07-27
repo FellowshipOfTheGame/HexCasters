@@ -106,6 +106,9 @@ public class HexUnit : MonoBehaviour {
 		if (hp == null) {
 			return true;
 		}
+		if (isImmobile) {
+			GameManager.GM.PlaySFX("BarrierDamage");
+		}
 		hp.current -= dmg;
 		return true;
 	}
@@ -122,6 +125,12 @@ public class HexUnit : MonoBehaviour {
 	}
 
 	public void Die() {
+		if (isMage) {
+			GameManager.GM.PlaySFX("Death");
+		}
+		if (isImmobile) {
+			GameManager.GM.PlaySFX("BarrierBreak");
+		}
 		GameManager.GM.RemoveUnit(this);
 	}
 

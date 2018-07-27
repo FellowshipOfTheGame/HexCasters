@@ -209,6 +209,9 @@ public class GameManager : MonoBehaviour {
 					if (selectedUnit.isMage) {
 						state = GameState.SPELL_CHOICE;
 					} else {
+						if (selectedUnit.isOrb) {
+							PlaySFX("OrbMove");
+						}
 						state = GameState.OVERVIEW;
 					}
 				} else {
@@ -343,8 +346,8 @@ public class GameManager : MonoBehaviour {
 		if (hoveredCell != null) {
 			HoverEnter(hoveredCell);
 		}
+	}
 
-}
 	private void ExitState() {
 		if (hoveredCell != null) {
 			HexCell cell = hoveredCell;
@@ -542,6 +545,10 @@ public class GameManager : MonoBehaviour {
 				| System.Reflection.BindingFlags.Static);
 		selectedSpell = info.GetValue(null) as Spell;
 		state = GameState.SPELL_SELECT_TARGETS;
+	}
+
+	public void PlaySFX(string name) {
+		FindObjectOfType<AudioManager>().Play(name);
 	}
 
 	/*
