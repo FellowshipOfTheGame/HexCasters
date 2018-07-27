@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Name: Desert
   m_EditorClassIdentifier: 
   type: desert
-  sprite: {fileID: 21300000, guid: 6bbb728eec41eeb4cbd166f849e74d26, type: 3}
+  spriteSet: {fileID: 11400000, guid: 983acd89190d30d489bfbaee6fc799db, type: 2}
   movementCost: 1
+  transponible: 1

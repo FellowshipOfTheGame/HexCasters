@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: Abyss
   m_EditorClassIdentifier: 
   type: abyss
-  sprite: {fileID: 21300000, guid: 607971c0091dea346abe3543da812dc4, type: 3}
+  spriteSet: {fileID: 11400000, guid: 1e3f6ddcb9a6f444d8d1c3b4670a23c6, type: 2}
   movementCost: 999
   transponible: 0

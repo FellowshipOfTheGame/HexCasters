@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 114491869602171686}
   - component: {fileID: 114656573564233080}
   - component: {fileID: 114775389759710834}
+  - component: {fileID: 114289485567115252}
   m_Layer: 0
   m_Name: Mage
   m_TagString: Unit
@@ -73,6 +74,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114289485567115252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1614444781376684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c5fae96511f278468a6275bb8c4cc11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - set: {fileID: 11400000, guid: 1078fc72d74ca3e47ad51a744134de78, type: 2}
+    renderer: {fileID: 212874711228561096}
+  - set: {fileID: 11400000, guid: c5b19b47c513a2f40b72659f417917d2, type: 2}
+    renderer: {fileID: 212230828755276194}
 --- !u!114 &114491869602171686
 MonoBehaviour:
   m_ObjectHideFlags: 1

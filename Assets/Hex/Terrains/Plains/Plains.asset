@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Name: Plains
   m_EditorClassIdentifier: 
   type: plains
-  sprite: {fileID: 21300000, guid: 7f36ad8d6baea89429d2f3580ef7c50d, type: 3}
+  spriteSet: {fileID: 11400000, guid: ae78033c12e48d4479b6e0ee90c1212d, type: 2}
   movementCost: 1
+  transponible: 1
