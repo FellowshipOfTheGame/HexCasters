@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54730fc7280f7114a96f909920fa42ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animHeal: {fileID: 1015382808817320, guid: b22ef8b51911e0d4786291d5d36ca792, type: 2}
 --- !u!114 &114716003104462070
 MonoBehaviour:
   m_ObjectHideFlags: 1
