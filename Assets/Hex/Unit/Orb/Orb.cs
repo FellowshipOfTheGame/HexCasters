@@ -6,6 +6,8 @@ using UnityEngine;
 public class Orb : MonoBehaviour {
 	private HexUnit unit;
 
+	public GameObject animHeal;
+
 	public const int ORB_HEAL = 3;
 
 	void Awake() {
@@ -26,7 +28,12 @@ public class Orb : MonoBehaviour {
 		foreach (HexCell cell in unit.cell.EnumerateNeighbors()) {
 			if (cell.unit != null && cell.unit.team == unit.team) {
 				cell.unit.Heal(ORB_HEAL);
+				AnimateHeal(cell);
 			}
 		}
+	}
+
+	void AnimateHeal(HexCell target) {
+		Instantiate(animHeal, target.transform, false);
 	}
 }
