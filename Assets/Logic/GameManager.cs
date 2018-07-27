@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
 	public HexGrid grid;
 	public RawImage turnIndicator;
 	public RawImage winnerIndicator;
+	public Text gameStateIndicator;
 	public Text winnerMessage;
 	public GameObject spellList;
 
@@ -307,6 +308,7 @@ public class GameManager : MonoBehaviour {
 	private void EnterState() {
 		switch (state) {
 			case GameState.OVERVIEW:
+				gameStateIndicator.text = STATE_NAME_OVERVIEW;
 				if (selectedCell != null) {
 					selectedCell.highlight = Highlight.NONE;
 				}
@@ -314,6 +316,7 @@ public class GameManager : MonoBehaviour {
 				UpdateActionableUnitsHighlight();
 				break;
 			case GameState.MOVE_SELECT_DEST:
+				gameStateIndicator.text = STATE_NAME_MOVE_SELECT_DEST;
 				int r = selectedUnit.movespeed;
 				validTargets = selectedCell.Radius(r, true, true, false);
 				foreach (HexCell c in validTargets) {
@@ -322,9 +325,11 @@ public class GameManager : MonoBehaviour {
 				break;
 			case GameState.SPELL_CHOICE:
 				spellList.SetActive(true);
+				gameStateIndicator.text = STATE_NAME_SPELL_CHOICE;
 				selectedCell.highlight = Highlight.SELECTED;
 				break;
 			case GameState.SPELL_SELECT_TARGETS:
+				gameStateIndicator.text = STATE_NAME_SPELL_SELECT_TARGETS;
 				if (selectedCell != null) {
 					selectedCell.highlight = Highlight.NONE;
 				}

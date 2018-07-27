@@ -23,12 +23,6 @@ public class Tooltip : MonoBehaviour {
 	private Canvas canvas;
 	private GameObject tooltipObj;
 
-	public void Clear() {
-		tooltipObj.SetActive(false);
-		beingHovered = false;
-		hoverTime = 0;
-	}
-
 	void Awake() {
 		trigger = GetComponent<EventTrigger>();
 		FindCanvas();

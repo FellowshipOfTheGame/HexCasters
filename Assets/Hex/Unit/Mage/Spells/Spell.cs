@@ -117,7 +117,7 @@ public class Spell {
 				if (!target.unit.isInvincible) {
 					alive = target.unit.Damage(ROCK_STRIKE_DAMAGE);
 				}
-				if (target.unit != null && !target.unit.isImmobile) {
+				if (!target.unit.isImmobile) {
 					int dir = caster.cell.DirectionTo(target);
 					HexCell knockedBack = target.GetNeighbor(dir);
 					if (knockedBack != null) {
