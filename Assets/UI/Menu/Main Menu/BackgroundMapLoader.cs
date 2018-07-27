@@ -19,6 +19,9 @@ public class BackgroundMapLoader : MonoBehaviour {
 			if (go.name == "Canvas" || go.name == "Menu Canvas" || go.name == "Winner Canvas") {
 				go.SetActive(false);
 			}
+			if (go.name == "Board") {
+				go.GetComponent<Timer>().enabled = false;
+			}
 		}
 	}
 
