@@ -1418,6 +1418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 816258376}
   - component: {fileID: 816258374}
+  - component: {fileID: 816258375}
   m_Layer: 0
   m_Name: BackgroundMapLoader
   m_TagString: Untagged
@@ -1437,6 +1438,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layout: {fileID: 11400000, guid: 29d8fd4d4705f3a4197d6b3c7db8e9a4, type: 2}
+--- !u!114 &816258375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 816258373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a25413ba8c63d4886614c3d1e96e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &816258376
 Transform:
   m_ObjectHideFlags: 0

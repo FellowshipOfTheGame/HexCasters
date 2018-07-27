@@ -146,7 +146,10 @@ public class GameManager : MonoBehaviour {
 		switch (state) {
 			case GameState.OVERVIEW:
 				if (Input.GetKeyDown(KeyCode.Space)) {
-					EndTurn();
+					// GM loaded in main menu as Background Map scene
+					if (BackgroundMapLoader.BMLoader == null) {
+						EndTurn();
+					}
 				}
 				break;
 			case GameState.MOVE_SELECT_DEST:
@@ -234,6 +237,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void HoverEnter(HexCell cell) {
+		// GM loaded in main menu as Background Map scene
+		if (BackgroundMapLoader.BMLoader != null) {
+			return;
+		}
 		hoveredCell = cell;
 		ShowHealthpointText(cell.unit);
 		switch (state) {

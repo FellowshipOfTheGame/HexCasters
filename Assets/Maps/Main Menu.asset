@@ -76,6 +76,30 @@ MonoBehaviour:
       y: 4
     - x: 4
       y: -4
+    - x: 5
+      y: -5
+    - x: -5
+      y: 5
+    - x: 6
+      y: -6
+    - x: -6
+      y: 6
+    - x: 4
+      y: -5
+    - x: 6
+      y: -5
+    - x: -4
+      y: 5
+    - x: -6
+      y: 5
+    - x: 5
+      y: -4
+    - x: 5
+      y: -6
+    - x: -5
+      y: 4
+    - x: -5
+      y: 6
     m_values:
     - terrain: {fileID: 0}
       effect: 0
@@ -182,32 +206,82 @@ MonoBehaviour:
       content: {fileID: 0}
       contentTeam: 0
     - terrain: {fileID: 0}
-      effect: 0
+      effect: 3
       content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
         type: 2}
       contentTeam: 0
     - terrain: {fileID: 0}
-      effect: 0
+      effect: 3
       content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
         type: 2}
       contentTeam: 0
     - terrain: {fileID: 0}
-      effect: 0
+      effect: 3
       content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
         type: 2}
       contentTeam: 0
     - terrain: {fileID: 0}
-      effect: 0
+      effect: 3
       content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
         type: 2}
       contentTeam: 0
     - terrain: {fileID: 0}
-      effect: 0
+      effect: 3
       content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
         type: 2}
       contentTeam: 0
     - terrain: {fileID: 0}
-      effect: 0
+      effect: 3
       content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
         type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 2
+      content: {fileID: 0}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 2
+      content: {fileID: 0}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 3
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 3
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 2
+      content: {fileID: 0}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 2
+      content: {fileID: 0}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 2
+      content: {fileID: 0}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 2
+      content: {fileID: 0}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 2
+      content: {fileID: 0}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 2
+      content: {fileID: 0}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 2
+      content: {fileID: 0}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 2
+      content: {fileID: 0}
       contentTeam: 0

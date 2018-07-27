@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class TimerMenu : MonoBehaviour {
 
-	public static TimerMenu TMenu;
+	public static float turnTime;
+	public static bool isSelected;
 
-	public float turnTime;
-
-	void Start() {
-		TMenu = this;
+	void Awake() {
+		isSelected = false;
 	}
 
 	public void SelectTimer(float time) {
 		turnTime = time;
+		isSelected = true;
 		SceneManager.LoadScene("MapSelectMenu");
 	}
 

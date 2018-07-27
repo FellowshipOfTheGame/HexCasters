@@ -7,8 +7,14 @@ using UnityEngine.SceneManagement;
 public class BackgroundMapLoader : MonoBehaviour {
 
 	public MapLayout layout;
+	public static BackgroundMapLoader BMLoader;
 
 	void Awake() {
+		if (BMLoader != null) {
+			Destroy(gameObject);
+			return;
+		}
+		BMLoader = this;
 		SceneManager.sceneLoaded += Loaded;
 		MapLoader.LoadLayout(layout, LoadSceneMode.Additive);
 	}
@@ -24,10 +30,6 @@ public class BackgroundMapLoader : MonoBehaviour {
 
 	void Loaded(Scene scene, LoadSceneMode mode) {
 		SceneManager.sceneLoaded -= Loaded;
-		//Invoke("OnLoad", 0.1f);
-	}
-
-	void OnLoad() {
 	}
 
 }

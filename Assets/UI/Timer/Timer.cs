@@ -12,10 +12,16 @@ public class Timer : MonoBehaviour {
 	public float turnTime;
 	public bool hasTimeLimit;
 
-	void Start () {
+	void Awake() {
+		if (T != null) {
+			Destroy(gameObject);
+			return;
+		}
 		T = this;
 		hasTimeLimit = false;
-		turnTime = TimerMenu.TMenu.turnTime;
+		if (TimerMenu.isSelected) {
+			turnTime = TimerMenu.turnTime;
+		}
 		if (turnTime > 0) {
 			startTime = Time.time;
 			hasTimeLimit = true;

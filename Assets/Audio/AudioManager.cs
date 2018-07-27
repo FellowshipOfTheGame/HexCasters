@@ -5,11 +5,11 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour {
 
 	public Sound[] sounds;
-	public static AudioManager instance;
+	public static AudioManager AM;
 
 	void Awake () {
-		if (instance == null) {
-			instance = this;
+		if (AM == null) {
+			AM = this;
 		}
 		else {
 			Destroy(gameObject);
