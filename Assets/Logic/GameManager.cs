@@ -78,11 +78,6 @@ public class GameManager : MonoBehaviour {
 		RESULTS
 	}
 
-	private const string STATE_NAME_OVERVIEW = "Overview";
-	private const string STATE_NAME_MOVE_SELECT_DEST = "Move";
-	private const string STATE_NAME_SPELL_CHOICE = "Select Spell";
-	private const string STATE_NAME_SPELL_SELECT_TARGETS = "Cast Spell";
-
 	[SerializeField]
 	private GameState _state;
 	public GameState state {
@@ -97,10 +92,10 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	private Area validTargets;
+	public Area validTargets;
 	public Spell selectedSpell;
-	private List<HexCell> spellTargets;
-	private Area spellAOE;
+	public List<HexCell> spellTargets;
+	public Area spellAOE;
 	private HashSet<HexUnit> toBeDestroyed;
 	private HashSet<HexUnit> beingDestroyed;
 	private Team winner;
@@ -159,6 +154,10 @@ public class GameManager : MonoBehaviour {
 				break;
 			case GameState.SPELL_CHOICE:
 				selectedSpell = null;
+				// GM loaded in main menu as Background Map scene
+				if (BackgroundMapLoader.BMLoader != null) {
+					return;
+				}
 				if (Input.GetKeyDown(KeyCode.Alpha0)) {
 					state = GameState.OVERVIEW;
 				} else if (Input.GetKeyDown(KeyCode.Alpha1)) {
@@ -268,6 +267,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void HoverExit(HexCell cell) {
+		// GM loaded in main menu as Background Map scene
+		if (BackgroundMapLoader.BMLoader != null) {
+			return;
+		}
 		hoveredCell = null;
 		RemoveHealthpointText(cell.unit);
 		switch (state) {
@@ -534,7 +537,8 @@ public class GameManager : MonoBehaviour {
 
 	bool InputCancel() {
 		return Input.GetKeyDown(KeyCode.Backspace)
-				|| Input.GetKeyDown(KeyCode.Escape)
+				|| (Input.GetKeyDown(KeyCode.Escape) &&
+					 (BackgroundMapLoader.BMLoader == null))
 				|| Input.GetMouseButtonDown(1);
 	}
 
