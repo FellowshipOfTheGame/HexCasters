@@ -8,10 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 998d0df631c0b0f4395b0de55c0c09da, type: 3}
-  m_Name: Forest
+  m_Script: {fileID: 11500000, guid: 7eeeb9b614800e948b09c185b749cb5d, type: 3}
+  m_Name: Mage Overlay Set
   m_EditorClassIdentifier: 
-  type: forest
-  sprite: {fileID: 21300000, guid: 66321d9592e1e304f872b644351e960b, type: 3}
-  movementCost: 2
-  transponible: 1
+  sprites:
+  - {fileID: 21300000, guid: 5388c8aab30567645938c28ca21478ad, type: 3}
+  - {fileID: 21300000, guid: b6149ae1bf29a5449b2d8fb6d32a6f94, type: 3}
