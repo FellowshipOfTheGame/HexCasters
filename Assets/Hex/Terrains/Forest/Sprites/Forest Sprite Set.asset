@@ -8,10 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 998d0df631c0b0f4395b0de55c0c09da, type: 3}
-  m_Name: Forest
+  m_Script: {fileID: 11500000, guid: 7eeeb9b614800e948b09c185b749cb5d, type: 3}
+  m_Name: Forest Sprite Set
   m_EditorClassIdentifier: 
-  type: forest
-  spriteSet: {fileID: 11400000, guid: a57cd15226679774eac0bef5c39b6da3, type: 2}
-  movementCost: 2
-  transponible: 1
+  sprites:
+  - {fileID: 21300000, guid: 66321d9592e1e304f872b644351e960b, type: 3}

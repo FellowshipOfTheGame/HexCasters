@@ -10,7 +10,7 @@ public class SpriteSetSelector : MonoBehaviour {
 
     public TargetRender[] targets;
 
-    void Awake() {
+    void Start() {
         var numOfSprites = targets[0].set.sprites.Length;
         for (var i = 1; i < targets.Length; i++) {
             if (targets[i].set.sprites.Length != numOfSprites) {
