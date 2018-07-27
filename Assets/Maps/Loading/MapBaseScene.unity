@@ -2329,13 +2329,13 @@ MonoBehaviour:
     volume: 0.55
     pitch: 1.06
   - name: Storm
-    clip: {fileID: 8300000, guid: cf0999198ada2dd4dbaad86e76b052cd, type: 3}
+    clip: {fileID: 0}
     source: {fileID: 0}
     loop: 0
     volume: 0.55
     pitch: 1.06
   - name: Blizzard
-    clip: {fileID: 8300000, guid: d711872c3ab8ff145aa8ea32b471d93c, type: 3}
+    clip: {fileID: 0}
     source: {fileID: 0}
     loop: 0
     volume: 0.55
@@ -2362,6 +2362,48 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4692c72c390f7c7448950c41502c050d, type: 3}
     source: {fileID: 0}
     loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: SummonGolem
+    clip: {fileID: 8300000, guid: 48cbe4466dc336f419fbb098aca29562, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: Death
+    clip: {fileID: 8300000, guid: ed84784e8feecf84789d5d925746312c, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: OrbMove
+    clip: {fileID: 8300000, guid: ddec132d34e9f7c428aefeeb7894f3e7, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: BarrierDamage
+    clip: {fileID: 8300000, guid: 73c7d0cd66c3eba43aa3a5cdb90ddbf3, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: BarrierBreak
+    clip: {fileID: 8300000, guid: 5149b1ad7d3f9844da27e5f37907636f, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: Rain
+    clip: {fileID: 8300000, guid: 594897a7c40249249ba1e681b1c966af, type: 3}
+    source: {fileID: 0}
+    loop: 1
+    volume: 0.55
+    pitch: 1.06
+  - name: Snow
+    clip: {fileID: 0}
+    source: {fileID: 0}
+    loop: 1
     volume: 0.55
     pitch: 1.06
 --- !u!4 &491051468
@@ -3469,7 +3511,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.921875
+  orthographic size: 4.6875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
