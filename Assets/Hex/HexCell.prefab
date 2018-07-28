@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 114707429185851616}
   - component: {fileID: 114675786751538866}
   - component: {fileID: 114191488168423088}
+  - component: {fileID: 114588362424965768}
   m_Layer: 0
   m_Name: HexCell
   m_TagString: Untagged
@@ -477,6 +478,19 @@ MonoBehaviour:
   terrain: {fileID: 0}
   _content: {fileID: 0}
   spriteSelector: {fileID: 0}
+--- !u!114 &114588362424965768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1852854476105656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4f11206b16a9b41b963d72085a69d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cell: {fileID: 114511628706531296}
+  abyss: {fileID: 11400000, guid: 4104b3b8f3834cf4f8c0efff70f8c8d8, type: 2}
 --- !u!114 &114675786751538866
 MonoBehaviour:
   m_ObjectHideFlags: 1
