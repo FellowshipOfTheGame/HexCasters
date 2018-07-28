@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: Abyss Sprite Set
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: 607971c0091dea346abe3543da812dc4, type: 3}
+  - {fileID: 21300000, guid: 853cc3bf78ad4e8498fce393773210c2, type: 3}
