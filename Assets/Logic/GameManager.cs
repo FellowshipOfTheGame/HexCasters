@@ -128,6 +128,16 @@ public class GameManager : MonoBehaviour {
 
 	public void Begin() {
 		state = GameState.OVERVIEW;
+		if (BackgroundMapLoader.BMLoader == null) {
+			AudioManager.AM.Stop("Menu");
+			PlaySFX("Game");
+		}
+	}
+
+	void OnDestroy() {
+		if (AudioManager.AM != null) {
+			AudioManager.AM.Stop("Game");
+		}
 	}
 
 	// TODO remove, this is debug
@@ -532,6 +542,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void BackToMainMenu() {
+		AudioManager.AM.Stop("Game");
 		SceneManager.LoadScene("MainMenu");
 	}
 

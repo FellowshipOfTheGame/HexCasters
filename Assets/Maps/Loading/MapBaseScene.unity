@@ -931,7 +931,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 169581369}
-  - component: {fileID: 169581370}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -961,17 +960,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &169581370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 169581368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1a75d8b61f8d8346ac8644de9073396, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &198913571
 GameObject:
   m_ObjectHideFlags: 0
@@ -2418,6 +2406,18 @@ MonoBehaviour:
     loop: 1
     volume: 0.55
     pitch: 1.06
+  - name: Menu
+    clip: {fileID: 8300000, guid: fb3d2ca9e9d811444b71ad8a272fe7fb, type: 3}
+    source: {fileID: 0}
+    loop: 1
+    volume: 0.2
+    pitch: 1.06
+  - name: Game
+    clip: {fileID: 8300000, guid: 1422214c11dedb34399f50a09bf6b39f, type: 3}
+    source: {fileID: 0}
+    loop: 1
+    volume: 0.1
+    pitch: 1.06
 --- !u!4 &491051468
 Transform:
   m_ObjectHideFlags: 0
@@ -3523,7 +3523,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.5546875
+  orthographic size: 2.921875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4531,6 +4531,7 @@ MonoBehaviour:
   hoveredCell: {fileID: 0}
   _pairedUnitCell: {fileID: 0}
   _state: 0
+  spellTargets: []
   prefabGolem: {fileID: 1566141296437566, guid: a0609cde0d059944a836025442d5781a,
     type: 2}
 --- !u!114 &1072719958
@@ -4655,7 +4656,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 169581370}
+      - m_Target: {fileID: 0}
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
