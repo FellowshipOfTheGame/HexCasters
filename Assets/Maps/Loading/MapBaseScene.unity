@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 65938229}
   - component: {fileID: 65938231}
   - component: {fileID: 65938230}
+  - component: {fileID: 65938232}
   m_Layer: 5
   m_Name: Spell List
   m_TagString: Untagged
@@ -439,6 +440,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 65938228}
+--- !u!114 &65938232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 65938228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5d42128d6fbac478ac9969e9ffbf1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &79515632
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +931,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 169581369}
-  - component: {fileID: 169581370}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -949,18 +960,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &169581370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 169581368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1a75d8b61f8d8346ac8644de9073396, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layout: {fileID: 11400000, guid: 8910b229f9916374792ecb57274f6dfb, type: 2}
 --- !u!1 &198913571
 GameObject:
   m_ObjectHideFlags: 0
@@ -2317,11 +2316,107 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: CallWinds
+  - name: Fireball
+    clip: {fileID: 8300000, guid: 35d5767b7ca389144b6fe4c09e9f0a76, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: Bolt
+    clip: {fileID: 8300000, guid: 95dd0bac019f6d04995490dbd0876c7a, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: Storm
+    clip: {fileID: 0}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: Blizzard
+    clip: {fileID: 0}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: Rock
+    clip: {fileID: 8300000, guid: ad4ddb0a015cfe74b8418f888bb94f40, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: Life
+    clip: {fileID: 8300000, guid: a8bc077b7605c444da06938872471a1b, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: Wind
     clip: {fileID: 8300000, guid: 4692c72c390f7c7448950c41502c050d, type: 3}
     source: {fileID: 0}
     loop: 0
     volume: 0.55
+    pitch: 1.06
+  - name: Flight
+    clip: {fileID: 8300000, guid: 4692c72c390f7c7448950c41502c050d, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: SummonGolem
+    clip: {fileID: 8300000, guid: 48cbe4466dc336f419fbb098aca29562, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: Death
+    clip: {fileID: 8300000, guid: ed84784e8feecf84789d5d925746312c, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: OrbMove
+    clip: {fileID: 8300000, guid: ddec132d34e9f7c428aefeeb7894f3e7, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: BarrierDamage
+    clip: {fileID: 8300000, guid: 73c7d0cd66c3eba43aa3a5cdb90ddbf3, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: BarrierBreak
+    clip: {fileID: 8300000, guid: 5149b1ad7d3f9844da27e5f37907636f, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.55
+    pitch: 1.06
+  - name: Rain
+    clip: {fileID: 8300000, guid: 594897a7c40249249ba1e681b1c966af, type: 3}
+    source: {fileID: 0}
+    loop: 1
+    volume: 0.55
+    pitch: 1.06
+  - name: Snow
+    clip: {fileID: 0}
+    source: {fileID: 0}
+    loop: 1
+    volume: 0.55
+    pitch: 1.06
+  - name: Menu
+    clip: {fileID: 8300000, guid: fb3d2ca9e9d811444b71ad8a272fe7fb, type: 3}
+    source: {fileID: 0}
+    loop: 1
+    volume: 0.2
+    pitch: 1.06
+  - name: Game
+    clip: {fileID: 8300000, guid: 1422214c11dedb34399f50a09bf6b39f, type: 3}
+    source: {fileID: 0}
+    loop: 1
+    volume: 0.1
     pitch: 1.06
 --- !u!4 &491051468
 Transform:
@@ -2826,7 +2921,7 @@ RectTransform:
   m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 1881933809}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2865,7 +2960,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: test
+  m_Text: 
 --- !u!222 &625325184
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3428,7 +3523,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.1171875
+  orthographic size: 2.921875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4430,13 +4525,13 @@ MonoBehaviour:
   grid: {fileID: 1072719958}
   turnIndicator: {fileID: 1881933807}
   winnerIndicator: {fileID: 284460352}
-  gameStateIndicator: {fileID: 1423552676}
   winnerMessage: {fileID: 1026457987}
   spellList: {fileID: 65938228}
   selectedCell: {fileID: 0}
   hoveredCell: {fileID: 0}
   _pairedUnitCell: {fileID: 0}
   _state: 0
+  spellTargets: []
   prefabGolem: {fileID: 1566141296437566, guid: a0609cde0d059944a836025442d5781a,
     type: 2}
 --- !u!114 &1072719958
@@ -4484,6 +4579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerIndicator: {fileID: 625325183}
   turnTime: 0
+  hasTimeLimit: 0
 --- !u!1 &1080102272
 GameObject:
   m_ObjectHideFlags: 0
@@ -4560,7 +4656,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 169581370}
+      - m_Target: {fileID: 0}
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -6137,80 +6233,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1418791110}
---- !u!1 &1423552675
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1423552678}
-  - component: {fileID: 1423552677}
-  - component: {fileID: 1423552676}
-  m_Layer: 5
-  m_Name: Phase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1423552676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1423552675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 1
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 
---- !u!222 &1423552677
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1423552675}
---- !u!224 &1423552678
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1423552675}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1881933809}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1424820596
 GameObject:
   m_ObjectHideFlags: 0
@@ -8594,7 +8616,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1423552678}
   - {fileID: 625325182}
   m_Father: {fileID: 943390843}
   m_RootOrder: 0

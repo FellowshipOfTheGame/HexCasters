@@ -24,6 +24,7 @@ public class Spell {
 	public static readonly Spell FIREBALL = new Spell(
 		1,
 		delegate (HexUnit caster, List<HexCell> targets, Area aoe) {
+			GameManager.GM.PlaySFX("Fireball");
 			caster.asMage.AnimateFireball(targets[0]);
 			foreach (HexCell cell in aoe) {
 				cell.ApplyFlames();
@@ -43,6 +44,7 @@ public class Spell {
 	public static readonly Spell LIGHTNING_BOLT = new Spell(
 		1,
 		delegate (HexUnit caster, List<HexCell> targets, Area aoe) {
+			GameManager.GM.PlaySFX("Bolt");
 			foreach (HexCell cell in aoe) {
 				caster.asMage.AnimateLightningBolt(cell);
 				if (cell.unit != null) {
@@ -64,6 +66,7 @@ public class Spell {
 	public static readonly Spell SUMMON_STORM = new Spell(
 		1,
 		delegate (HexUnit caster, List<HexCell> targets, Area aoe) {
+			GameManager.GM.PlaySFX("Storm");
 			foreach (HexCell cell in aoe) {
 				cell.ApplyStorm();
 				caster.asMage.AnimateRain(cell);
@@ -82,6 +85,7 @@ public class Spell {
 	public static readonly Spell BLIZZARD = new Spell(
 		1,
 		delegate (HexUnit caster, List<HexCell> targets, Area aoe) {
+			GameManager.GM.PlaySFX("Blizzard");
 			targets[0].ApplySnow(); // SetEffect expands through storms
 			foreach (HexCell cell in aoe) {
 				caster.asMage.AnimateSnow(cell);
@@ -101,6 +105,7 @@ public class Spell {
 	public static readonly Spell ROCK_STRIKE = new Spell(
 		1,
 		delegate (HexUnit caster, List<HexCell> targets, Area aoe) {
+			GameManager.GM.PlaySFX("Rock");
 			// Can't use clicked target because enemy hit is not necessarily
 			// in the cell the player clicked on
 			HexCell target = aoe
@@ -112,7 +117,7 @@ public class Spell {
 				if (!target.unit.isInvincible) {
 					alive = target.unit.Damage(ROCK_STRIKE_DAMAGE);
 				}
-				if (!target.unit.isImmobile) {
+				if (target.unit != null && !target.unit.isImmobile) {
 					int dir = caster.cell.DirectionTo(target);
 					HexCell knockedBack = target.GetNeighbor(dir);
 					if (knockedBack != null) {
@@ -154,8 +159,10 @@ public class Spell {
 		delegate (HexUnit caster, List<HexCell> targets, Area aoe) {
 			HexCell target = targets[0];
 			if (target.content == null) {
+				GameManager.GM.PlaySFX("SummonGolem");
 				caster.asMage.SpawnGolem(target);
 			} else {
+				GameManager.GM.PlaySFX("Life");
 				target.unit.Heal(IMBUE_LIFE_HEAL);
 			}
 			caster.asMage.AnimateImbueLife(target);
@@ -185,7 +192,7 @@ public class Spell {
 	public static readonly Spell CALL_WINDS = new Spell(
 		2,
 		delegate (HexUnit caster, List<HexCell> targets, Area aoe) {
-			caster.asMage.PlaySpellSFX("CallWinds");
+			GameManager.GM.PlaySFX("Wind");
 			caster.asMage.AnimateCallWinds(targets[0], targets[1]);
 			HexCell start = targets[0];
 			foreach (HexCell target in aoe) {
@@ -224,6 +231,7 @@ public class Spell {
 	public static readonly Spell FLIGHT = new Spell(
 		2,
 		delegate (HexUnit caster, List<HexCell> targets, Area aoe) {
+			GameManager.GM.PlaySFX("Flight");
 			caster.asMage.AnimateFlight(targets[0], targets[1]);
 			targets[0].MoveContentTo(targets[1]);
 			GameManager.GM.selectedCell = caster.cell;

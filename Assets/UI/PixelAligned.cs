@@ -11,12 +11,14 @@ public class PixelAligned : MonoBehaviour {
 	}
 
 	void LateUpdate() {
-		Vector3 newPosition = Vector3.zero;
-		float ppu = rend.sprite.pixelsPerUnit;
+		if (rend.sprite != null) {
+			Vector3 newPosition = Vector3.zero;
+			float ppu = rend.sprite.pixelsPerUnit;
 
-        newPosition.x = (Mathf.Round(transform.position.x * ppu) / ppu);
-        newPosition.y = (Mathf.Round(transform.position.y * ppu) / ppu);
+			newPosition.x = (Mathf.Round(transform.position.x * ppu) / ppu);
+			newPosition.y = (Mathf.Round(transform.position.y * ppu) / ppu);
 
-        transform.position = newPosition;
+			transform.position = newPosition;
+		}
 	}
 }

@@ -88,20 +88,20 @@ public class HexCell : MonoBehaviour {
 	public const float INNER_RADIUS = OUTER_RADIUS * 61.0f / 64.0f;// root(3)/2 for 32x32 pixel art
 
 	private SpriteRenderer highlightRend;
-	private SpriteRenderer rend;
+	public SpriteSetSelector spriteSelector;
 	private HexGrid grid;
 
 	void Awake() {
 		highlightRend = transform.Find("Highlight")
 			.GetComponent<SpriteRenderer>();
-		rend = GetComponent<SpriteRenderer>();
+		spriteSelector = GetComponent<SpriteSetSelector>();
 		highlight = Highlight.NONE;
 		effect = Effect.NONE;
 		GameManager.AfterInit(delegate { grid = GameManager.GM.grid; });
 	}
 
 	void Start() {
-		rend.sprite = terrain.sprite;
+		spriteSelector.targets[0].set = terrain.spriteSet;
 	}
 
 	public void Select(BaseEventData data) {

@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/UI/TitleScreen/TitleScreen.unity
-    guid: 44b3336b9b341f74e84d1c3c1d7a1272
+    guid: 244bc5e591e2df84aad7a23753af77ca
   - enabled: 1
     path: Assets/UI/Menu/Main Menu/MainMenu.unity
     guid: f456d011c352cc141872852e96dc4c25
@@ -20,3 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/UI/Menu/MapSelectMenu/MapSelectMenu.unity
     guid: 7901afea7305b7a4397b593e230105f7
+  - enabled: 1
+    path: Assets/UI/Timer/TimerMenu.unity
+    guid: f084210eb1bcb104bb9cfb33fd321eed

@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour {
 	public HexGrid grid;
 	public RawImage turnIndicator;
 	public RawImage winnerIndicator;
-	public Text gameStateIndicator;
 	public Text winnerMessage;
 	public GameObject spellList;
 
@@ -79,11 +78,6 @@ public class GameManager : MonoBehaviour {
 		RESULTS
 	}
 
-	private const string STATE_NAME_OVERVIEW = "Overview";
-	private const string STATE_NAME_MOVE_SELECT_DEST = "Move";
-	private const string STATE_NAME_SPELL_CHOICE = "Select Spell";
-	private const string STATE_NAME_SPELL_SELECT_TARGETS = "Cast Spell";
-
 	[SerializeField]
 	private GameState _state;
 	public GameState state {
@@ -98,10 +92,10 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	private Area validTargets;
+	public Area validTargets;
 	public Spell selectedSpell;
-	private List<HexCell> spellTargets;
-	private Area spellAOE;
+	public List<HexCell> spellTargets;
+	public Area spellAOE;
 	private HashSet<HexUnit> toBeDestroyed;
 	private HashSet<HexUnit> beingDestroyed;
 	private Team winner;
@@ -134,6 +128,16 @@ public class GameManager : MonoBehaviour {
 
 	public void Begin() {
 		state = GameState.OVERVIEW;
+		if (BackgroundMapLoader.BMLoader == null) {
+			AudioManager.AM.Stop("Menu");
+			PlaySFX("Game");
+		}
+	}
+
+	void OnDestroy() {
+		if (AudioManager.AM != null) {
+			AudioManager.AM.Stop("Game");
+		}
 	}
 
 	// TODO remove, this is debug
@@ -146,38 +150,16 @@ public class GameManager : MonoBehaviour {
 		switch (state) {
 			case GameState.OVERVIEW:
 				if (Input.GetKeyDown(KeyCode.Space)) {
-					EndTurn();
+					// GM loaded in main menu as Background Map scene
+					if (BackgroundMapLoader.BMLoader == null) {
+						EndTurn();
+					}
 				}
 				break;
 			case GameState.MOVE_SELECT_DEST:
 				if (InputCancel()) {
 					selectedCell = null;
 					state = GameState.OVERVIEW;
-				}
-				break;
-			case GameState.SPELL_CHOICE:
-				selectedSpell = null;
-				if (Input.GetKeyDown(KeyCode.Alpha0)) {
-					state = GameState.OVERVIEW;
-				} else if (Input.GetKeyDown(KeyCode.Alpha1)) {
-					selectedSpell = Spell.FIREBALL;
-				} else if (Input.GetKeyDown(KeyCode.Alpha2)) {
-					selectedSpell = Spell.LIGHTNING_BOLT;
-				} else if (Input.GetKeyDown(KeyCode.Alpha3)) {
-					selectedSpell = Spell.SUMMON_STORM;
-				} else if (Input.GetKeyDown(KeyCode.Alpha4)) {
-					selectedSpell = Spell.BLIZZARD;
-				} else if (Input.GetKeyDown(KeyCode.Alpha5)) {
-					selectedSpell = Spell.ROCK_STRIKE;
-				} else if (Input.GetKeyDown(KeyCode.Alpha6)) {
-					selectedSpell = Spell.IMBUE_LIFE;
-				} else if (Input.GetKeyDown(KeyCode.Alpha7)) {
-					selectedSpell = Spell.CALL_WINDS;
-				} else if (Input.GetKeyDown(KeyCode.Alpha8)) {
-					selectedSpell = Spell.FLIGHT;
-				}
-				if (selectedSpell != null) {
-					state = GameState.SPELL_SELECT_TARGETS;
 				}
 				break;
 			case GameState.SPELL_SELECT_TARGETS:
@@ -207,6 +189,9 @@ public class GameManager : MonoBehaviour {
 					if (selectedUnit.isMage) {
 						state = GameState.SPELL_CHOICE;
 					} else {
+						if (selectedUnit.isOrb) {
+							PlaySFX("OrbMove");
+						}
 						state = GameState.OVERVIEW;
 					}
 				} else {
@@ -234,6 +219,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void HoverEnter(HexCell cell) {
+		// GM loaded in main menu as Background Map scene
+		if (BackgroundMapLoader.BMLoader != null) {
+			return;
+		}
 		hoveredCell = cell;
 		ShowHealthpointText(cell.unit);
 		switch (state) {
@@ -259,6 +248,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void HoverExit(HexCell cell) {
+		// GM loaded in main menu as Background Map scene
+		if (BackgroundMapLoader.BMLoader != null) {
+			return;
+		}
 		hoveredCell = null;
 		RemoveHealthpointText(cell.unit);
 		switch (state) {
@@ -301,7 +294,6 @@ public class GameManager : MonoBehaviour {
 	private void EnterState() {
 		switch (state) {
 			case GameState.OVERVIEW:
-				gameStateIndicator.text = STATE_NAME_OVERVIEW;
 				if (selectedCell != null) {
 					selectedCell.highlight = Highlight.NONE;
 				}
@@ -309,7 +301,6 @@ public class GameManager : MonoBehaviour {
 				UpdateActionableUnitsHighlight();
 				break;
 			case GameState.MOVE_SELECT_DEST:
-				gameStateIndicator.text = STATE_NAME_MOVE_SELECT_DEST;
 				int r = selectedUnit.movespeed;
 				validTargets = selectedCell.Radius(r, true, true, false);
 				foreach (HexCell c in validTargets) {
@@ -318,11 +309,9 @@ public class GameManager : MonoBehaviour {
 				break;
 			case GameState.SPELL_CHOICE:
 				spellList.SetActive(true);
-				gameStateIndicator.text = STATE_NAME_SPELL_CHOICE;
 				selectedCell.highlight = Highlight.SELECTED;
 				break;
 			case GameState.SPELL_SELECT_TARGETS:
-				gameStateIndicator.text = STATE_NAME_SPELL_SELECT_TARGETS;
 				if (selectedCell != null) {
 					selectedCell.highlight = Highlight.NONE;
 				}
@@ -341,8 +330,8 @@ public class GameManager : MonoBehaviour {
 		if (hoveredCell != null) {
 			HoverEnter(hoveredCell);
 		}
+	}
 
-}
 	private void ExitState() {
 		if (hoveredCell != null) {
 			HexCell cell = hoveredCell;
@@ -524,12 +513,14 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void BackToMainMenu() {
+		AudioManager.AM.Stop("Game");
 		SceneManager.LoadScene("MainMenu");
 	}
 
 	bool InputCancel() {
 		return Input.GetKeyDown(KeyCode.Backspace)
-				|| Input.GetKeyDown(KeyCode.Escape)
+				|| (Input.GetKeyDown(KeyCode.Escape) &&
+					 (BackgroundMapLoader.BMLoader == null))
 				|| Input.GetMouseButtonDown(1);
 	}
 
@@ -540,6 +531,10 @@ public class GameManager : MonoBehaviour {
 				| System.Reflection.BindingFlags.Static);
 		selectedSpell = info.GetValue(null) as Spell;
 		state = GameState.SPELL_SELECT_TARGETS;
+	}
+
+	public void PlaySFX(string name) {
+		FindObjectOfType<AudioManager>().Play(name);
 	}
 
 	/*
