@@ -1,10 +1,20 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BackgroundUnitsMovesScript : MonoBehaviour {
 
 	private GameManager g;
+	public enum Spells {
+		FIREBALL,
+		LIGHTNING_BOLT,
+		SUMMON_STORM,
+		BLIZZARD,
+		//ROCK_STRIKE,
+		IMBUE_LIFE,
+		CALL_WINDS,
+		FLIGHT
+	}
 
 	void Start() {
 		g = GameManager.GM;
@@ -12,86 +22,50 @@ public class BackgroundUnitsMovesScript : MonoBehaviour {
 	}
 
 	IEnumerator AddDelay() {
-		HexCell[] validCellsBlue = null;
-		HexCell[] validCellsRed = null;
-		HexUnit[] magesRed = null;
-		HexUnit[] magesBlue = null;
+		HexCell[] validCells = null;
+		HexUnit[] units = null;
 		int delay = 1;
 
-		magesBlue = new HexUnit[g.teams[2].Count];
-		g.teams[2].CopyTo(magesBlue);
-		magesRed = new HexUnit[g.teams[1].Count];
-		g.teams[1].CopyTo(magesRed);
+		while (this != null) {
+			for (int i = 1; i <= 2; i++) {
+				units = new HexUnit[g.teams[i].Count];
+				g.teams[i].CopyTo(units);
 
-		// Highlight the red team orb
-		HighlightUnit(magesRed[0], GameManager.GameState.MOVE_SELECT_DEST);
-		yield return new WaitForSeconds(delay);
-
-		// Move it twice
-		for (int i = 0; i < 2; i++) {
-			// Highlight the first red mage
-			HighlightUnit(magesRed[1], GameManager.GameState.MOVE_SELECT_DEST);
-			yield return new WaitForSeconds(delay);
-			// Get valid cells
-			validCellsRed = new HexCell[g.validTargets.Count];
-			g.validTargets.CopyTo(validCellsRed);
-			// Move
-			g.Click(validCellsRed[8]);
-			yield return new WaitForSeconds(delay);
+				// Red team moves
+				for (int j = 0; j < units.Length; j++) {
+					if (units.Length == 0) {
+						yield return null;
+					}
+					// MOVE
+					Highlight(units[j], GameManager.GameState.MOVE_SELECT_DEST);
+					yield return new WaitForSeconds(delay);
+					// Get valid cells
+					validCells = new HexCell[g.validTargets.Count];
+					g.validTargets.CopyTo(validCells);
+					// Move to random cell
+					g.Click(validCells[Random.Range(0, validCells.Length-1)]);
+					yield return new WaitForSeconds(delay);
+					// SPELL
+					if (units[j].isMage) {
+						g.SpellSelected(
+							((Spells)Random.Range(0,
+								System.Enum.GetValues(typeof(Spells)).Length-1)).ToString()
+						);
+						yield return new WaitForSeconds(delay);
+						// Get valid cells
+						validCells = new HexCell[g.validTargets.Count];
+						g.validTargets.CopyTo(validCells);
+						// Cast spell
+						g.Click(validCells[Random.Range(0, validCells.Length-1)]);
+						yield return new WaitForSeconds(delay);
+					}
+				}
+			}
 		}
 
-		// Highlight all blue team units
-		HighlightUnit(magesBlue[1], GameManager.GameState.MOVE_SELECT_DEST);
-		yield return new WaitForSeconds(delay);
-		// Get valid cells
-		validCellsBlue = new HexCell[g.validTargets.Count];
-		g.validTargets.CopyTo(validCellsBlue);
-		// Move
-		g.Click(validCellsBlue[12]);
-		yield return new WaitForSeconds(delay);
-
-		// Blue mage summons Golem
-		g.selectedSpell = Spell.IMBUE_LIFE;
-		HighlightUnit(magesBlue[1], GameManager.GameState.SPELL_SELECT_TARGETS);
-		yield return new WaitForSeconds(delay);
-		// Get valid cells
-		validCellsBlue = new HexCell[g.validTargets.Count];
-		g.validTargets.CopyTo(validCellsBlue);
-		// Summon
-		g.Click(validCellsBlue[5]);
-		yield return new WaitForSeconds(delay);
-
-		// Red mage moves forward
-		HighlightUnit(magesRed[1], GameManager.GameState.MOVE_SELECT_DEST);
-		yield return new WaitForSeconds(delay);
-		// Get valid cells
-		validCellsRed = new HexCell[g.validTargets.Count];
-		g.validTargets.CopyTo(validCellsRed);
-		// Move
-		g.Click(validCellsRed[8]);
-		yield return new WaitForSeconds(delay);
-		HighlightUnit(magesRed[1], GameManager.GameState.MOVE_SELECT_DEST);
-		yield return new WaitForSeconds(delay);
-		// Get valid cells
-		validCellsRed = new HexCell[g.validTargets.Count];
-		g.validTargets.CopyTo(validCellsRed);
-		// Move
-		g.Click(validCellsRed[1]);
-		yield return new WaitForSeconds(delay);
-
-		// Red mage attacks
-		g.selectedSpell = Spell.FIREBALL;
-		HighlightUnit(magesRed[1], GameManager.GameState.SPELL_SELECT_TARGETS);
-		yield return new WaitForSeconds(delay);
-		// Get valid cells
-		validCellsRed = new HexCell[g.validTargets.Count];
-		g.validTargets.CopyTo(validCellsRed);
-		// Casts spell
-		g.Click(validCellsRed[10]);
-		yield return new WaitForSeconds(delay);
 	}
 
-	public void HighlightUnit(HexUnit u, GameManager.GameState state) {
+	public void Highlight(HexUnit u, GameManager.GameState state) {
 		g.Click(u.cell);
 		g.selectedCell = u.cell;
 		g.state = state;

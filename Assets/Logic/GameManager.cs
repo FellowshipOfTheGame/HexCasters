@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public Area validTargets;
-	public Spell selectedSpell;
+	private Spell selectedSpell;
 	public List<HexCell> spellTargets;
 	public Area spellAOE;
 	private HashSet<HexUnit> toBeDestroyed;
