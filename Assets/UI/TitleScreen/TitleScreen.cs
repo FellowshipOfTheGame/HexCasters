@@ -11,6 +11,7 @@ public class TitleScreen : MonoBehaviour {
 
 	public void Start() {
 		timeInTitleScreen = 0.0f;
+		AudioManager.AM.Play("Menu");
 	}
 
 	public void Update() {
