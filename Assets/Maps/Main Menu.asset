@@ -100,6 +100,94 @@ MonoBehaviour:
       y: 4
     - x: -5
       y: 6
+    - x: -3
+      y: -6
+    - x: -2
+      y: -6
+    - x: -1
+      y: -6
+    - x: 0
+      y: -6
+    - x: 1
+      y: -6
+    - x: 2
+      y: -6
+    - x: 3
+      y: -6
+    - x: 4
+      y: -6
+    - x: 7
+      y: -6
+    - x: 8
+      y: -6
+    - x: 9
+      y: -6
+    - x: 9
+      y: -5
+    - x: 9
+      y: -4
+    - x: 8
+      y: -3
+    - x: 8
+      y: -2
+    - x: 7
+      y: -1
+    - x: 7
+      y: 0
+    - x: 6
+      y: 1
+    - x: 6
+      y: 2
+    - x: 5
+      y: 3
+    - x: 5
+      y: 4
+    - x: 4
+      y: 5
+    - x: 3
+      y: 6
+    - x: 2
+      y: 6
+    - x: 1
+      y: 6
+    - x: 0
+      y: 6
+    - x: -1
+      y: 6
+    - x: -2
+      y: 6
+    - x: -3
+      y: 6
+    - x: -4
+      y: 6
+    - x: -7
+      y: 6
+    - x: -8
+      y: 6
+    - x: -9
+      y: 6
+    - x: -9
+      y: 5
+    - x: -9
+      y: 4
+    - x: -8
+      y: 3
+    - x: -8
+      y: 2
+    - x: -7
+      y: 1
+    - x: -7
+      y: 0
+    - x: -6
+      y: -1
+    - x: -6
+      y: -2
+    - x: -5
+      y: -3
+    - x: -5
+      y: -4
+    - x: -4
+      y: -5
     m_values:
     - terrain: {fileID: 0}
       effect: 0
@@ -275,7 +363,8 @@ MonoBehaviour:
       contentTeam: 0
     - terrain: {fileID: 0}
       effect: 2
-      content: {fileID: 0}
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
       contentTeam: 0
     - terrain: {fileID: 0}
       effect: 2
@@ -283,5 +372,226 @@ MonoBehaviour:
       contentTeam: 0
     - terrain: {fileID: 0}
       effect: 2
-      content: {fileID: 0}
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
+      contentTeam: 0
+    - terrain: {fileID: 0}
+      effect: 0
+      content: {fileID: 1037791267021464, guid: b98d3b86815fdbb4e8fae461715a6f6c,
+        type: 2}
       contentTeam: 0
