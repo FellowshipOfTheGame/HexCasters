@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour {
 
 	void Start() {
-		AudioManager.AM.Play("Menu");
+		if (!AudioManager.AM.IsPlaying("Menu")) {
+			AudioManager.AM.Play("Menu");
+		}
 	}
 
 	public void PlayGame() {
