@@ -11,9 +11,9 @@ public class BackgroundUnitsMovesScript : MonoBehaviour {
 		SUMMON_STORM,
 		BLIZZARD,
 		//ROCK_STRIKE,
-		IMBUE_LIFE,
-		CALL_WINDS,
-		FLIGHT
+		IMBUE_LIFE
+		//CALL_WINDS,
+		//FLIGHT
 	}
 
 	void Start() {
