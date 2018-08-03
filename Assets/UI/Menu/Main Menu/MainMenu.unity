@@ -320,7 +320,7 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 0
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Design
@@ -332,7 +332,9 @@ MonoBehaviour:
 
     Music and SFX
 
-    Bruno "Flango" Larsen'
+    Bruno "Flango" Larsen
+
+    soundcloud.com/user-583791430'
 --- !u!222 &196499027
 CanvasRenderer:
   m_ObjectHideFlags: 0
