@@ -972,7 +972,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HOW LONG TO TURN TIME
+  m_Text: SELECT TURN DURATION
 --- !u!222 &1417731723
 CanvasRenderer:
   m_ObjectHideFlags: 0
