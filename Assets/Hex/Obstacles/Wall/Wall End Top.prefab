@@ -57,7 +57,7 @@ MonoBehaviour:
     type: 2}
   prefabDamageDisplay: {fileID: 1928955553591424, guid: 5826964b161eee643ae809b75cea833b,
     type: 2}
-  healthBarHeight: 0.5
+  healthBarHeight: 0.25
   damageDisplayHeight: 0
   damageDisplayDuration: 1
   max: 10
