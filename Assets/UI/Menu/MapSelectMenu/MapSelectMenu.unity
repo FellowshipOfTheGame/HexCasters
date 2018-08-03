@@ -881,7 +881,7 @@ Prefab:
     - target: {fileID: 114208709705460006, guid: 567af6700eedce34895ddb803a73e356,
         type: 2}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: FIRST AWESOME MAP
+      value: MONSOON PLAINS
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 567af6700eedce34895ddb803a73e356, type: 2}
