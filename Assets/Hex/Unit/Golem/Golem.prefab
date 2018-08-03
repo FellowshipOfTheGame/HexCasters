@@ -180,7 +180,7 @@ MonoBehaviour:
   prefabHealthBar: {fileID: 1652310961649920, guid: a883d871c6d0bcf4cb4af4b4a78e7fa1,
     type: 2}
   healthBarHeight: 0.5
-  max: 8
+  max: 6
 --- !u!114 &114819502896388598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10333,7 +10333,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1195025829
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 4
   m_RenderMode: 0
   m_SortMode: 0
@@ -10387,7 +10387,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1195025829
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 4
   m_RenderMode: 0
   m_SortMode: 0
@@ -10441,7 +10441,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1195025829
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 4
   m_RenderMode: 0
   m_SortMode: 0
@@ -10493,7 +10493,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1195025829
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fd298861d35d6ee44bf11e517f5f102a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10537,7 +10537,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1195025829
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 3f8a37b488a9dc74e94ac03d7201b9d9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
