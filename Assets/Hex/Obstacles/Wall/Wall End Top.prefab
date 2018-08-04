@@ -60,7 +60,7 @@ MonoBehaviour:
   healthBarHeight: 0.25
   damageDisplayHeight: 0
   damageDisplayDuration: 1
-  max: 10
+  max: 8
 --- !u!114 &114595809141589054
 MonoBehaviour:
   m_ObjectHideFlags: 1
