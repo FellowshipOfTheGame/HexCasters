@@ -33,7 +33,7 @@ public class Timer : MonoBehaviour {
 			return;
 		}
 		float t = Time.time - startTime; //growing count
-		float secondsLeft = (turnTime - (t % 60));
+		float secondsLeft = (turnTime - t);
 		timerIndicator.text = secondsLeft.ToString("f0");
 		if ((int)secondsLeft == 0) {
 			GameManager.GM.EndTurn();

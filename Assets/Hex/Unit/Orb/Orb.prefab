@@ -98,7 +98,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabHealthBar: {fileID: 1652310961649920, guid: a883d871c6d0bcf4cb4af4b4a78e7fa1,
     type: 2}
+  prefabDamageDisplay: {fileID: 1928955553591424, guid: 5826964b161eee643ae809b75cea833b,
+    type: 2}
   healthBarHeight: 0.5
+  damageDisplayHeight: 0
+  damageDisplayDuration: 1
   max: 8
 --- !u!114 &114975261782705768
 MonoBehaviour:
@@ -152,7 +156,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1195025829
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: b996dcebd742dd74f960ae7ba0833c79, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -196,7 +200,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1195025829
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 17341eb01187a8f4d8676a7c080191ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
