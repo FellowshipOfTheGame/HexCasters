@@ -58,6 +58,6 @@ public class HelpManager : MonoBehaviour {
 	}
 
 	public void ExitHelp() {
-		SceneManager.LoadScene("MainMenu");
+		SceneManager.LoadScene("Help Select");
 	}
 }
