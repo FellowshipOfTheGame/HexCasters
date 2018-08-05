@@ -10,6 +10,7 @@ public class HexGrid : MonoBehaviour {
 	public HexCell prefabCell;
 	public GameObject prefabMage;
 	public GameObject prefabOrb;
+	public GameObject cameraBounds;
 
 	public int nrows;
 	public int ncols;
@@ -67,6 +68,7 @@ public class HexGrid : MonoBehaviour {
 			MapLoader.LoadEnd();
 		});
 
+		CreateCameraBounds();
 	}
 
 	void SpawnCell(int row, int col) {
@@ -99,6 +101,39 @@ public class HexGrid : MonoBehaviour {
 		int col = x + ncols/2;
 		return row >= 0 && col >= 0
 			&& row < nrows && col < ncols;
+	}
+
+	void CreateCameraBounds() {
+		var right = CreateCameraWall();
+		var x = cells[nrows-1, ncols-1].transform.position.x;
+		var y = this[0, 0].transform.position.y;
+		right.transform.position = new Vector2(x+1, y);
+		right.transform.localScale = new Vector2(1, 10);
+
+		var left = CreateCameraWall();
+		x = cells[0, 0].transform.position.x;
+		y = this[0, 0].transform.position.y;
+		left.transform.position = new Vector2(x-1, y);
+		left.transform.localScale = new Vector2(1, 10);
+
+		var top = CreateCameraWall();
+		x = this[0, 0].transform.position.x;
+		y = cells[nrows-1, 0].transform.position.y;
+		top.transform.position = new Vector2(x, y+1);
+		top.transform.localScale = new Vector2(10, 1);
+
+		var bottom = CreateCameraWall();
+		x = this[0, 0].transform.position.x;
+		y = cells[0, 0].transform.position.y;
+		bottom.transform.position = new Vector2(x, y-1);
+		bottom.transform.localScale = new Vector2(10, 1);
+	}
+
+	GameObject CreateCameraWall() {
+		var bound = new GameObject();
+		bound.AddComponent<BoxCollider2D>();
+		bound.layer = LayerMask.NameToLayer("Camera");
+		return bound;
 	}
 
 }
