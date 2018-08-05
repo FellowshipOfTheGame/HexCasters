@@ -144,11 +144,6 @@ public class GameManager : MonoBehaviour {
 
 	// TODO remove, this is debug
 	public void Update() {
-		if (Input.GetKey(KeyCode.Alpha1)
-				&& Input.GetKey(KeyCode.Alpha2)
-				&& Input.GetKey(KeyCode.Alpha3)) {
-			SceneManager.LoadScene("Test");
-		}
 		switch (state) {
 			case GameState.OVERVIEW:
 				if (Input.GetKeyDown(KeyCode.Space)) {
