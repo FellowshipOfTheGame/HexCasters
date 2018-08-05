@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour {
 
 	public HexCell selectedCell;
 	public HexCell hoveredCell;
+	public HexCell movementOriginCell;
 	public HexCell _pairedUnitCell;
 	public HexCell pairedUnitCell {
 		get {
@@ -159,6 +160,20 @@ public class GameManager : MonoBehaviour {
 					state = GameState.OVERVIEW;
 				}
 				break;
+			case GameState.SPELL_CHOICE:
+				if (InputCancel()) {
+					selectedCell.MoveContentTo(movementOriginCell);
+					selectedCell = movementOriginCell;
+					state = GameState.MOVE_SELECT_DEST;
+					var actualHover = hoveredCell;
+					HoverEnter(selectedCell);
+					HoverExit(selectedCell);
+					if (actualHover != null) {
+						HoverEnter(actualHover);
+					}
+					selectedUnit.hasMoved = false;
+				}
+				break;
 			case GameState.SPELL_SELECT_TARGETS:
 				if (InputCancel()) {
 					state = GameState.SPELL_CHOICE;
@@ -173,6 +188,7 @@ public class GameManager : MonoBehaviour {
 				if (cell.unit != null && cell.unit.team == turn
 						&& !cell.unit.hasMoved) {
 					selectedCell = cell;
+					movementOriginCell = cell;
 					pairedUnitCell = null;
 					state = GameState.MOVE_SELECT_DEST;
 				}
