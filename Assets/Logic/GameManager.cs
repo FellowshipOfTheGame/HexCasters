@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour {
 	public Button endTurnButton;
 	public HexGrid grid;
 	public RawImage turnIndicator;
-	public RawImage winnerIndicator;
-	public Text winnerMessage;
+	// public RawImage winnerIndicator;
+	// public Text winnerMessage;
+	public VictoryScreenDisplay victoryScreen;
 	public GameObject spellList;
 	public bool canEndTurn;
 
@@ -143,7 +144,6 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	// TODO remove, this is debug
 	public void Update() {
 		switch (state) {
 			case GameState.OVERVIEW:
@@ -529,9 +529,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void ShowWinner() {
-		winnerMessage.text = winner + " Team win!";
-		winnerMessage.color = TeamExtensions.COLORS[(int) winner];
-		winnerIndicator.gameObject.SetActive(true);
+		victoryScreen.gameObject.SetActive(true);
+		victoryScreen.ShowWinner(teams, winner);
+		// winnerMessage.text = winner + " Team win!";
+		// winnerMessage.color = TeamExtensions.COLORS[(int) winner];
+		// winnerIndicator.gameObject.SetActive(true);
+		Destroy(GameObject.FindObjectOfType<Timer>());
 		endTurnButton.interactable = false;
 	}
 

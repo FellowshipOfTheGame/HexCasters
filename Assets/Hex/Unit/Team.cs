@@ -20,4 +20,4 @@ public static class TeamExtensions {
 		}
 		return Team.RED;
 	}
-} 
+}
