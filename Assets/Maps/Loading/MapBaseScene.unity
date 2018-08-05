@@ -3515,7 +3515,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.32352942, g: 0.32352942, b: 0.32352942, a: 1}
+  m_BackGroundColor: {r: 0.3254902, g: 0.3254902, b: 0.3254902, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -4591,6 +4591,7 @@ MonoBehaviour:
   canEndTurn: 0
   selectedCell: {fileID: 0}
   hoveredCell: {fileID: 0}
+  movementOriginCell: {fileID: 0}
   _pairedUnitCell: {fileID: 0}
   _state: 0
   spellTargets: []
