@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/UI/TitleScreen/TitleScreen.unity
     guid: 244bc5e591e2df84aad7a23753af77ca
   - enabled: 1
@@ -14,12 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/UI/Help/Help Select.unity
     guid: 7fbc1661440a46841b9a523b29d7b135
-  - enabled: 0
-    path: Assets/UI/Help/0 - Basics/Help Basics (old).unity
-    guid: ca8205170e8e29c4e86c7f7b3ac1e2ec
-  - enabled: 0
-    path: Assets/UI/Help/1 - Units/Help Units (old).unity
-    guid: ea3c0d534e7c8a44cac4876961c9e8f5
   - enabled: 1
     path: Assets/Maps/Loading/MapBaseScene.unity
     guid: 0acc5dc804ae38840a38c9aaca48b2a6
@@ -29,9 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/UI/Timer/TimerMenu.unity
     guid: f084210eb1bcb104bb9cfb33fd321eed
-  - enabled: 0
-    path: Assets/UI/Help/Old/InfoDump.unity
-    guid: 8fd7b50864baa6b4481f65c7f5e06d1d
   - enabled: 1
     path: Assets/UI/Help/0 - Basics/Help Basics.unity
     guid: 0079caa742e28434abdd38913eafa543
