@@ -21,9 +21,7 @@ public class TestMapLoader : MonoBehaviour {
 	}
 
 	void OnLoad() {
-		foreach (var obj in GameObject.FindObjectsOfType<HexCell>()) {
-			obj.transform.Find("Highlight").gameObject.SetActive(false);
-		}
+
 	}
 
 }
