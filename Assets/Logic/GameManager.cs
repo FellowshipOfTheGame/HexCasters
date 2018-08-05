@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
 	public RawImage winnerIndicator;
 	public Text winnerMessage;
 	public GameObject spellList;
+	public bool canEndTurn;
 
 	public static GameManager GM;
 
@@ -111,6 +112,7 @@ public class GameManager : MonoBehaviour {
 		winner = Team.NONE;
 		turn = Team.RED;
 		turnTransition = false;
+		canEndTurn = true;
 		teams = new HashSet<HexUnit>[(int) Team.N_TEAMS];
 		for (int i = 0; i < teams.Length; i++) {
 			teams[i] = new HashSet<HexUnit>();
@@ -423,6 +425,16 @@ public class GameManager : MonoBehaviour {
 		if (hoveredCell != null) {
 			ShowHealthpointText(hoveredCell.unit);
 		}
+		BeginEndTurnCooldown();
+	}
+
+	void BeginEndTurnCooldown() {
+		canEndTurn = false;
+		Invoke("EnableEndTurn", 2.0f);
+	}
+
+	void EnableEndTurn() {
+		canEndTurn = true;
 	}
 
 	void HighlightPairedUnit(HexUnit unit) {
@@ -551,7 +563,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void EndTurnButton() {
-		if (state == GameState.OVERVIEW) {
+		if (state == GameState.OVERVIEW && canEndTurn) {
 			EndTurn();
 		}
 	}
