@@ -21,7 +21,9 @@ public class TestMapLoader : MonoBehaviour {
 	}
 
 	void OnLoad() {
-		// GameManager.GM.AddObject(prefabWall, -1, -1);
+		foreach (var obj in GameObject.FindObjectsOfType<HexCell>()) {
+			obj.transform.Find("Highlight").gameObject.SetActive(false);
+		}
 	}
 
 }
