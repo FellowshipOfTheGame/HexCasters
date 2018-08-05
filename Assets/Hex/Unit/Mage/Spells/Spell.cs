@@ -114,10 +114,11 @@ public class Spell {
 			HexCell animEnd = null;
 			if (target != null) {
 				bool alive = false;
+				bool mobile = !target.unit.isImmobile;
 				if (!target.unit.isInvincible) {
 					alive = target.unit.Damage(ROCK_STRIKE_DAMAGE);
 				}
-				if (target.unit != null && !target.unit.isImmobile) {
+				if (mobile) {
 					int dir = caster.cell.DirectionTo(target);
 					HexCell knockedBack = target.GetNeighbor(dir);
 					if (knockedBack != null) {

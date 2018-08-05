@@ -110,7 +110,8 @@ public class HexUnit : MonoBehaviour {
 			GameManager.GM.PlaySFX("BarrierDamage");
 		}
 		hp.current -= dmg;
-		return true;
+		return hp.current > 0;
+		// return true;
 	}
 
 	public void Heal(int heal) {
