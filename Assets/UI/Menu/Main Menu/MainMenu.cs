@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour {
 	}
 
 	public void ShowHelp() {
-		SceneManager.LoadScene("InfoDump");
+		SceneManager.LoadScene("Help Select");
 	}
 
 }
