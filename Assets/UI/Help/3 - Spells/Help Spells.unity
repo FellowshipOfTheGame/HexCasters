@@ -476,7 +476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &294315214
 RectTransform:
   m_ObjectHideFlags: 0
@@ -987,7 +987,7 @@ Prefab:
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 242
+      value: 248
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -1012,62 +1012,62 @@ Prefab:
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_havePropertiesChanged
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
+        type: 2}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
-        type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -199
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 479.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -99.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_text
       value: 'Life is a dual purpose spell.
 
-        It can be used to spawn a golem, if used adjacent to the caster on a free
+        It can be used to raise a skeleton, if used adjacent to the caster on a free
         cell, or it can heal units up to 2 tiles away from the caster.
 
-        Read more on Golems in the lecture on Units.
+        Read more on skeletons in the lecture on Units.
 
         As a heal, Life restores 2 HP.'
       objectReference: {fileID: 0}
