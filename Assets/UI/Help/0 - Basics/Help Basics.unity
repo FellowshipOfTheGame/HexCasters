@@ -985,13 +985,13 @@ Prefab:
       value: 'There are two opposing teams, commanded by you using a magical device
         called a "mouse".
 
-        Each team is initially composed of wizards and an orb, but Golems may be summoned
-        later (see the spell "Life" in the lecture on Spells).'
+        Each team is initially composed of wizards and an orb, but Skeletons may be
+        summoned later (see the spell "Life" in the lecture on Spells).'
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 224
+      value: 227
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}

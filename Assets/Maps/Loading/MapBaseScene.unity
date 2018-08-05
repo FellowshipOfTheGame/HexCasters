@@ -2485,7 +2485,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Heavy damage to a single cell.
+  m_text: 'Deals 4 points of damage to a single cell.
 
     If it is Raining, deals damage to all cells
 
@@ -2534,7 +2534,7 @@ MonoBehaviour:
   m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 31
+  m_firstOverflowCharacterIndex: 43
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -2557,10 +2557,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 0}
-    characterCount: 100
+    characterCount: 112
     spriteCount: 0
-    spaceCount: 19
-    wordCount: 20
+    spaceCount: 22
+    wordCount: 23
     linkCount: 0
     lineCount: 3
     pageCount: 1
@@ -3523,7 +3523,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.6875
+  orthographic size: 2.1171875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5398,13 +5398,13 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Heals a unit or summons a golem.
+  m_text: 'Heals a unit or raises a skeleton.
 
-    A mage can''t summon another golem
+    A mage can''t summon another skeleton
 
     whille its current one is still alive.
 
-    Every turn swap, golems deal damage
+    Every turn swap, skeletons deal damage
 
     to all enemy units around them.'
   m_isRightToLeft: 0
@@ -5451,7 +5451,7 @@ MonoBehaviour:
   m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 33
+  m_firstOverflowCharacterIndex: 35
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -5474,7 +5474,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 0}
-    characterCount: 173
+    characterCount: 181
     spriteCount: 0
     spaceCount: 31
     wordCount: 32
@@ -8711,7 +8711,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Throws a rock and pushes targets.
+  m_text: 'Throws a rock, deals 3 points of damage.
+
+    Pushes target hit.
 
     If target can''t be pushed because
 
@@ -8764,7 +8766,7 @@ MonoBehaviour:
   m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 34
+  m_firstOverflowCharacterIndex: 41
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -8787,12 +8789,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 0}
-    characterCount: 156
+    characterCount: 182
     spriteCount: 0
-    spaceCount: 27
-    wordCount: 28
+    spaceCount: 32
+    wordCount: 33
     linkCount: 0
-    lineCount: 5
+    lineCount: 6
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -9070,7 +9072,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 'Ignites an area around the target.
 
-    Removes Rain and Blizzard.'
+    Removes Rain and Blizzard.
+
+    Flames deal 3 damage on turn switch.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
@@ -9138,12 +9142,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 0}
-    characterCount: 61
+    characterCount: 98
     spriteCount: 0
-    spaceCount: 9
-    wordCount: 10
+    spaceCount: 16
+    wordCount: 17
     linkCount: 0
-    lineCount: 2
+    lineCount: 3
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
