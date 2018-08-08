@@ -412,12 +412,18 @@ public class GameManager : MonoBehaviour {
 			c.highlight = Highlight.NONE;
 		}
 		turnTransition = true;
+        var orbs = GameObject.FindObjectsOfType<Orb>();
+        var orbUnits = orbs.Select(orb => orb.GetComponent<HexUnit>());
+
+        orbUnits.Where(orb => orb.team == turn).First().EndTurn();
+        orbUnits.Where(orb => orb.team == turn.Opposite()).First().StartTurn();
 		foreach (HexUnit unit in teams[(int) turn]
-				.Union(teams[(int) Team.NONE])) {
+				.Union(teams[(int) Team.NONE])
+                .Except(orbUnits)) {
 			unit.EndTurn();
 		}
 		turn = turn.Opposite();
-		foreach (HexUnit unit in teams[(int) turn]) {
+		foreach (HexUnit unit in teams[(int) turn].Except(orbUnits)) {
 			unit.StartTurn();
 		}
 		turnTransition = false;
