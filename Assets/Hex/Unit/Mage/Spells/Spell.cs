@@ -152,7 +152,7 @@ public class Spell {
 
 
 	// IMBUE LIFE
-	public const int IMBUE_LIFE_HEAL_RANGE = 2;
+	public const int IMBUE_LIFE_HEAL_RANGE = 3;
 	public const int IMBUE_LIFE_GOLEM_RANGE = 1;
 	public const int IMBUE_LIFE_HEAL = 2;
 	public static readonly Spell IMBUE_LIFE = new Spell(
