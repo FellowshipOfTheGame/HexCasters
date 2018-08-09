@@ -2393,6 +2393,58 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 409486459}
+--- !u!1001 &421949715
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4345696378007304, guid: c4d65d1481d2f39449ea86b8951f7c67, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345696378007304, guid: c4d65d1481d2f39449ea86b8951f7c67, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345696378007304, guid: c4d65d1481d2f39449ea86b8951f7c67, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345696378007304, guid: c4d65d1481d2f39449ea86b8951f7c67, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345696378007304, guid: c4d65d1481d2f39449ea86b8951f7c67, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345696378007304, guid: c4d65d1481d2f39449ea86b8951f7c67, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345696378007304, guid: c4d65d1481d2f39449ea86b8951f7c67, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345696378007304, guid: c4d65d1481d2f39449ea86b8951f7c67, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114528156594938428, guid: c4d65d1481d2f39449ea86b8951f7c67,
+        type: 2}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 790286134}
+    - target: {fileID: 114528156594938428, guid: c4d65d1481d2f39449ea86b8951f7c67,
+        type: 2}
+      propertyPath: endTurnButton
+      value: 
+      objectReference: {fileID: 1714937073}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c4d65d1481d2f39449ea86b8951f7c67, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &425227754
 GameObject:
   m_ObjectHideFlags: 0
@@ -4180,7 +4232,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 790286134}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
   m_ReceivesEvents: 1
@@ -4188,8 +4240,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 925495741
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &943390843
 RectTransform:
