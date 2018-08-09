@@ -3833,7 +3833,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.6875
+  orthographic size: 2.1171875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4967,6 +4967,7 @@ MonoBehaviour:
   endTurnButton: {fileID: 1714937074}
   grid: {fileID: 1072719958}
   turnIndicator: {fileID: 1881933807}
+  cameraTransform: {fileID: 790286135}
   victoryScreen: {fileID: 1877007166}
   spellList: {fileID: 65938228}
   canEndTurn: 0

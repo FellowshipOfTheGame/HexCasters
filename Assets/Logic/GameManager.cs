@@ -15,8 +15,7 @@ public class GameManager : MonoBehaviour {
 	public Button endTurnButton;
 	public HexGrid grid;
 	public RawImage turnIndicator;
-	// public RawImage winnerIndicator;
-	// public Text winnerMessage;
+    public Transform cameraTransform;
 	public VictoryScreenDisplay victoryScreen;
 	public GameObject spellList;
 	public bool canEndTurn;
@@ -442,6 +441,7 @@ public class GameManager : MonoBehaviour {
 		if (hoveredCell != null) {
 			ShowHealthpointText(hoveredCell.unit);
 		}
+        CenterCamera();
 		BeginEndTurnCooldown();
 	}
 
@@ -568,6 +568,13 @@ public class GameManager : MonoBehaviour {
 	public void PlaySFX(string name) {
 		FindObjectOfType<AudioManager>().Play(name);
 	}
+
+    void CenterCamera() {
+        var camZ = cameraTransform.position.z;
+        var centerPos = grid[0, 0].transform.position;
+        cameraTransform.position = new Vector3(
+            centerPos.x, centerPos.y, camZ);
+    }
 
 	/*
 	 * Registers an Action to be performed after the GameManager is
