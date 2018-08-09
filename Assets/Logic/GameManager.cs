@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 	public RawImage turnIndicator;
     public Transform cameraTransform;
 	public VictoryScreenDisplay victoryScreen;
+    public GameObject jobsDone;
 	public GameObject spellList;
 	public bool canEndTurn;
 
@@ -144,6 +145,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Update() {
+        if (teams[(int) turn].Count > 0
+                && teams[(int) turn].All(unit => unit.hasMoved)) {
+            jobsDone.SetActive(true);
+        }
 		switch (state) {
 			case GameState.OVERVIEW:
 				if (Input.GetKeyDown(KeyCode.Space)) {
@@ -442,6 +447,7 @@ public class GameManager : MonoBehaviour {
 			ShowHealthpointText(hoveredCell.unit);
 		}
         CenterCamera();
+        jobsDone.SetActive(false);
 		BeginEndTurnCooldown();
 	}
 
