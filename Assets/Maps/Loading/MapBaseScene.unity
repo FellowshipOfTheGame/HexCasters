@@ -2442,9 +2442,18 @@ Prefab:
       propertyPath: endTurnButton
       value: 
       objectReference: {fileID: 1714937073}
+    - target: {fileID: 1605941579648132, guid: c4d65d1481d2f39449ea86b8951f7c67, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c4d65d1481d2f39449ea86b8951f7c67, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &421949716 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1605941579648132, guid: c4d65d1481d2f39449ea86b8951f7c67,
+    type: 2}
+  m_PrefabInternal: {fileID: 421949715}
 --- !u!1 &425227754
 GameObject:
   m_ObjectHideFlags: 0
@@ -5021,6 +5030,7 @@ MonoBehaviour:
   turnIndicator: {fileID: 1530133883}
   cameraTransform: {fileID: 790286135}
   victoryScreen: {fileID: 1877007166}
+  jobsDone: {fileID: 421949716}
   spellList: {fileID: 65938228}
   canEndTurn: 0
   selectedCell: {fileID: 0}
