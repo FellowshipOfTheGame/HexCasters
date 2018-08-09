@@ -24,7 +24,7 @@ public class InGameMenu : MonoBehaviour {
 		inGameMenuIsActive = false;
 	}
 
-	void LoadInGameMenu() {
+	public void LoadInGameMenu() {
 		inGameMenu.SetActive(true);
 		inGameMenuIsActive = true;
 	}
