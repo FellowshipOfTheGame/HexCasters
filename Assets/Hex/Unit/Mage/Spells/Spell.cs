@@ -100,7 +100,7 @@ public class Spell {
 
 
 	// ROCK STRIKE
-	public const int ROCK_STRIKE_RANGE = 3;
+	public const int ROCK_STRIKE_RANGE = 4;
 	public const int ROCK_STRIKE_DAMAGE = 3;
 	public static readonly Spell ROCK_STRIKE = new Spell(
 		1,
