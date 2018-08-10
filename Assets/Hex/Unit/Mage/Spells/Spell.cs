@@ -162,8 +162,7 @@ public class Spell {
             if (farthestCell.unit != null
                     && !farthestCell.unit.isImmobile
                     && neighbor != null
-                    // DEADLINE CLOSING IN BOYS
-                    && neighbor.terrain.type != "abyss") {
+                    && neighbor.terrain.transponible) {
                 line.Add(neighbor);
             }
             return line;
