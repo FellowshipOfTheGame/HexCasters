@@ -2938,7 +2938,7 @@ Prefab:
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 267
+      value: 273
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -3019,7 +3019,8 @@ Prefab:
 
         They are fragile, with only 6 HP.
 
-        If its wizard dies, the golem also dies. There can only be 1 golem per wizard.
+        If its wizard dies, the skeleton also dies. There can only be 1 skeleton per
+        wizard.
 
 '
       objectReference: {fileID: 0}
