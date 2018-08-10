@@ -162,7 +162,9 @@ public class Spell {
             if (farthestCell.unit != null
                     && !farthestCell.unit.isImmobile
                     && neighbor != null
-                    && neighbor.terrain.transponible) {
+                    && neighbor.terrain.transponible
+                    && (neighbor.unit == null
+                        || neighbor.unit.GetComponent<HP>() != null)) {
                 line.Add(neighbor);
             }
             return line;
