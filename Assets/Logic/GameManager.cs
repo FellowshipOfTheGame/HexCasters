@@ -145,7 +145,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Update() {
-        if (teams[(int) turn].Count > 0
+        if (state == GameState.OVERVIEW
+                && teams[(int) turn].Count > 0
                 && teams[(int) turn].All(unit => unit.hasMoved)) {
             jobsDone.SetActive(true);
         }
