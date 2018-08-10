@@ -12,8 +12,20 @@ EditorBuildSettings:
     path: Assets/UI/Menu/Main Menu/MainMenu.unity
     guid: f456d011c352cc141872852e96dc4c25
   - enabled: 1
-    path: Assets/UI/Help/InfoDump.unity
-    guid: 8fd7b50864baa6b4481f65c7f5e06d1d
+    path: Assets/UI/Help/Help Select.unity
+    guid: 7fbc1661440a46841b9a523b29d7b135
+  - enabled: 1
+    path: Assets/UI/Help/0 - Basics/Help Basics.unity
+    guid: 0079caa742e28434abdd38913eafa543
+  - enabled: 1
+    path: Assets/UI/Help/1 - Units/Help Units.unity
+    guid: cd16c6d67f7782a4c8a3c81cc3cd276d
+  - enabled: 1
+    path: Assets/UI/Help/2 - Terrains/Help Terrains.unity
+    guid: ac7f6ac3f5c1d634194adce9756f9a97
+  - enabled: 1
+    path: Assets/UI/Help/3 - Spells/Help Spells.unity
+    guid: a504e7b418b90d740b5d1e65bfe197ad
   - enabled: 1
     path: Assets/Maps/Loading/MapBaseScene.unity
     guid: 0acc5dc804ae38840a38c9aaca48b2a6

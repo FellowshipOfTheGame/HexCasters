@@ -70,6 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4550751709562686}
   - component: {fileID: 212706936350220420}
+  - component: {fileID: 114609481179471382}
   m_Layer: 0
   m_Name: Edge
   m_TagString: Untagged
@@ -247,8 +248,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1366772784955812}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4439787333405220}
@@ -491,6 +492,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cell: {fileID: 114511628706531296}
   abyss: {fileID: 11400000, guid: 4104b3b8f3834cf4f8c0efff70f8c8d8, type: 2}
+--- !u!114 &114609481179471382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1149228309214490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c5fae96511f278468a6275bb8c4cc11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - set: {fileID: 11400000, guid: 90e682429196dff41a6a861588098f6d, type: 2}
+    renderer: {fileID: 212706936350220420}
 --- !u!114 &114675786751538866
 MonoBehaviour:
   m_ObjectHideFlags: 1

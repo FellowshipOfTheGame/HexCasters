@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09dfba26c7ea1994aa75b33c92b651b3, type: 3}
-  m_Name: The Rift
+  m_Name: Rift
   m_EditorClassIdentifier: 
   nrows: 7
   ncols: 7

@@ -15,9 +15,11 @@ public class GameManager : MonoBehaviour {
 	public Button endTurnButton;
 	public HexGrid grid;
 	public RawImage turnIndicator;
-	public RawImage winnerIndicator;
-	public Text winnerMessage;
+    public Transform cameraTransform;
+	public VictoryScreenDisplay victoryScreen;
+    public GameObject jobsDone;
 	public GameObject spellList;
+	public bool canEndTurn;
 
 	public static GameManager GM;
 
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour {
 
 	public HexCell selectedCell;
 	public HexCell hoveredCell;
+	public HexCell movementOriginCell;
 	public HexCell _pairedUnitCell;
 	public HexCell pairedUnitCell {
 		get {
@@ -93,7 +96,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public Area validTargets;
-	private Spell selectedSpell;
+	public Spell selectedSpell;
 	public List<HexCell> spellTargets;
 	public Area spellAOE;
 	private HashSet<HexUnit> toBeDestroyed;
@@ -111,6 +114,7 @@ public class GameManager : MonoBehaviour {
 		winner = Team.NONE;
 		turn = Team.RED;
 		turnTransition = false;
+		canEndTurn = true;
 		teams = new HashSet<HexUnit>[(int) Team.N_TEAMS];
 		for (int i = 0; i < teams.Length; i++) {
 			teams[i] = new HashSet<HexUnit>();
@@ -140,13 +144,12 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	// TODO remove, this is debug
 	public void Update() {
-		if (Input.GetKey(KeyCode.Alpha1)
-				&& Input.GetKey(KeyCode.Alpha2)
-				&& Input.GetKey(KeyCode.Alpha3)) {
-			SceneManager.LoadScene("Test");
-		}
+        if (state == GameState.OVERVIEW
+                && teams[(int) turn].Count > 0
+                && teams[(int) turn].All(unit => unit.hasMoved)) {
+            jobsDone.SetActive(true);
+        }
 		switch (state) {
 			case GameState.OVERVIEW:
 				if (Input.GetKeyDown(KeyCode.Space)) {
@@ -160,6 +163,20 @@ public class GameManager : MonoBehaviour {
 				if (InputCancel()) {
 					selectedCell = null;
 					state = GameState.OVERVIEW;
+				}
+				break;
+			case GameState.SPELL_CHOICE:
+				if (InputCancel()) {
+					selectedCell.MoveContentTo(movementOriginCell);
+					selectedCell = movementOriginCell;
+					state = GameState.MOVE_SELECT_DEST;
+					var actualHover = hoveredCell;
+					HoverEnter(selectedCell);
+					HoverExit(selectedCell);
+					if (actualHover != null) {
+						HoverEnter(actualHover);
+					}
+					selectedUnit.hasMoved = false;
 				}
 				break;
 			case GameState.SPELL_SELECT_TARGETS:
@@ -176,6 +193,7 @@ public class GameManager : MonoBehaviour {
 				if (cell.unit != null && cell.unit.team == turn
 						&& !cell.unit.hasMoved) {
 					selectedCell = cell;
+					movementOriginCell = cell;
 					pairedUnitCell = null;
 					state = GameState.MOVE_SELECT_DEST;
 				}
@@ -399,12 +417,18 @@ public class GameManager : MonoBehaviour {
 			c.highlight = Highlight.NONE;
 		}
 		turnTransition = true;
+        var orbs = GameObject.FindObjectsOfType<Orb>();
+        var orbUnits = orbs.Select(orb => orb.GetComponent<HexUnit>());
+
+        orbUnits.Where(orb => orb.team == turn).First().EndTurn();
+        orbUnits.Where(orb => orb.team == turn.Opposite()).First().StartTurn();
 		foreach (HexUnit unit in teams[(int) turn]
-				.Union(teams[(int) Team.NONE])) {
+				.Union(teams[(int) Team.NONE])
+                .Except(orbUnits)) {
 			unit.EndTurn();
 		}
 		turn = turn.Opposite();
-		foreach (HexUnit unit in teams[(int) turn]) {
+		foreach (HexUnit unit in teams[(int) turn].Except(orbUnits)) {
 			unit.StartTurn();
 		}
 		turnTransition = false;
@@ -423,6 +447,18 @@ public class GameManager : MonoBehaviour {
 		if (hoveredCell != null) {
 			ShowHealthpointText(hoveredCell.unit);
 		}
+        CenterCamera();
+        jobsDone.SetActive(false);
+		BeginEndTurnCooldown();
+	}
+
+	void BeginEndTurnCooldown() {
+		canEndTurn = false;
+		Invoke("EnableEndTurn", 2.0f);
+	}
+
+	void EnableEndTurn() {
+		canEndTurn = true;
 	}
 
 	void HighlightPairedUnit(HexUnit unit) {
@@ -506,9 +542,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void ShowWinner() {
-		winnerMessage.text = winner + " Team win!";
-		winnerMessage.color = TeamExtensions.COLORS[(int) winner];
-		winnerIndicator.gameObject.SetActive(true);
+		victoryScreen.gameObject.SetActive(true);
+		victoryScreen.ShowWinner(teams, winner);
+		// winnerMessage.text = winner + " Team win!";
+		// winnerMessage.color = TeamExtensions.COLORS[(int) winner];
+		// winnerIndicator.gameObject.SetActive(true);
+		Destroy(GameObject.FindObjectOfType<Timer>());
 		endTurnButton.interactable = false;
 	}
 
@@ -537,6 +576,13 @@ public class GameManager : MonoBehaviour {
 		FindObjectOfType<AudioManager>().Play(name);
 	}
 
+    void CenterCamera() {
+        var camZ = cameraTransform.position.z;
+        var centerPos = grid[0, 0].transform.position;
+        cameraTransform.position = new Vector3(
+            centerPos.x, centerPos.y, camZ);
+    }
+
 	/*
 	 * Registers an Action to be performed after the GameManager is
 	 * instantiated.
@@ -551,7 +597,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void EndTurnButton() {
-		if (state == GameState.OVERVIEW) {
+		if (state == GameState.OVERVIEW && canEndTurn) {
 			EndTurn();
 		}
 	}

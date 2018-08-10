@@ -21,7 +21,6 @@ public class TestMapLoader : MonoBehaviour {
 	}
 
 	void OnLoad() {
-		// GameManager.GM.AddObject(prefabWall, -1, -1);
 	}
 
 }

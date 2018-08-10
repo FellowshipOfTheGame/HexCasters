@@ -100,7 +100,7 @@ public class Spell {
 
 
 	// ROCK STRIKE
-	public const int ROCK_STRIKE_RANGE = 3;
+	public const int ROCK_STRIKE_RANGE = 4;
 	public const int ROCK_STRIKE_DAMAGE = 3;
 	public static readonly Spell ROCK_STRIKE = new Spell(
 		1,
@@ -108,37 +108,43 @@ public class Spell {
 			GameManager.GM.PlaySFX("Rock");
 			// Can't use clicked target because enemy hit is not necessarily
 			// in the cell the player clicked on
-			HexCell target = aoe
-				.Where(cell => cell.content != null)
-				.FirstOrDefault();
-			HexCell animEnd = null;
-			if (target != null) {
-				bool alive = false;
-				if (!target.unit.isInvincible) {
-					alive = target.unit.Damage(ROCK_STRIKE_DAMAGE);
-				}
-				if (target.unit != null && !target.unit.isImmobile) {
-					int dir = caster.cell.DirectionTo(target);
-					HexCell knockedBack = target.GetNeighbor(dir);
-					if (knockedBack != null) {
-						if (knockedBack.content == null && knockedBack.terrain.transponible) {
-							if (alive) {
-								target.MoveContentTo(knockedBack);
-							}
-						} else if (knockedBack.unit != null) {
-							knockedBack.unit.Damage(ROCK_STRIKE_DAMAGE);
-						}
-					}
-				}
-				animEnd = target;
-			} else {
-				// get furthest cell from origin in AoE
-				animEnd = aoe
-					.OrderByDescending(
-						cell => cell.ManhattanDistanceTo(caster.cell))
-					.First();
-			}
-			caster.asMage.AnimateRockStrike(animEnd);
+			// HexCell target = aoe
+			// 	.Where(cell => cell.content != null)
+			// 	.FirstOrDefault();
+            List<HexCell> affectedUnits = aoe
+                .Where(cell => cell.content != null)
+                .OrderBy(cell => cell.ManhattanDistanceTo(caster.cell))
+                .ToList();
+            HexCell target = affectedUnits[0];
+            HexCell animEnd = null;
+            if (target != null) {
+                bool alive = false;
+                bool mobile = !target.unit.isImmobile;
+                if (!target.unit.isInvincible) {
+                    alive = target.unit.Damage(ROCK_STRIKE_DAMAGE);
+                }
+                if (mobile) {
+                    int dir = caster.cell.DirectionTo(target);
+                    HexCell knockedBack = target.GetNeighbor(dir);
+                    if (knockedBack != null) {
+                        if (knockedBack.content == null && knockedBack.terrain.transponible) {
+                            if (alive) {
+                                target.MoveContentTo(knockedBack);
+                            }
+                        } else if (knockedBack.unit != null) {
+                            knockedBack.unit.Damage(ROCK_STRIKE_DAMAGE);
+                        }
+                    }
+                }
+                animEnd = target;
+            } else {
+                // get furthest cell from origin in AoE
+                animEnd = aoe
+                    .OrderByDescending(
+                        cell => cell.ManhattanDistanceTo(caster.cell))
+                    .First();
+            }
+            caster.asMage.AnimateRockStrike(animEnd);
 		},
 		delegate (HexUnit caster, List<HexCell> curTargets) {
 			return Enumerable.Range(0, HexCell.directions.Length)
@@ -146,12 +152,27 @@ public class Spell {
 		},
 		delegate (HexUnit caster, HexCell hovered, List<HexCell> targets) {
 			int dir = caster.cell.DirectionTo(hovered);
-			return caster.cell.Line(dir, ROCK_STRIKE_RANGE);
+			var line = caster.cell
+                .Line(dir, ROCK_STRIKE_RANGE);
+            var farthestCell = line
+                .OrderByDescending(
+                    cell => cell.ManhattanDistanceTo(caster.cell))
+                .First();
+            var neighbor = farthestCell.GetNeighbor(dir);
+            if (farthestCell.unit != null
+                    && !farthestCell.unit.isImmobile
+                    && neighbor != null
+                    && neighbor.terrain.transponible
+                    && (neighbor.unit == null
+                        || neighbor.unit.GetComponent<HP>() != null)) {
+                line.Add(neighbor);
+            }
+            return line;
 		});
 
 
 	// IMBUE LIFE
-	public const int IMBUE_LIFE_HEAL_RANGE = 2;
+	public const int IMBUE_LIFE_HEAL_RANGE = 3;
 	public const int IMBUE_LIFE_GOLEM_RANGE = 1;
 	public const int IMBUE_LIFE_HEAL = 2;
 	public static readonly Spell IMBUE_LIFE = new Spell(

@@ -9,7 +9,7 @@ public class HelpManager : MonoBehaviour {
 	public Transform canvas;
 	public int startScreen = 0;
 
-	public Text nextButtonText;
+	public Button nextButton;
 	public Button prevButton;
 
 	Transform screens;
@@ -28,11 +28,7 @@ public class HelpManager : MonoBehaviour {
 		curScreen = screen;
 		screens.GetChild(screen).gameObject.SetActive(true);
 		prevButton.interactable = screen != 0;
-		if (screen + 1 == screens.childCount) {
-			nextButtonText.text = "Finish";
-		} else {
-			nextButtonText.text = "Next";
-		}
+		nextButton.interactable = screen != screens.childCount-1;
 	}
 
 	void DisableScreen(int screen) {
@@ -47,7 +43,6 @@ public class HelpManager : MonoBehaviour {
 
 	public void NextScreen() {
 		if (curScreen + 1 == screens.childCount) {
-			ExitHelp();
 			return;
 		}
 		DisableScreen(curScreen);
@@ -63,6 +58,6 @@ public class HelpManager : MonoBehaviour {
 	}
 
 	public void ExitHelp() {
-		SceneManager.LoadScene("MainMenu");
+		SceneManager.LoadScene("Help Select");
 	}
 }
