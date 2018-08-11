@@ -270,6 +270,9 @@ public class GameManager : MonoBehaviour {
 		if (BackgroundMapLoader.BMLoader != null) {
 			return;
 		}
+        foreach (var display in GameObject.FindGameObjectsWithTag("HP Display")) {
+            display.SetActive(false);
+        }
 		hoveredCell = null;
 		RemoveHealthpointText(cell.unit);
 		switch (state) {
