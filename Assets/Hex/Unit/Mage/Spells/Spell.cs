@@ -115,7 +115,7 @@ public class Spell {
                 .Where(cell => cell.content != null)
                 .OrderBy(cell => cell.ManhattanDistanceTo(caster.cell))
                 .ToList();
-            HexCell target = affectedUnits[0];
+            HexCell target = affectedUnits.FirstOrDefault();
             HexCell animEnd = null;
             if (target != null) {
                 bool alive = false;
