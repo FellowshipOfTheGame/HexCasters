@@ -31,6 +31,7 @@ public class BackgroundUnitsMovesScript : MonoBehaviour {
             yield return null;
         }
 		g = GameManager.GM;
+        GameObject.Find("UI Canvas").SetActive(false);
 
 		while (this != null) {
 			for (int i = 1; i <= 2; i++) {
