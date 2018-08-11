@@ -5,6 +5,7 @@ using UnityEngine;
 public class BackgroundUnitsMovesScript : MonoBehaviour {
 
 	private GameManager g;
+    private bool gmInitialized;
 	public enum Spells {
 		FIREBALL,
 		LIGHTNING_BOLT,
@@ -17,14 +18,19 @@ public class BackgroundUnitsMovesScript : MonoBehaviour {
 	}
 
 	void Start() {
-		g = GameManager.GM;
 		StartCoroutine(AddDelay());
+        GameManager.AfterInit(() => gmInitialized = true);
 	}
 
 	IEnumerator AddDelay() {
 		HexCell[] validCells = null;
 		HexUnit[] units = null;
 		int delay = 1;
+
+        while (!gmInitialized) {
+            yield return null;
+        }
+		g = GameManager.GM;
 
 		while (this != null) {
 			for (int i = 1; i <= 2; i++) {
