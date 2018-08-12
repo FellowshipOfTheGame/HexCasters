@@ -2885,6 +2885,12 @@ MonoBehaviour:
     loop: 1
     volume: 0.07
     pitch: 1.06
+  - name: Clock
+    clip: {fileID: 8300000, guid: a97a4e0127b482e4e80f0a42f3022c86, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.07
+    pitch: 1
 --- !u!4 &491051468
 Transform:
   m_ObjectHideFlags: 0
