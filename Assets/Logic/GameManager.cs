@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
 	private static event Action initEvent;
 
 	public Button endTurnButton;
+	public Button menuButton;
 	public HexGrid grid;
 	public RawImage turnIndicator;
     public Transform cameraTransform;
@@ -553,6 +554,7 @@ public class GameManager : MonoBehaviour {
 		// winnerIndicator.gameObject.SetActive(true);
 		Destroy(GameObject.FindObjectOfType<Timer>());
 		endTurnButton.interactable = false;
+		menuButton.interactable = false;
 	}
 
 	public void BackToMainMenu() {
