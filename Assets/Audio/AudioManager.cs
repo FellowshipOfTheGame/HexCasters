@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour {
 
 	public Sound[] sounds;
 	public static AudioManager AM;
+	public AudioMixer audioMixer;
 
 	void Awake () {
 		if (AM == null) {
@@ -13,13 +14,18 @@ public class AudioManager : MonoBehaviour {
 			AM = this;
 		}
 
-		foreach(Sound s in sounds) {
+		foreach (Sound s in sounds) {
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
+			s.source.outputAudioMixerGroup = s.output;
 			s.source.volume = s.volume;
 			s.source.pitch = s.pitch;
 			s.source.loop = s.loop;
 		}
+	}
+
+	public void SetVolume(string groupVolume, float volume) {
+		audioMixer.SetFloat(groupVolume, volume);
 	}
 
 	public void Play(string name) {
