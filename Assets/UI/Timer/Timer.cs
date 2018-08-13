@@ -48,6 +48,7 @@ public class Timer : MonoBehaviour {
 
 	public void ResetCountdownTimer() {
 		if (hasTimeLimit) {
+			AudioManager.AM.Stop("Clock");
 			countingFiveSeconds = false;
 			startTime = Time.time;
 			if (GameManager.GM.state == GameManager.GameState.RESULTS) {
