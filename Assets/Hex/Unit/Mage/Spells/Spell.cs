@@ -180,7 +180,7 @@ public class Spell {
 		delegate (HexUnit caster, List<HexCell> targets, Area aoe) {
 			HexCell target = targets[0];
 			if (target.content == null) {
-				AudioManager.AM.Play("SummonGolem");
+				AudioManager.AM.Play("SummonSkeleton");
 				caster.asMage.SpawnGolem(target);
 			} else {
 				AudioManager.AM.Play("Life");

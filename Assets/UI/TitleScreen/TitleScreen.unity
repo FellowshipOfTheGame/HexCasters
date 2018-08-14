@@ -198,13 +198,6 @@ MonoBehaviour:
     output: {fileID: 243881933742639412, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
     volume: 0.5
     pitch: 1.06
-  - name: SummonGolem
-    clip: {fileID: 8300000, guid: 48cbe4466dc336f419fbb098aca29562, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    output: {fileID: 243881933742639412, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
-    volume: 0.5
-    pitch: 1.06
   - name: Death
     clip: {fileID: 8300000, guid: ed84784e8feecf84789d5d925746312c, type: 3}
     source: {fileID: 0}
@@ -270,6 +263,13 @@ MonoBehaviour:
     pitch: 1
   - name: MageMove
     clip: {fileID: 8300000, guid: 8d729f409425f8543b344db6ac3121ed, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    output: {fileID: 243881933742639412, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
+    volume: 1
+    pitch: 1.06
+  - name: SummonSkeleton
+    clip: {fileID: 8300000, guid: e8685a0f7e073a74f8eeb9cc5c06b9e4, type: 3}
     source: {fileID: 0}
     loop: 0
     output: {fileID: 243881933742639412, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
