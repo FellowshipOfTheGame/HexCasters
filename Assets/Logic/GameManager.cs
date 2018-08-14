@@ -551,8 +551,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void ShowWinner() {
-		AudioManager.AM.SetVolume("musicVolume", -15.0f);
-		AudioManager.AM.SetVolume("musicVolume", -35.0f);
+		AudioManager.AM.SetVolume("soundsVolume", -15.0f);
+		AudioManager.AM.SetVolume("musicVolume", -30.0f);
 		if (winner == Team.RED) {
 			AudioManager.AM.Play("VictoryRed");
 		}
