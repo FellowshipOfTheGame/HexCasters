@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour {
 		state = GameState.OVERVIEW;
 		if (BackgroundMapLoader.BMLoader == null) {
 			AudioManager.AM.Stop("Menu");
-			PlaySFX("Game");
+			AudioManager.AM.Play("Game");
 		}
 	}
 
@@ -210,10 +210,11 @@ public class GameManager : MonoBehaviour {
 					selectedUnit.hasMoved = true;
 					selectedUnit.MoveEvent();
 					if (selectedUnit.isMage) {
+						AudioManager.AM.Play("MageMove");
 						state = GameState.SPELL_CHOICE;
 					} else {
 						if (selectedUnit.isOrb) {
-							PlaySFX("OrbMove");
+							AudioManager.AM.Play("OrbMove");
 						}
 						state = GameState.OVERVIEW;
 					}
@@ -579,10 +580,6 @@ public class GameManager : MonoBehaviour {
 				| System.Reflection.BindingFlags.Static);
 		selectedSpell = info.GetValue(null) as Spell;
 		state = GameState.SPELL_SELECT_TARGETS;
-	}
-
-	public void PlaySFX(string name) {
-		FindObjectOfType<AudioManager>().Play(name);
 	}
 
     void CenterCamera() {

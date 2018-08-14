@@ -175,7 +175,7 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
     output: {fileID: 243881933742639412, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
-    volume: 0.5
+    volume: 1
     pitch: 1.06
   - name: Life
     clip: {fileID: 8300000, guid: a8bc077b7605c444da06938872471a1b, type: 3}
@@ -193,13 +193,6 @@ MonoBehaviour:
     pitch: 1.06
   - name: Flight
     clip: {fileID: 8300000, guid: 4692c72c390f7c7448950c41502c050d, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    output: {fileID: 243881933742639412, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
-    volume: 0.5
-    pitch: 1.06
-  - name: SummonGolem
-    clip: {fileID: 8300000, guid: 48cbe4466dc336f419fbb098aca29562, type: 3}
     source: {fileID: 0}
     loop: 0
     output: {fileID: 243881933742639412, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
@@ -268,6 +261,20 @@ MonoBehaviour:
     output: {fileID: 243881933742639412, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
     volume: 0.5
     pitch: 1
+  - name: MageMove
+    clip: {fileID: 8300000, guid: 8d729f409425f8543b344db6ac3121ed, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    output: {fileID: 243881933742639412, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
+    volume: 1
+    pitch: 1.06
+  - name: SummonSkeleton
+    clip: {fileID: 8300000, guid: e8685a0f7e073a74f8eeb9cc5c06b9e4, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    output: {fileID: 243881933742639412, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
+    volume: 1
+    pitch: 1.06
   audioMixer: {fileID: 24100000, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
 --- !u!4 &150009278
 Transform:
