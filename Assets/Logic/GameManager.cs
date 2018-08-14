@@ -210,6 +210,7 @@ public class GameManager : MonoBehaviour {
 					selectedUnit.hasMoved = true;
 					selectedUnit.MoveEvent();
 					if (selectedUnit.isMage) {
+						PlaySFX("MageMove");
 						state = GameState.SPELL_CHOICE;
 					} else {
 						if (selectedUnit.isOrb) {
