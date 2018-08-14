@@ -551,6 +551,14 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void ShowWinner() {
+		AudioManager.AM.SetVolume("musicVolume", -15.0f);
+		AudioManager.AM.SetVolume("musicVolume", -35.0f);
+		if (winner == Team.RED) {
+			AudioManager.AM.Play("VictoryRed");
+		}
+		if (winner == Team.BLUE) {
+			AudioManager.AM.Play("VictoryBlue");
+		}
 		victoryScreen.gameObject.SetActive(true);
 		victoryScreen.ShowWinner(teams, winner);
 		// winnerMessage.text = winner + " Team win!";

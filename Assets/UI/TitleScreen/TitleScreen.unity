@@ -275,6 +275,20 @@ MonoBehaviour:
     output: {fileID: 243881933742639412, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
     volume: 1
     pitch: 1.06
+  - name: VictoryRed
+    clip: {fileID: 8300000, guid: 709a751cb9ce412499d189a3f34314f1, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    output: {fileID: 243881933742639412, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
+    volume: 1
+    pitch: 1.06
+  - name: VictoryBlue
+    clip: {fileID: 8300000, guid: c9d6be1c1fd70df4382eaaf70d51d521, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    output: {fileID: 243881933742639412, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
+    volume: 1
+    pitch: 1.06
   audioMixer: {fileID: 24100000, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
 --- !u!4 &150009278
 Transform:
