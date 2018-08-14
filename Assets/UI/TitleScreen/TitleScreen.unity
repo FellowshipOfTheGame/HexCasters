@@ -231,7 +231,7 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
     output: {fileID: 243881933742639412, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
-    volume: 0.2
+    volume: 0.5
     pitch: 1.06
   - name: Rain
     clip: {fileID: 8300000, guid: 594897a7c40249249ba1e681b1c966af, type: 3}
@@ -252,14 +252,14 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 1
     output: {fileID: 243255665526768992, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
-    volume: 0.4
+    volume: 1
     pitch: 1.06
   - name: Game
     clip: {fileID: 8300000, guid: 1422214c11dedb34399f50a09bf6b39f, type: 3}
     source: {fileID: 0}
     loop: 1
     output: {fileID: 243255665526768992, guid: 189d1c0b4e6df6048ba86b318fc713b2, type: 2}
-    volume: 0.1
+    volume: 0.5
     pitch: 1.06
   - name: Clock
     clip: {fileID: 8300000, guid: a97a4e0127b482e4e80f0a42f3022c86, type: 3}

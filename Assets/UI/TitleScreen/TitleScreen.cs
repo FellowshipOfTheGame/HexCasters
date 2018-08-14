@@ -14,7 +14,8 @@ public class TitleScreen : MonoBehaviour {
 		timeInTitleScreen = 0.0f;
     StartLoadingMainMenu();
 		AudioManager.AM.Play("Menu");
-		AudioManager.AM.SetVolume("soundsVolume", -15.0f);
+		AudioManager.AM.SetVolume("soundsVolume", -20.0f);
+		AudioManager.AM.SetVolume("musicVolume", -10.0f);
 	}
 
 	public void Update() {

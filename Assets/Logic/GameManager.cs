@@ -136,7 +136,6 @@ public class GameManager : MonoBehaviour {
 		if (BackgroundMapLoader.BMLoader == null) {
 			AudioManager.AM.Stop("Menu");
 			PlaySFX("Game");
-			AudioManager.AM.SetVolume("soundsVolume", 0f);
 		}
 	}
 

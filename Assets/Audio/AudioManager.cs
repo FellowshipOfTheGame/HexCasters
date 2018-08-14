@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour {
 
 	public void SetVolume(string groupVolume, float volume) {
 		audioMixer.SetFloat(groupVolume, volume);
+		PlayerPrefs.SetFloat(groupVolume, volume);
 	}
 
 	public void Play(string name) {
