@@ -789,17 +789,17 @@ Prefab:
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 248
+      value: 262
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.spaceCount
-      value: 52
+      value: 54
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.wordCount
-      value: 53
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -839,7 +839,7 @@ Prefab:
     - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -199
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -859,15 +859,15 @@ Prefab:
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -99.5
+      value: -100.5
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_text
-      value: 'Life is a dual purpose spell.
+      value: 'Life (shortcut: 6) is a dual purpose spell.
 
         It can be used to raise a skeleton, if used adjacent to the caster on a free
-        cell, or it can heal units up to 2 tiles away from the caster.
+        cell, or it can heal units up to 3 tiles away from the caster.
 
         Read more on skeletons in the lecture on Units.
 
@@ -1204,17 +1204,17 @@ Prefab:
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 247
+      value: 267
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.spaceCount
-      value: 42
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.wordCount
-      value: 43
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -1239,8 +1239,8 @@ Prefab:
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_text
-      value: 'Removes flames from cells in target area. Creates rain in cells with
-        no flames or snow.
+      value: 'Storm (shortcut: 3) removes flames from cells in target area. Creates
+        rain in cells with no flames or snow.
 
         Interacts with Bolt and Blizzard, see their pages for more information.
 
@@ -1265,7 +1265,7 @@ Prefab:
     - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -199
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -1285,7 +1285,7 @@ Prefab:
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -99.5
+      value: -100.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c4d3b3e76e363d47b066c8e68af4847, type: 2}
@@ -1574,17 +1574,17 @@ Prefab:
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 369
+      value: 353
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.spaceCount
-      value: 67
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.wordCount
-      value: 68
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -1624,7 +1624,7 @@ Prefab:
     - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -199
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -1644,13 +1644,13 @@ Prefab:
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -99.5
+      value: -100.5
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_text
-      value: 'Flight allows you to move units that are possibly stuck, or just to
-        advance more quickly to the center of the field.
+      value: 'Flight (shortcut: 8) allows you to move units that are possibly stuck,
+        or just to move more quickly.
 
         The first target selects the unit that will be moved, which includes enemy
         units.
@@ -2005,22 +2005,22 @@ Prefab:
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 153
+      value: 267
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.spaceCount
-      value: 26
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.wordCount
-      value: 27
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.lineCount
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -2055,7 +2055,7 @@ Prefab:
     - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -199
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -2075,7 +2075,7 @@ Prefab:
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -99.5
+      value: -100.5
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -2083,7 +2083,10 @@ Prefab:
       value: 'These are the spells available to your wizards.
 
         For more information while you''re inside a match, hover the mouse over a
-        spell and a tooltip will appear.'
+        spell and a tooltip will appear.
+
+        If you want to give orders optimally, you can use the keyboard to select a
+        spell instead of clicking on its name.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c4d3b3e76e363d47b066c8e68af4847, type: 2}
@@ -2586,17 +2589,17 @@ Prefab:
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 271
+      value: 285
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.spaceCount
-      value: 47
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.wordCount
-      value: 49
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -2621,47 +2624,48 @@ Prefab:
     - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 479.5
       objectReference: {fileID: 0}
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -100.5
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_text
-      value: 'Fireball removes rain and snow. Ignites cells with no rain or snow.
+      value: 'Fireball (shortcut: 1) removes rain and snow. Ignites cells with no
+        rain or snow.
 
         Units standing in flames during a turn switch will take 3 points of damage.
 
@@ -2776,22 +2780,22 @@ Prefab:
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 261
+      value: 275
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.spaceCount
-      value: 51
+      value: 53
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.wordCount
-      value: 52
+      value: 54
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.lineCount
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -2811,14 +2815,15 @@ Prefab:
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_text
-      value: 'Rock can only strike in 6 directions, along a straight path.
+      value: 'Rock (shortcut: 5) can only strike in 6 directions, along a straight
+        path.
 
         The first unit or obstacle hit takes 3 damage.
 
         On hit, units move to the space behind them if free. If it is not, the occupant
         takes 3 damage as well.
 
-        The spell can only travel 3 tiles in a direction.'
+        The spell can only travel 4 tiles in a direction.'
       objectReference: {fileID: 0}
     - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -2838,7 +2843,7 @@ Prefab:
     - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -199
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -2858,7 +2863,7 @@ Prefab:
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -99.5
+      value: -100.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c4d3b3e76e363d47b066c8e68af4847, type: 2}
@@ -3152,17 +3157,17 @@ Prefab:
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 306
+      value: 320
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.spaceCount
-      value: 56
+      value: 58
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.wordCount
-      value: 57
+      value: 59
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -3202,7 +3207,7 @@ Prefab:
     - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -199
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -3222,12 +3227,12 @@ Prefab:
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -99.5
+      value: -100.5
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_text
-      value: 'Bolt deals heavy damage to its target.
+      value: 'Bolt (shortcut: 2) deals heavy damage to its target.
 
         If it is raining in the target cell, every other cell connected to it directly
         or indirectly via other cells with rain will also take damage from the spell.
@@ -3522,7 +3527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1788901467
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3643,17 +3648,17 @@ Prefab:
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 363
+      value: 320
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.spaceCount
-      value: 65
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.wordCount
-      value: 66
+      value: 57
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -3693,7 +3698,7 @@ Prefab:
     - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -199
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -3713,19 +3718,24 @@ Prefab:
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -99.5
+      value: -100.5
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_text
-      value: 'Blizzard removes flames from its target cell. If it has no flames and
-        no rain, creates snow in the target cell.
+      value: 'Blizzard (shortcut: 4) removes flames from its target cell. If it has
+        no flames and no rain, creates snow in the target cell.
 
-        If it is raining in the target cell, the effect expands to all other cells
-        connected directly or indirectly to it via other cells with rain.
+        If it is raining in the target cell, the effect expands to connected raining
+        cells.
 
         Cells with snow are more difficult to traverse, costing 1 additional movement
         point on top of the normal cost.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
+        type: 2}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c4d3b3e76e363d47b066c8e68af4847, type: 2}
@@ -3835,22 +3845,22 @@ Prefab:
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.characterCount
-      value: 303
+      value: 317
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.spaceCount
-      value: 53
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.wordCount
-      value: 54
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_textInfo.lineCount
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -3885,7 +3895,7 @@ Prefab:
     - target: {fileID: 224527638820886944, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -199
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
@@ -3905,12 +3915,12 @@ Prefab:
     - target: {fileID: 224318379652756820, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -99.5
+      value: -100.5
       objectReference: {fileID: 0}
     - target: {fileID: 114945385272497486, guid: 2c4d3b3e76e363d47b066c8e68af4847,
         type: 2}
       propertyPath: m_text
-      value: 'Wind can carry flames, rain or snow across the field.
+      value: 'Wind (shortcut: 7) can carry flames, rain or snow across the field.
 
         The first target selects which weather will be carried along.
 
