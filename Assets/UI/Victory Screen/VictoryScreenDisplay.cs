@@ -16,6 +16,8 @@ public class VictoryScreenDisplay : MonoBehaviour {
 	public GameObject prefabMaleLoser;
 	public GameObject prefabFemaleLoser;
 
+    public RawImage winnerFlagColor;
+
 	public void ShowWinner(HashSet<HexUnit>[] teams, Team winner) {
 		var w = teams[(int) winner];
 		var l = teams[(int) winner.Opposite()];
@@ -24,6 +26,11 @@ public class VictoryScreenDisplay : MonoBehaviour {
 		PopulateList(losersLayout, l, prefabMaleLoser, prefabFemaleLoser);
 		ColorSprites(victorsLayout, TeamExtensions.COLORS[(int) winner]);
 		ColorSprites(losersLayout, TeamExtensions.COLORS[(int) winner.Opposite()]);
+        if (winner == Team.RED) {
+            winnerFlagColor.color = Color.red;
+        } else {
+            winnerFlagColor.color = Color.blue;
+        }
 	}
 
 	void PopulateList(
