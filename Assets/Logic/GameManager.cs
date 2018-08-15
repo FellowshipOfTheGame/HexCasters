@@ -182,7 +182,32 @@ public class GameManager : MonoBehaviour {
 						HoverEnter(actualHover);
 					}
 					selectedUnit.hasMoved = false;
-				}
+				} else {
+                    selectedSpell = null;
+                    if (Input.GetKeyDown(KeyCode.Alpha1)) {
+                        selectedSpell = Spell.FIREBALL;
+                    } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+                        selectedSpell = Spell.LIGHTNING_BOLT;
+                    } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+                        selectedSpell = Spell.SUMMON_STORM;
+                    } else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+                        selectedSpell = Spell.BLIZZARD;
+                    } else if (Input.GetKeyDown(KeyCode.Alpha5)) {
+                        selectedSpell = Spell.ROCK_STRIKE;
+                    } else if (Input.GetKeyDown(KeyCode.Alpha6)) {
+                        selectedSpell = Spell.IMBUE_LIFE;
+                    } else if (Input.GetKeyDown(KeyCode.Alpha7)) {
+                        selectedSpell = Spell.CALL_WINDS;
+                    } else if (Input.GetKeyDown(KeyCode.Alpha8)) {
+                        selectedSpell = Spell.FLIGHT;
+                    }
+
+                    if (selectedSpell != null) {
+                        state = GameState.SPELL_SELECT_TARGETS;
+                    } else if (Input.GetKeyDown(KeyCode.Alpha0)) {
+                        state = GameState.OVERVIEW;
+                    }
+                }
 				break;
 			case GameState.SPELL_SELECT_TARGETS:
 				if (InputCancel()) {
