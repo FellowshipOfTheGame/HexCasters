@@ -11,6 +11,7 @@ public class Sound {
 	public AudioSource source;
 
 	public bool loop;
+	public AudioMixerGroup output;
 
 	[Range(0f, 1f)]
 	public float volume;

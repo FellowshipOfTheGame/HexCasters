@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
 	private static event Action initEvent;
 
 	public Button endTurnButton;
+	public Button menuButton;
 	public HexGrid grid;
 	public RawImage turnIndicator;
     public Transform cameraTransform;
@@ -134,7 +135,7 @@ public class GameManager : MonoBehaviour {
 		state = GameState.OVERVIEW;
 		if (BackgroundMapLoader.BMLoader == null) {
 			AudioManager.AM.Stop("Menu");
-			PlaySFX("Game");
+			AudioManager.AM.Play("Game");
 		}
 	}
 
@@ -147,8 +148,12 @@ public class GameManager : MonoBehaviour {
 	public void Update() {
         if (state == GameState.OVERVIEW
                 && teams[(int) turn].Count > 0
-                && teams[(int) turn].All(unit => unit.hasMoved)) {
+                && teams[(int) turn].All(unit => unit.hasMoved)
+                && !victoryScreen.gameObject.activeSelf) {
             jobsDone.SetActive(true);
+        }
+        if (state == GameState.RESULTS) {
+            jobsDone.SetActive(false);
         }
 		switch (state) {
 			case GameState.OVERVIEW:
@@ -177,7 +182,32 @@ public class GameManager : MonoBehaviour {
 						HoverEnter(actualHover);
 					}
 					selectedUnit.hasMoved = false;
-				}
+				} else {
+                    selectedSpell = null;
+                    if (Input.GetKeyDown(KeyCode.Alpha1)) {
+                        selectedSpell = Spell.FIREBALL;
+                    } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+                        selectedSpell = Spell.LIGHTNING_BOLT;
+                    } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+                        selectedSpell = Spell.SUMMON_STORM;
+                    } else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+                        selectedSpell = Spell.BLIZZARD;
+                    } else if (Input.GetKeyDown(KeyCode.Alpha5)) {
+                        selectedSpell = Spell.ROCK_STRIKE;
+                    } else if (Input.GetKeyDown(KeyCode.Alpha6)) {
+                        selectedSpell = Spell.IMBUE_LIFE;
+                    } else if (Input.GetKeyDown(KeyCode.Alpha7)) {
+                        selectedSpell = Spell.CALL_WINDS;
+                    } else if (Input.GetKeyDown(KeyCode.Alpha8)) {
+                        selectedSpell = Spell.FLIGHT;
+                    }
+
+                    if (selectedSpell != null) {
+                        state = GameState.SPELL_SELECT_TARGETS;
+                    } else if (Input.GetKeyDown(KeyCode.Alpha0)) {
+                        state = GameState.OVERVIEW;
+                    }
+                }
 				break;
 			case GameState.SPELL_SELECT_TARGETS:
 				if (InputCancel()) {
@@ -205,10 +235,11 @@ public class GameManager : MonoBehaviour {
 					selectedUnit.hasMoved = true;
 					selectedUnit.MoveEvent();
 					if (selectedUnit.isMage) {
+						AudioManager.AM.Play("MageMove");
 						state = GameState.SPELL_CHOICE;
 					} else {
 						if (selectedUnit.isOrb) {
-							PlaySFX("OrbMove");
+							AudioManager.AM.Play("OrbMove");
 						}
 						state = GameState.OVERVIEW;
 					}
@@ -270,6 +301,9 @@ public class GameManager : MonoBehaviour {
 		if (BackgroundMapLoader.BMLoader != null) {
 			return;
 		}
+        foreach (var display in GameObject.FindGameObjectsWithTag("HP Display")) {
+            display.SetActive(false);
+        }
 		hoveredCell = null;
 		RemoveHealthpointText(cell.unit);
 		switch (state) {
@@ -511,7 +545,7 @@ public class GameManager : MonoBehaviour {
 				selectedUnit, hoveredCell, spellTargets));
 			foreach (HexCell c in spellAOE) {
 				c.highlight = Highlight.IN_AOE;
-				if (c.unit != null) {
+				if (c.unit != null && c.unit.GetComponent<HP>() != null) {
 					c.highlight = Highlight.RELEVANT; //change highlight sprite and name
 				}
 			}
@@ -542,6 +576,14 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void ShowWinner() {
+		AudioManager.AM.SetVolume("soundsVolume", -15.0f);
+		AudioManager.AM.SetVolume("musicVolume", -30.0f);
+		if (winner == Team.RED) {
+			AudioManager.AM.Play("VictoryRed");
+		}
+		if (winner == Team.BLUE) {
+			AudioManager.AM.Play("VictoryBlue");
+		}
 		victoryScreen.gameObject.SetActive(true);
 		victoryScreen.ShowWinner(teams, winner);
 		// winnerMessage.text = winner + " Team win!";
@@ -549,6 +591,7 @@ public class GameManager : MonoBehaviour {
 		// winnerIndicator.gameObject.SetActive(true);
 		Destroy(GameObject.FindObjectOfType<Timer>());
 		endTurnButton.interactable = false;
+		menuButton.interactable = false;
 	}
 
 	public void BackToMainMenu() {
@@ -570,10 +613,6 @@ public class GameManager : MonoBehaviour {
 				| System.Reflection.BindingFlags.Static);
 		selectedSpell = info.GetValue(null) as Spell;
 		state = GameState.SPELL_SELECT_TARGETS;
-	}
-
-	public void PlaySFX(string name) {
-		FindObjectOfType<AudioManager>().Play(name);
 	}
 
     void CenterCamera() {

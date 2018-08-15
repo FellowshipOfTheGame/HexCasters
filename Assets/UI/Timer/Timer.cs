@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour {
 	public static Timer T;
 
 	private float startTime;
+	private bool timerIsCounting;
 	public float turnTime;
 	public bool hasTimeLimit;
 
@@ -25,6 +26,7 @@ public class Timer : MonoBehaviour {
 		if (turnTime > 0) {
 			startTime = Time.time;
 			hasTimeLimit = true;
+			timerIsCounting = false;
 		}
 	}
 
@@ -35,6 +37,10 @@ public class Timer : MonoBehaviour {
 		float t = Time.time - startTime; //growing count
 		float secondsLeft = (turnTime - t);
 		timerIndicator.text = secondsLeft.ToString("f0");
+		if ((int)secondsLeft == 10 && !timerIsCounting) {
+			AudioManager.AM.Play("Clock");
+			timerIsCounting = true;
+		}
 		if ((int)secondsLeft == 0) {
 			GameManager.GM.EndTurn();
 		}
@@ -42,6 +48,8 @@ public class Timer : MonoBehaviour {
 
 	public void ResetCountdownTimer() {
 		if (hasTimeLimit) {
+			AudioManager.AM.Stop("Clock");
+			timerIsCounting = false;
 			startTime = Time.time;
 			if (GameManager.GM.state == GameManager.GameState.RESULTS) {
 				timerIndicator.text = "";

@@ -66,6 +66,10 @@ MonoBehaviour:
       y: -3
     - x: 2
       y: 3
+    - x: 3
+      y: -1
+    - x: -3
+      y: 1
     m_values:
     - terrain: {fileID: 0}
       effect: 0
@@ -170,6 +174,14 @@ MonoBehaviour:
       content: {fileID: 0}
       contentTeam: 0
     - terrain: {fileID: 11400000, guid: 4104b3b8f3834cf4f8c0efff70f8c8d8, type: 2}
+      effect: 0
+      content: {fileID: 0}
+      contentTeam: 0
+    - terrain: {fileID: 11400000, guid: 15ee06a7f19912f4191d6382f0e8131e, type: 2}
+      effect: 0
+      content: {fileID: 0}
+      contentTeam: 0
+    - terrain: {fileID: 11400000, guid: 15ee06a7f19912f4191d6382f0e8131e, type: 2}
       effect: 0
       content: {fileID: 0}
       contentTeam: 0
